@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transient logarithmic spiral potential &mdash; galpy v0.1_alpha documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1_alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="up" title="Potential" href="potential.html" />
+    <link rel="next" title="galpy.potential.linearPotential.__call__" href="potential1dcall.html" />
+    <link rel="prev" title="Steady-state logarithmic spiral potential" href="potentialsteadylogspiral.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="potential1dcall.html" title="galpy.potential.linearPotential.__call__"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="potentialsteadylogspiral.html" title="Steady-state logarithmic spiral potential"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+          <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="transient-logarithmic-spiral-potential">
+<h1>Transient logarithmic spiral  potential<a class="headerlink" href="#transient-logarithmic-spiral-potential" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.potential.TransientLogSpiralPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">TransientLogSpiralPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>sigma=1.0</em>, <em>to=0.0</em><big>)</big><a class="headerlink" href="#galpy.potential.TransientLogSpiralPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements a steady-state spiral potential</p>
+<p>V(r,phi,t) = A(t)/alpha cos(alpha ln(r) + m(phi - Omegas*t-gamma))</p>
+<p>where</p>
+<p>A(t) = A_max exp(- [t-to]^2/sigma^2/2.)</p>
+<dl class="method">
+<dt id="galpy.potential.TransientLogSpiralPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>sigma=1.0</em>, <em>to=0.0</em><big>)</big><a class="headerlink" href="#galpy.potential.TransientLogSpiralPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>initialize a transient logarithmic spiral potential localized 
+around to</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>amp - amplitude to be applied to the potential (default:
+1., A below)</p>
+<dl class="docutils">
+<dt>gamma - angle between sun-GC line and the line connecting the </dt>
+<dd>peak of the spiral pattern at the Solar radius 
+(in rad; default=45 degree)</dd>
+</dl>
+<p>A - force amplitude (alpha*potential-amplitude; default=0.035)</p>
+<p>omegas= - pattern speed (default=0.65)</p>
+<p>m= number of arms</p>
+<p>to= time at which the spiral peaks</p>
+<p>sigma= &#8220;spiral duration&#8221; (sigma in Gaussian amplitude)</p>
+<p>Either provide:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>alpha=</li>
+<li>p= pitch angle (rad)</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(none)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-03-27 - Started - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="potentialsteadylogspiral.html"
+                        title="previous chapter">Steady-state logarithmic spiral  potential</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="potential1dcall.html"
+                        title="next chapter">galpy.potential.linearPotential.__call__</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/potentialtransientlogspiral.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="potential1dcall.html" title="galpy.potential.linearPotential.__call__"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="potentialsteadylogspiral.html" title="Steady-state logarithmic spiral potential"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+          <li><a href="potential.html" >Potential</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2011, Jo Bovy.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
