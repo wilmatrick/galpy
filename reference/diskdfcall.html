@@ -63,19 +63,26 @@
 <div>evaluate the distribution function</div></blockquote>
 <p>INPUT:</p>
 <blockquote>
-<div><p>either an orbit instance or E,Lz</p>
-<ol class="arabic simple">
-<li>Orbit instance:
+<div><p>either an orbit instance, a list of such instances,  or E,Lz</p>
+<ol class="arabic">
+<li><p class="first">Orbit instance or list:
 a) Orbit instance alone: use vxvv member
-b) Orbit instance + t: call the Orbit instance</li>
-<li>E - energy (/vo^2)
-L - angular momentun (/ro/vo)</li>
+b) Orbit instance + t: call the Orbit instance (for list, each</p>
+<blockquote>
+<div><p>instance is called at t)</p>
+</div></blockquote>
+</li>
+<li><p class="first">E - energy (/vo^2)
+L - angular momentun (/ro/vo)</p>
+</li>
+<li><p class="first">array vxvv [3/4,nt]</p>
+</li>
 </ol>
 </div></blockquote>
 <p>KWARGS:</p>
 <blockquote>
-<div><p>marginalizeVperp - marginalize over perpendicular velocity (only supported with 1a) above) + nsigma, +scipy.integrate.quad keywords</p>
-<p>marginalizeVlos - marginalize over line-of-sight velocity (only supported with 1a) above) + nsigma, +scipy.integrate.quad keywords</p>
+<div><p>marginalizeVperp - marginalize over perpendicular velocity (only supported with 1a) for single orbits above) + nsigma, +scipy.integrate.quad keywords</p>
+<p>marginalizeVlos - marginalize over line-of-sight velocity (only supported with 1a) for single orbits above) + nsigma, +scipy.integrate.quad keywords</p>
 </div></blockquote>
 <p>OUTPUT:</p>
 <blockquote>
