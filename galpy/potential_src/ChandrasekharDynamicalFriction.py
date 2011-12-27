@@ -59,7 +59,7 @@ class ChandrasekharDynamicalFriction(Potential):
            2010-04-30 - Adapted for R,z - Bovy (NYU)
         """
         if dR == 0 and dphi == 0:
-            raise NotImplementedError("'_evaluate' not implemented for ChandrasekharDynamicalFriction")
+            return 0.
         elif dR == 1 and dphi == 1:
             return self._Rforce(R,z,phi=phi,t=t,v=v)
         elif dR == 0 and dphi == 1:
