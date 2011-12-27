@@ -13,7 +13,7 @@ def isothermalsigmar(r):
     return _INVSQRTTWO
 class ChandrasekharDynamicalFriction(Potential):
     """Class that implements the Chandrasekhar dynamical friction"""
-    def __init__(self,amp=1.,lnLambda=2.,GMs=.1,4piGrhor=isothermalrhor,
+    def __init__(self,amp=1.,lnLambda=2.,GMs=.1,fourpiGrhor=isothermalrhor,
                  sigmar=isothermalsigmar):
         """
         NAME:
@@ -24,8 +24,8 @@ class ChandrasekharDynamicalFriction(Potential):
            amp - amplitude to be applied to the potential (default: 1)
            GMs - satellite mass
            lnLambda - Coulomb integral
-           4piGrhor - function that gives the 4piG times density as 
-                      a function of r
+           fourpiGrhor - function that gives the 4piG times density as 
+                         a function of r
            sigmar - function that gives the velocity dispersion as a function 
                     of r
         OUTPUT:
@@ -36,7 +36,7 @@ class ChandrasekharDynamicalFriction(Potential):
         Potential.__init__(self,amp=amp)
         self._lnLambda= lnLambda
         self._ms= GMs
-        self._rhor= 4piGrhor
+        self._rhor= fourpiGrhor
         self._sigmar= sigmar
         return None
 
