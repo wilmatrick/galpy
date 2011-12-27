@@ -123,7 +123,7 @@ class DoubleExponentialDiskPotential(Potential):
                     notConvergedLarge= False
         return -4.*nu.pi/self._alpha/self._beta*(smallkIntegral[0]+largekIntegral[0])
     
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            Rforce
@@ -191,7 +191,7 @@ class DoubleExponentialDiskPotential(Potential):
                 notConvergedLarge= False
         return -4.*nu.pi/self._beta*(smallkIntegral[0]+largekIntegral[0])
     
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            zforce
