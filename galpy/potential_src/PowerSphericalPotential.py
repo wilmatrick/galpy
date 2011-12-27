@@ -67,7 +67,7 @@ class PowerSphericalPotential(Potential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -85,7 +85,7 @@ class PowerSphericalPotential(Potential):
         """
         return -R/(R**2.+z**2.)**(self.alpha/2.)
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
