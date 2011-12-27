@@ -94,7 +94,7 @@ class MovingObjectPotential(Potential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -119,7 +119,7 @@ class MovingObjectPotential(Potential):
         return self._gm*(nu.cos(phi)*xd+nu.sin(phi)*yd)/dist\
             *self._softening(dist)
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
@@ -143,7 +143,7 @@ class MovingObjectPotential(Potential):
         #Evaluate force
         return self._gm*zd/dist*self._softening(dist)
 
-    def _phiforce(self,R,z,phi=0.,t=0.):
+    def _phiforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _phiforce
