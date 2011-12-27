@@ -1,6 +1,10 @@
 import shutil
 import tempfile
 import pickle
+import math
+_KMSGYRKPC= 1.0226894377665996
+def tphysical(ro=8.,vo=220.):
+    return ro/vo/_KMSGYRKPC
 def save_pickles(savefilename,*args):
     """
     NAME:
