@@ -1,6 +1,7 @@
 import math as m
 import numpy as nu
 from scipy import integrate, interpolate, optimize
+from galpy.util import tphysical
 import galpy.util.bovy_plot as plot
 import galpy.util.bovy_coords as coords
 from galpy.potential_src.planarPotential import RZToplanarPotential
@@ -1051,7 +1052,13 @@ class OrbitTop:
             kwargs.pop('d2')
         #Get x and y
         if d1 == 't':
-            x= nu.array(self.t)
+            if kwargs.has_key('ro') and kwargs.has_key('vo'):
+                #Use physical time
+                x= nu.array(self.t)*tphysical(ro=kwargs['ro'],
+                                              vo=kwargs['vo'])
+                labeldict['t']= r'$t\ [\mathrm{Gyr}]$'
+            else:
+                x= nu.array(self.t)
         elif d1 == 'R':
             x= self.R(self.t)
         elif d1 == 'z':
@@ -1095,7 +1102,13 @@ class OrbitTop:
         elif d1 == 'dist':
             x= self.dist(self.t)
         if d2 == 't':
-            y= nu.array(self.t)
+            if kwargs.has_key('ro') and kwargs.has_key('vo'):
+                #Use physical time
+                y= nu.array(self.t)*tphysical(ro=kwargs['ro'],
+                                              vo=kwargs['vo'])
+                labeldict['t']= r'$t\ [\mathrm{Gyr}]$'
+            else:
+                y= nu.array(self.t)
         elif d2 == 'R':
             y= self.R(self.t)
         elif d2 == 'z':
@@ -1138,7 +1151,9 @@ class OrbitTop:
             y= self.bb(self.t)
         elif d2 == 'dist':
             y= self.dist(self.t)
-
+        #Remove offensive kwargs
+        if kwargs.has_key('ro'): kwargs.pop('ro')
+        if kwargs.has_key('vo'): kwargs.pop('vo')
         #Plot
         if not kwargs.has_key('xlabel'):
             kwargs['xlabel']= labeldict[d1]
