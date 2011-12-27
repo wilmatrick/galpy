@@ -645,13 +645,14 @@ def _FullEOM(y,t,pot):
        2010-04-16 - Written - Bovy (NYU)
     """
     l2= (y[0]**2.*y[3])**2.
+    v= [y[1],y[3],y[5]]
     return [y[1],
-            l2/y[0]**3.+evaluateRforces(y[0],y[4],pot,phi=y[2],t=t),
+            l2/y[0]**3.+evaluateRforces(y[0],y[4],pot,phi=y[2],t=t,v=v),
             y[3],
-            1./y[0]**2.*(evaluatephiforces(y[0],y[4],pot,phi=y[2],t=t)-
+            1./y[0]**2.*(evaluatephiforces(y[0],y[4],pot,phi=y[2],t=t,v=v)-
                          2.*y[0]*y[1]*y[3]),
             y[5],
-            evaluatezforces(y[0],y[4],pot,phi=y[2],t=t)]
+            evaluatezforces(y[0],y[4],pot,phi=y[2],t=t,v=v)]
 
 def _rectForce(x,pot,t=0.):
     """
