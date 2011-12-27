@@ -76,7 +76,7 @@ class MiyamotoNagaiPotential(Potential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -94,7 +94,7 @@ class MiyamotoNagaiPotential(Potential):
         """
         return -R/(R**2.+(self._a+nu.sqrt(z**2.+self._b2))**2.)**(3./2.)
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
