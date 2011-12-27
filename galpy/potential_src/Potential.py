@@ -66,7 +66,7 @@ class Potential:
         except AttributeError:
             raise PotentialError("'_evaluate' function not implemented for this potential")
 
-    def Rforce(self,R,z,phi=0.,t=0.):
+    def Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            Rforce
@@ -77,6 +77,7 @@ class Potential:
            z - vertical height
            phi - azimuth (optional)
            t - time (optional)
+           v= current velocity
         OUTPUT:
            K_R (R,z,phi,t)
         HISTORY:
@@ -84,11 +85,11 @@ class Potential:
         DOCTEST:
         """
         try:
-            return self._amp*self._Rforce(R,z,phi=phi,t=t)
+            return self._amp*self._Rforce(R,z,phi=phi,t=t,v=v)
         except AttributeError:
             raise PotentialError("'_Rforce' function not implemented for this potential")
         
-    def zforce(self,R,z,phi=0.,t=0.):
+    def zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            zforce
@@ -99,13 +100,14 @@ class Potential:
            z - vertical height
            phi - azimuth (optional)
            t - time (optional)
+           v= current velocity
         OUTPUT:
            K_z (R,z,phi,t)
         HISTORY:
            2010-04-16 - Written - Bovy (NYU)
         """
         try:
-            return self._amp*self._zforce(R,z,phi=phi,t=t)
+            return self._amp*self._zforce(R,z,phi=phi,t=t,v=v)
         except AttributeError:
             raise PotentialError("'_zforce' function not implemented for this potential")
 
@@ -168,7 +170,7 @@ class Potential:
         """
         self._amp*= norm/nu.fabs(self.Rforce(1.,0.,t=t))
 
-    def phiforce(self,R,z,phi=0.,t=0.):
+    def phiforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            phiforce
@@ -179,17 +181,18 @@ class Potential:
            z - vertical height
            phi - azimuth (rad)
            t - time (optional)
+           v= current velocity
         OUTPUT:
            K_phi (R,z,phi,t)
         HISTORY:
            2010-07-10 - Written - Bovy (NYU)
         """
         try:
-            return self._amp*self._phiforce(R,z,phi=phi,t=t)
+            return self._amp*self._phiforce(R,z,phi=phi,t=t,v=v)
         except AttributeError:
             return 0.
 
-    def _phiforce(self,R,z,phi=0.,t=0.):
+    def _phiforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _phiforce
@@ -200,6 +203,7 @@ class Potential:
            z - vertical height
            phi - azimuth (rad)
            t - time (optional)
+           v= current velocity
         OUTPUT:
            K_phi (R,z,phi,t)
         HISTORY:
@@ -530,7 +534,7 @@ def evaluateDensities(R,z,Pot,phi=0.,t=0.):
     else:
         raise PotentialError("Input to 'evaluateDensities' is neither a Potential-instance or a list of such instances")
 
-def evaluateRforces(R,z,Pot,phi=0.,t=0.):
+def evaluateRforces(R,z,Pot,phi=0.,t=0.,v=None):
     """
     NAME:
        evaluateRforce
@@ -546,6 +550,9 @@ def evaluateRforces(R,z,Pot,phi=0.,t=0.):
        phi - azimuth (optional)
 
        t - time (optional)
+
+       v= current velocity
+
     OUTPUT:
        K_R(R,z,phi,t)
     HISTORY:
@@ -554,17 +561,17 @@ def evaluateRforces(R,z,Pot,phi=0.,t=0.):
     if isinstance(Pot,list):
         sum= 0.
         for pot in Pot:
-            sum+= pot.Rforce(R,z,phi=phi,t=t)
+            sum+= pot.Rforce(R,z,phi=phi,t=t,v=v)
         return sum
     elif isinstance(Pot,Potential):
-        return Pot.Rforce(R,z,phi=phi,t=t)
+        return Pot.Rforce(R,z,phi=phi,t=t,v=v)
     else:
         raise PotentialError("Input to 'evaluateRforces' is neither a Potential-instance or a list of such instances")
 
-def evaluatephiforces(R,z,Pot,phi=0.,t=0.):
+def evaluatephiforces(R,z,Pot,phi=0.,t=0.,v=None):
     """
     NAME:
-       evaluateRforce
+       evaluatephiforce
     PURPOSE:
        convenience function to evaluate a possible sum of potentials
     INPUT:
@@ -577,6 +584,8 @@ def evaluatephiforces(R,z,Pot,phi=0.,t=0.):
        phi - azimuth (optional)
 
        t - time (optional)
+       
+       v= current velocity
     OUTPUT:
        K_R(R,z,phi,t)
     HISTORY:
@@ -585,14 +594,14 @@ def evaluatephiforces(R,z,Pot,phi=0.,t=0.):
     if isinstance(Pot,list):
         sum= 0.
         for pot in Pot:
-            sum+= pot.phiforce(R,z,phi=phi,t=t)
+            sum+= pot.phiforce(R,z,phi=phi,t=t,v=v)
         return sum
     elif isinstance(Pot,Potential):
-        return Pot.phiforce(R,z,phi=phi,t=t)
+        return Pot.phiforce(R,z,phi=phi,t=t,v=v)
     else:
         raise PotentialError("Input to 'evaluatephiforces' is neither a Potential-instance or a list of such instances")
 
-def evaluatezforces(R,z,Pot,phi=0.,t=0.):
+def evaluatezforces(R,z,Pot,phi=0.,t=0.,v=None):
     """
     NAME:
        evaluatezforces
@@ -608,6 +617,8 @@ def evaluatezforces(R,z,Pot,phi=0.,t=0.):
        phi - azimuth (optional)
 
        t - time (optional)
+
+       v= current velocity
     OUTPUT:
        K_z(R,z,phi,t)
     HISTORY:
@@ -616,10 +627,10 @@ def evaluatezforces(R,z,Pot,phi=0.,t=0.):
     if isinstance(Pot,list):
         sum= 0.
         for pot in Pot:
-            sum+= pot.zforce(R,z,phi=phi,t=t)
+            sum+= pot.zforce(R,z,phi=phi,t=t,v=v)
         return sum
     elif isinstance(Pot,Potential):
-        return Pot.zforce(R,z,phi=phi,t=t)
+        return Pot.zforce(R,z,phi=phi,t=t,v=v)
     else:
         raise PotentialError("Input to 'evaluatezforces' is neither a Potential-instance or a list of such instances")
 
