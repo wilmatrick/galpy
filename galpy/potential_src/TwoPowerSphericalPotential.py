@@ -81,7 +81,7 @@ class TwoPowerSphericalPotential(Potential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -92,6 +92,7 @@ class TwoPowerSphericalPotential(Potential):
            z - vertical height
            phi - azimuth
            t - time
+           v= current velocity
         OUTPUT:
            the radial force
         HISTORY:
@@ -105,7 +106,7 @@ class TwoPowerSphericalPotential(Potential):
                                                   self.beta-self.alpha,
                                                   4.-self.alpha,
                                                   -r/self.a)
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
@@ -237,7 +238,7 @@ class TwoPowerIntegerSphericalPotential(TwoPowerSphericalPotential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -262,7 +263,7 @@ class TwoPowerIntegerSphericalPotential(TwoPowerSphericalPotential):
         else:
             raise AttributeError
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
@@ -338,7 +339,7 @@ class HernquistPotential(TwoPowerIntegerSphericalPotential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -357,7 +358,7 @@ class HernquistPotential(TwoPowerIntegerSphericalPotential):
         sqrtRz= m.sqrt(R**2.+z**2.)
         return -R/self.a/sqrtRz/(1.+sqrtRz/self.a)**2.
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
@@ -446,7 +447,7 @@ class JaffePotential(TwoPowerIntegerSphericalPotential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -465,7 +466,7 @@ class JaffePotential(TwoPowerIntegerSphericalPotential):
         sqrtRz= m.sqrt(R**2.+z**2.)
         return -self.a*R/sqrtRz**3./(1.+self.a/sqrtRz)
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
@@ -556,7 +557,7 @@ class NFWPotential(TwoPowerIntegerSphericalPotential):
         elif dR == 0 and dphi == 1:
             return -self._phiforce(R,z,phi=phi,t=t)
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -576,7 +577,7 @@ class NFWPotential(TwoPowerIntegerSphericalPotential):
         sqrtRz= m.sqrt(Rz)
         return R*(1./Rz/(self.a+sqrtRz)-m.log(1.+sqrtRz/self.a)/sqrtRz/Rz)
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
