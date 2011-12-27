@@ -64,7 +64,7 @@ class LogarithmicHaloPotential(Potential):
         elif dR == 1 and dphi == 1:
             return 0.
 
-    def _Rforce(self,R,z,phi=0.,t=0.):
+    def _Rforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _Rforce
@@ -75,13 +75,14 @@ class LogarithmicHaloPotential(Potential):
            z - vertical height
            phi - azimuth
            t - time
+           v= current velocity
         OUTPUT:
            the radial force
         HISTORY:
         """
         return -R/(R**2.+(z/self._q)**2.+self._core2)
 
-    def _zforce(self,R,z,phi=0.,t=0.):
+    def _zforce(self,R,z,phi=0.,t=0.,v=None):
         """
         NAME:
            _zforce
@@ -92,6 +93,7 @@ class LogarithmicHaloPotential(Potential):
            z - vertical height
            phi - azimuth
            t - time
+           v= current velocity
         OUTPUT:
            the vertical force
         HISTORY:
