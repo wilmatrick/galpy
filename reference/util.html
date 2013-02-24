@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
     <link rel="next" title="galpy.util.bovy_plot" href="bovyplot.html" />
-    <link rel="prev" title="Isothermal DF" href="dfisotherm.html" /> 
+    <link rel="prev" title="Shu DF" href="dfshu.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="bovyplot.html" title="galpy.util.bovy_plot"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="dfisotherm.html" title="Isothermal DF"
+          <a href="dfshu.html" title="Shu DF"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
       </ul>
@@ -65,6 +65,12 @@
 <li class="toctree-l1"><a class="reference internal" href="bovycoords.html">bovy_coords: coordinate transformation functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="coordscovdvrpmllbbtovxyz.html">cov_dvrpmllbb_to_vxyz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordscovpmrapmdectopmllpmbb.html">cov_pmrapmdec_to_pmllpmbb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordscyltorect.html">cyl_to_rect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordscyltorectvec.html">cyl_to_rect_vec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsdltorphi2d.html">dl_to_rphi_2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsgalcencyltoxyz.html">galcencyl_to_XYZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsgalcencyltovxvyvz.html">galcencyl_to_vxvyvz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsgalcenrecttovxvyvz.html">galcenrect_to_vxvyvz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordslbtoradec.html">lb_to_radec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordslbdtoxyz.html">lbd_to_XYZ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordspmllpmbbtopmrapmdec.html">pmllpmbb_to_pmrapmdec</a></li>
@@ -72,13 +78,19 @@
 <li class="toctree-l2"><a class="reference internal" href="coordsradectolb.html">radec_to_lb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsrectgaltosphergal.html">rectgal_to_sphergal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsrecttocyl.html">rect_to_cyl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsrecttocylvec.html">rect_to_cyl_vec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsrphitodl2d.html">rphi_to_dl_2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsRztocoshucosv.html">Rz_to_coshucosv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsRztouv.html">Rz_to_uv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordssphergaltorectgal.html">sphergal_to_rectgal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsuvtoRz.html">uv_to_Rz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsvrpmllpmbbtovxvyvz.html">vrpmllpmbb_to_vxvyvz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsvxvyvztogalcencyl.html">vxvyvz_to_galcencyl</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsvxvyvztogalcenrect.html">vxvyvz_to_galcenrect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsvxvyvztovrpmllpmbb.html">vxvyvz_to_vrpmllpmbb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsxyztogalcencyl.html">XYZ_to_galcencyl</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsxyztogalcenrect.html">XYZ_to_galcenrect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsxyztolbd.html">XYZ_to_lbd</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bovyars.html">bovy_ars: adaptive-rejection sampling</a></li>
@@ -93,8 +105,8 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="dfisotherm.html"
-                        title="previous chapter">Isothermal DF</a></p>
+  <p class="topless"><a href="dfshu.html"
+                        title="previous chapter">Shu DF</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="bovyplot.html"
                         title="next chapter">galpy.util.bovy_plot</a></p>
@@ -130,13 +142,13 @@
           <a href="bovyplot.html" title="galpy.util.bovy_plot"
              >next</a> |</li>
         <li class="right" >
-          <a href="dfisotherm.html" title="Isothermal DF"
+          <a href="dfshu.html" title="Shu DF"
              >previous</a> |</li>
         <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

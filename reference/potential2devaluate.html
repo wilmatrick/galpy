@@ -54,7 +54,7 @@
 <h1>galpy.potential.evaluateplanarPotentials<a class="headerlink" href="#galpy-potential-evaluateplanarpotentials" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="galpy.potential.evaluateplanarPotentials">
-<tt class="descclassname">galpy.potential.</tt><tt class="descname">evaluateplanarPotentials</tt><big>(</big><em>R</em>, <em>Pot</em>, <em>phi=None</em>, <em>t=0.0</em><big>)</big><a class="headerlink" href="#galpy.potential.evaluateplanarPotentials" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">galpy.potential.</tt><tt class="descname">evaluateplanarPotentials</tt><big>(</big><em>R</em>, <em>Pot</em>, <em>phi=None</em>, <em>t=0.0</em>, <em>dR=0</em>, <em>dphi=0</em><big>)</big><a class="headerlink" href="#galpy.potential.evaluateplanarPotentials" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>NAME:</dt>
 <dd>evaluateplanarPotentials</dd>
@@ -63,7 +63,8 @@
 <dt>INPUT:</dt>
 <dd>R (+phi optional)
 Pot - (list of) planarPotential instance(s)
-t - time (optional)</dd>
+t - time (optional)
+dR=, dphi= if set to non-zero integers, return the dR,dphi&#8217;t derivative instead</dd>
 <dt>OUTPUT:</dt>
 <dd>Phi(R(,phi,t))</dd>
 <dt>HISTORY:</dt>
@@ -124,7 +125,7 @@ t - time (optional)</dd>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

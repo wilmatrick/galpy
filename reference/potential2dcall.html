@@ -25,7 +25,7 @@
     <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="galpy.potential.planarPotential.phiforce" href="potential2dphiforce.html" />
-    <link rel="prev" title="Power-law density spherical potential" href="potentialpowerspher.html" /> 
+    <link rel="prev" title="Razor-thin exponential disk potential" href="potentialrazorexp.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +38,7 @@
           <a href="potential2dphiforce.html" title="galpy.potential.planarPotential.phiforce"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="potentialpowerspher.html" title="Power-law density spherical potential"
+          <a href="potentialrazorexp.html" title="Razor-thin exponential disk potential"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
@@ -54,7 +54,7 @@
 <h1>galpy.potential.planarPotential.__call__<a class="headerlink" href="#galpy-potential-planarpotential-call" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="galpy.potential.planarPotential.__call__">
-<tt class="descclassname">planarPotential.</tt><tt class="descname">__call__</tt><big>(</big><em>R</em>, <em>phi=0.0</em>, <em>t=0.0</em><big>)</big><a class="headerlink" href="#galpy.potential.planarPotential.__call__" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">planarPotential.</tt><tt class="descname">__call__</tt><big>(</big><em>R</em>, <em>phi=0.0</em>, <em>t=0.0</em>, <em>dR=0</em>, <em>dphi=0</em><big>)</big><a class="headerlink" href="#galpy.potential.planarPotential.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>NAME:</dt>
 <dd>__call__</dd>
@@ -63,7 +63,8 @@
 <dt>INPUT: </dt>
 <dd>R
 phi
-t</dd>
+t
+dR=, dphi= if set to non-zero integers, return the dR,dphi&#8217;t derivative</dd>
 <dt>OUTPUT:</dt>
 <dd>Phi(R(,phi,t)))</dd>
 <dt>HISTORY:</dt>
@@ -80,8 +81,8 @@ t</dd>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="potentialpowerspher.html"
-                        title="previous chapter">Power-law density spherical potential</a></p>
+  <p class="topless"><a href="potentialrazorexp.html"
+                        title="previous chapter">Razor-thin exponential disk potential</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="potential2dphiforce.html"
                         title="next chapter">galpy.potential.planarPotential.phiforce</a></p>
@@ -117,14 +118,14 @@ t</dd>
           <a href="potential2dphiforce.html" title="galpy.potential.planarPotential.phiforce"
              >next</a> |</li>
         <li class="right" >
-          <a href="potentialpowerspher.html" title="Power-law density spherical potential"
+          <a href="potentialrazorexp.html" title="Razor-thin exponential disk potential"
              >previous</a> |</li>
         <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

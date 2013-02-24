@@ -56,7 +56,7 @@
 <dt id="galpy.potential.TransientLogSpiralPotential">
 <em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">TransientLogSpiralPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>sigma=1.0</em>, <em>to=0.0</em><big>)</big><a class="headerlink" href="#galpy.potential.TransientLogSpiralPotential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that implements a steady-state spiral potential</p>
-<p>V(r,phi,t) = A(t)/alpha cos(alpha ln(r) + m(phi - Omegas*t-gamma))</p>
+<p>V(r,phi,t) = A(t)/alpha cos(alpha ln(r) - m(phi - Omegas*t-gamma))</p>
 <p>where</p>
 <p>A(t) = A_max exp(- [t-to]^2/sigma^2/2.)</p>
 <dl class="method">
@@ -154,7 +154,7 @@ around to</div></blockquote>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

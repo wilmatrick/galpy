@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Razor-thin exponential disk potential &mdash; galpy v0.1_alpha documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1_alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="up" title="Potential" href="potential.html" />
+    <link rel="next" title="galpy.potential.planarPotential.__call__" href="potential2dcall.html" />
+    <link rel="prev" title="Power-law density spherical potential" href="potentialpowerspher.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="potential2dcall.html" title="galpy.potential.planarPotential.__call__"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="potentialpowerspher.html" title="Power-law density spherical potential"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+          <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="razor-thin-exponential-disk-potential">
+<h1>Razor-thin exponential disk potential<a class="headerlink" href="#razor-thin-exponential-disk-potential" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.potential.RazorThinExponentialDiskPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">RazorThinExponentialDiskPotential</tt><big>(</big><em>amp=1.0</em>, <em>ro=1.0</em>, <em>hr=0.3333333333333333</em>, <em>maxiter=20</em>, <em>tol=0.001</em>, <em>normalize=False</em>, <em>new=True</em>, <em>glorder=100</em><big>)</big><a class="headerlink" href="#galpy.potential.RazorThinExponentialDiskPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements the razor-thin exponential disk potential
+rho(R,z) = rho_0 e^-R/h_R delta(z)</p>
+<dl class="method">
+<dt id="galpy.potential.RazorThinExponentialDiskPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>ro=1.0</em>, <em>hr=0.3333333333333333</em>, <em>maxiter=20</em>, <em>tol=0.001</em>, <em>normalize=False</em>, <em>new=True</em>, <em>glorder=100</em><big>)</big><a class="headerlink" href="#galpy.potential.RazorThinExponentialDiskPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>NAME:</dt>
+<dd>__init__</dd>
+<dt>PURPOSE:</dt>
+<dd>initialize a razor-thin-exponential disk potential</dd>
+<dt>INPUT:</dt>
+<dd><p class="first">amp - amplitude to be applied to the potential (default: 1)
+hr - disk scale-length in terms of ro
+tol - relative accuracy of potential-evaluations
+maxiter - scipy.integrate keyword
+normalize - if True, normalize such that vc(1.,0.)=1., or, if</p>
+<blockquote class="last">
+<div>given as a number, such that the force is this fraction 
+of the force necessary to make vc(1.,0.)=1.</div></blockquote>
+</dd>
+<dt>OUTPUT:</dt>
+<dd>RazorThinExponentialDiskPotential object</dd>
+<dt>HISTORY:</dt>
+<dd>2012-12-27 - Written - Bovy (IAS)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="potentialpowerspher.html"
+                        title="previous chapter">Power-law density spherical potential</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="potential2dcall.html"
+                        title="next chapter">galpy.potential.planarPotential.__call__</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/potentialrazorexp.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="potential2dcall.html" title="galpy.potential.planarPotential.__call__"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="potentialpowerspher.html" title="Power-law density spherical potential"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+          <li><a href="potential.html" >Potential</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

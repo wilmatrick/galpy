@@ -25,7 +25,7 @@
     <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Transient logarithmic spiral potential" href="potentialtransientlogspiral.html" />
-    <link rel="prev" title="Dehnen bar potential" href="potentialdehnenbar.html" /> 
+    <link rel="prev" title="Lopsided disk potential" href="potentiallopsideddisk.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +38,7 @@
           <a href="potentialtransientlogspiral.html" title="Transient logarithmic spiral potential"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="potentialdehnenbar.html" title="Dehnen bar potential"
+          <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
@@ -56,7 +56,7 @@
 <dt id="galpy.potential.SteadyLogSpiralPotential">
 <em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">SteadyLogSpiralPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that implements a steady-state spiral potential</p>
-<p>V(r,phi,t) = A/alpha cos(alpha ln(r) + m(phi - Omegas*t-gamma))</p>
+<p>V(r,phi,t) = A/alpha cos(alpha ln(r) - m(phi - Omegas*t-gamma))</p>
 <dl class="method">
 <dt id="galpy.potential.SteadyLogSpiralPotential.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential.__init__" title="Permalink to this definition">¶</a></dt>
@@ -110,8 +110,8 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="potentialdehnenbar.html"
-                        title="previous chapter">Dehnen bar potential</a></p>
+  <p class="topless"><a href="potentiallopsideddisk.html"
+                        title="previous chapter">Lopsided disk potential</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="potentialtransientlogspiral.html"
                         title="next chapter">Transient logarithmic spiral  potential</a></p>
@@ -147,14 +147,14 @@
           <a href="potentialtransientlogspiral.html" title="Transient logarithmic spiral potential"
              >next</a> |</li>
         <li class="right" >
-          <a href="potentialdehnenbar.html" title="Dehnen bar potential"
+          <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
              >previous</a> |</li>
         <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

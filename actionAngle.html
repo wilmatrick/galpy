@@ -78,10 +78,10 @@ everything with</p>
 <p>The return value is the value for jr, as well as an estimate for the
 integration error.</p>
 <p>Once a call to any of the action-angle methods of <tt class="docutils literal"><span class="pre">Orbit</span></tt> is done,
-the potential used to evaluate the action-angle coordinates cannot be
-changed (since various parts of the calculation of these coordinates
-get cached for re-use). Therefore, we can compute the radial angle
-then as follows</p>
+various parts of the calculation of these coordinates get cached for
+re-use). If any of the action-angle methods get called with a
+different potential, the cache gets reset. Therefore, we can compute
+the radial angle then as follows</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">wr</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -92,17 +92,15 @@ then as follows</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">TrTp</span><span class="p">()</span> <span class="c">#pi*Tr/Tp</span>
 </pre></div>
 </div>
+<p>NOTE: spherical action-angle coordinates are largely untested and
+likely wrong.</p>
 </div>
 <div class="section" id="action-angle-coordinates-for-axisymmetric-potentials">
 <h2>Action-angle coordinates for axisymmetric potentials<a class="headerlink" href="#action-angle-coordinates-for-axisymmetric-potentials" title="Permalink to this headline">¶</a></h2>
-<p>Action-angle coordinates in the symmetry plane can also be computed
-for all axisymmetric potentials. Starting where we began for the
-previous example, we can initialize</p>
+<p>Action-angle coordinates can also be computed for all axisymmetric
+potentials using the adiabatic approximation. Starting where we began
+for the previous example, we can initialize</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>Now we explicitly make this a planar orbit in the symmetry plane</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">toPlanar</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>and then we can again calculate action-angle coordinates. E.g.,</p>
@@ -111,7 +109,9 @@ previous example, we can initialize</p>
 </pre></div>
 </div>
 <p>As expected, this agrees with the value in the example above, since
-the orbit is entirely in the symmetry plane.</p>
+the orbit is entirely in the symmetry plane. We can also calculate the
+vertical action <tt class="docutils literal"><span class="pre">o.jz()</span></tt> etcetera. See the API for full
+documentation.</p>
 </div>
 <div class="section" id="example-evidence-for-a-lindblad-resonance-in-the-solar-neighborhood">
 <h2>Example: Evidence for a Lindblad resonance in the Solar neighborhood<a class="headerlink" href="#example-evidence-for-a-lindblad-resonance-in-the-solar-neighborhood" title="Permalink to this headline">¶</a></h2>
@@ -139,15 +139,15 @@ rotation curve potential</p>
 </pre></div>
 </div>
 <p>shows a feature in the distribution</p>
-<img alt="_images/actionAngle-jrjp.png" src="_images/actionAngle-jrjp.png" />
+<img alt="_images/actionAngle-jrjp1.png" src="_images/actionAngle-jrjp1.png" />
 <p>If instead we use a power-law rotation curve with power-law index 1</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">=</span> <span class="n">PowerSphericalPotential</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">alpha</span><span class="o">=-</span><span class="mf">2.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">myjr</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">pp</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We find that the distribution is stretched, but the feature remains</p>
-<img alt="_images/actionAngle-jrjp-power.png" src="_images/actionAngle-jrjp-power.png" />
-<p>Code for this example can be found <a class="reference download internal" href="_downloads/sellwood-jrjp.py"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>. For more information see
+<img alt="_images/actionAngle-jrjp-power1.png" src="_images/actionAngle-jrjp-power1.png" />
+<p>Code for this example can be found <a class="reference download internal" href="_downloads/sellwood-jrjp1.py"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>. For more information see
 <a class="reference external" href="http://adsabs.harvard.edu/abs/2010MNRAS.409..145S">2010MNRAS.409..145S</a>.</p>
 </div>
 </div>
@@ -212,7 +212,7 @@ rotation curve potential</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -57,11 +57,39 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="diskdfcall.html">__call__</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diskdfsample.html">sample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfasymmetricdrift.html">asymmetricdrift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfkurtosisvR.html">kurtosisvR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfkurtosisvT.html">kurtosisvT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfmeanvR.html">meanvR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfmeanvT.html">meanvT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfoortA.html">oortA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfoortB.html">oortB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfoortC.html">oortC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfoortK.html">oortK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diskdfsigma2surfacemass.html">sigma2surfacemass</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diskdfsigma2.html">sigma2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsigmaR2.html">sigmaR2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsigmaT2.html">sigmaT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfskewvR.html">skewvR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfskewvT.html">skewvT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diskdfsurfacemass.html">surfacemass</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsurfacemassLOS.html">surfacemassLOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdftargetSigma2.html">targetSigma2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdftargetSurfacemass.html">targetSurfacemass</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdftargetSurfacemassLOS.html">targetSurfacemassLOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfvmomentsurfacemass.html">vmomentsurfacemass</a></li>
 </ul>
+</div>
+<div class="section" id="sampling-routines">
+<h4>Sampling routines<a class="headerlink" href="#sampling-routines" title="Permalink to this headline">¶</a></h4>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsample.html">sample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsampledSurfacemassLOS.html">sampledSurfacemassLOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsampleLOS.html">sampleLOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskdfsampleVRVT.html">sampleVRVT</a></li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section" id="specific-distribution-functions">
@@ -70,26 +98,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dfdehnen.html">Dehnen DF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dfshu.html">Shu DF</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="section" id="ergodic-distribution-functions">
-<h2>Ergodic distribution functions<a class="headerlink" href="#ergodic-distribution-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>General instance routines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="edfcall.html">__call__</a></li>
-<li class="toctree-l1"><a class="reference internal" href="edfsample.html">sample</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Specific distribution functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dfisotherm.html">Isothermal DF</a></li>
 </ul>
 </div>
 </div>
@@ -107,18 +115,12 @@
 <li><a class="reference internal" href="#">DF</a><ul>
 <li><a class="reference internal" href="#disk-distribution-functions">Disk distribution functions</a><ul>
 <li><a class="reference internal" href="#general-instance-routines">General instance routines</a><ul>
+<li><a class="reference internal" href="#sampling-routines">Sampling routines</a><ul>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#specific-distribution-functions">Specific distribution functions</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ergodic-distribution-functions">Ergodic distribution functions</a><ul>
-<li><a class="reference internal" href="#id1">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#id2">Specific distribution functions</a><ul>
 </ul>
 </li>
 </ul>
@@ -171,7 +173,7 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

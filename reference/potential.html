@@ -54,10 +54,12 @@
 <h2>3D potentials<a class="headerlink" href="#d-potentials" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general-instance-routines">
 <h3>General instance routines<a class="headerlink" href="#general-instance-routines" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">Potential-instance.method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potentialcall.html">__call__</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialdens.html">dens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialdvcircdr.html">dvcircdR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialepifreq.html">epifreq</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentiallindbladR.html">lindbladR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialomegac.html">omegac</a></li>
@@ -65,31 +67,41 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialplot.html">plot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotescapecurve.html">plotEscapecurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotrotcurve.html">plotRotcurve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialr2deriv.html">R2deriv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrforce.html">Rforce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialrl.html">rl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialtoplanar.html">toPlanar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialtovertical.html">toVertical</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialvcirc.html">vcirc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialverticalfreq.html">verticalfreq</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialvesc.html">vesc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialz2deriv.html">z2deriv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialzforce.html">zforce</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="general-3d-potential-routines">
 <h3>General 3D potential routines<a class="headerlink" href="#general-3d-potential-routines" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="potentialdvcircdrs.html">dvcircdR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialepifreqs.html">epifreq</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialdensities.html">evaluateDensities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialphiforces.html">evaluatephiforces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialevaluate.html">evaluatePotentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialr2derivs.html">evaluateR2derivs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrforces.html">evaluateRforces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialz2derivs.html">evaluatez2derivs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialzforces.html">evaluatezforces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentiallindbladRs.html">lindbladR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialomegacs.html">omegac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotescapecurves.html">plotEscapecurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplots.html">plotPotentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotrotcurves.html">plotRotcurve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialrls.html">rl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialvcircs.html">vcirc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialverticalfreqs.html">verticalfreq</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialvescs.html">vesc</a></li>
 </ul>
 </div>
@@ -101,12 +113,14 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialdoubleexp.html">Double exponential disk potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialdoublepowerspher.html">Double power-law density spherical potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialjaffe.html">Jaffe potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialflattenedpower.html">Flattened Power-law potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialhernquist.html">Hernquist potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialkepler.html">Kepler potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialloghalo.html">Logarithmic halo potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialmiyamoto.html">Miyamoto-Nagai potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialnfw.html">NFW potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialpowerspher.html">Power-law density spherical potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialrazorexp.html">Razor-thin exponential disk potential</a></li>
 </ul>
 </div>
 <p>In addition to these classes, a Milky-Way-like potential is defined as <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt>. This potential is defined as</p>
@@ -123,6 +137,7 @@
 <h2>2D potentials<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
 <h3>General instance routines<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">Potential-instance.method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potential2dcall.html">__call__</a></li>
@@ -133,6 +148,7 @@
 </div>
 <div class="section" id="general-axisymmetric-potential-instance-routines">
 <h3>General axisymmetric potential instance routines<a class="headerlink" href="#general-axisymmetric-potential-instance-routines" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potential2depifreq.html">epifreq</a></li>
@@ -148,6 +164,7 @@
 </div>
 <div class="section" id="general-2d-potential-routines">
 <h3>General 2D potential routines<a class="headerlink" href="#general-2d-potential-routines" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potential2dphiforces.html">evaluateplanarphiforces</a></li>
@@ -172,6 +189,9 @@ potentials in the mid-plane.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potentialdehnenbar.html">Dehnen bar potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialcosmphidisk.html">Cos(m phi) disk potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialellipticaldisk.html">Elliptical disk potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentiallopsideddisk.html">Lopsided disk potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialsteadylogspiral.html">Steady-state logarithmic spiral  potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialtransientlogspiral.html">Transient logarithmic spiral  potential</a></li>
 </ul>
@@ -182,6 +202,7 @@ potentials in the mid-plane.</p>
 <h2>1D potentials<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
 <h3>General instance routines<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">Potential-instance.method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potential1dcall.html">__call__</a></li>
@@ -192,6 +213,7 @@ potentials in the mid-plane.</p>
 </div>
 <div class="section" id="general-1d-potential-routines">
 <h3>General 1D potential routines<a class="headerlink" href="#general-1d-potential-routines" title="Permalink to this headline">¶</a></h3>
+<p>Use as <tt class="docutils literal"><span class="pre">method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potential1dforces.html">evaluatelinearForces</a></li>
@@ -313,7 +335,7 @@ potentials in the mid-plane.</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -129,20 +129,20 @@ shown. E.g., for the example given above,</p>
 </pre></div>
 </div>
 <p>gives</p>
-<img alt="_images/lp-orbit-integration.png" src="_images/lp-orbit-integration.png" />
+<img alt="_images/lp-orbit-integration6.png" src="_images/lp-orbit-integration6.png" />
 <p>Other projections of the orbit can be displayed by specifying the
 quantities to plot. E.g.,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>gives the projection onto the plane of the orbit:</p>
-<img alt="_images/lp-orbit-integration-xy.png" src="_images/lp-orbit-integration-xy.png" />
+<img alt="_images/lp-orbit-integration-xy6.png" src="_images/lp-orbit-integration-xy6.png" />
 <p>while</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;vR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>gives the projection onto (R,vR):</p>
-<img alt="_images/lp-orbit-integration-RvR.png" src="_images/lp-orbit-integration-RvR.png" />
+<img alt="_images/lp-orbit-integration-RvR6.png" src="_images/lp-orbit-integration-RvR6.png" />
 </div>
 <div class="section" id="orbit-characterization">
 <h2>Orbit characterization<a class="headerlink" href="#orbit-characterization" title="Permalink to this headline">¶</a></h2>
@@ -167,21 +167,21 @@ conservation)</p>
 </pre></div>
 </div>
 <p>gives</p>
-<img alt="_images/lp-orbit-integration-E.png" src="_images/lp-orbit-integration-E.png" />
+<img alt="_images/lp-orbit-integration-E6.png" src="_images/lp-orbit-integration-E6.png" />
 <p>We can specify another quantity to plot the energy against by
 specifying <tt class="docutils literal"><span class="pre">d1=</span></tt>. We can also show the vertical energy, for example,
 as a function of R</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotEz</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/lp-orbit-integration-Ez.png" src="_images/lp-orbit-integration-Ez.png" />
+<img alt="_images/lp-orbit-integration-Ez6.png" src="_images/lp-orbit-integration-Ez6.png" />
 <p>Often, a better approximation to an integral of the motion is given by
 Ez/sqrt(density[R]). We refer to this quantity as <tt class="docutils literal"><span class="pre">EzJz</span></tt> and we can plot its
 behavior</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotEzJz</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/lp-orbit-integration-EzJz.png" src="_images/lp-orbit-integration-EzJz.png" />
+<img alt="_images/lp-orbit-integration-EzJz6.png" src="_images/lp-orbit-integration-EzJz6.png" />
 </div>
 <div class="section" id="accessing-the-raw-orbit">
 <h2>Accessing the raw orbit<a class="headerlink" href="#accessing-the-raw-orbit" title="Permalink to this headline">¶</a></h2>
@@ -210,6 +210,47 @@ example,</p>
 </div>
 <p>which returns a matrix of phase-space points with dimensions [ntimes,ndim].</p>
 </div>
+<div class="section" id="fast-orbit-integration">
+<h2>Fast orbit integration<a class="headerlink" href="#fast-orbit-integration" title="Permalink to this headline">¶</a></h2>
+<p>The standard orbit integration is done purely in python using standard
+scipy integrators. When fast orbit integration is needed for batch
+integration of a large number of orbits, a set of orbit integration
+routines are written in C that can be accessed for most potentials, as
+long as they have C implementations, which can be checked by using the
+attribute <tt class="docutils literal"><span class="pre">hasC</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">=</span> <span class="n">MiyamotoNagaiPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.0375</span><span class="p">,</span><span class="n">amp</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">hasC</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Fast C integrators can be accessed through the <tt class="docutils literal"><span class="pre">method=</span></tt> keyword of
+the <tt class="docutils literal"><span class="pre">orbit.integrate</span></tt> method. Currently available integrators are</p>
+<ul class="simple">
+<li>rk4_c</li>
+<li>rk6_c</li>
+<li>dopr54_c</li>
+</ul>
+<p>which are Runge-Kutta and Dormand-Prince methods. There are also a
+number of symplectic integrators available</p>
+<ul class="simple">
+<li>leapfrog_c</li>
+<li>symplec4_c</li>
+<li>symplec6_c</li>
+</ul>
+<p>The higher order symplectic integrators are described in <a class="reference external" href="http://adsabs.harvard.edu/abs/1993CeMDA..56...27Y">Yoshida
+(1993)</a>.</p>
+<p>For most applications I recommend <tt class="docutils literal"><span class="pre">dopr54_c</span></tt>. For example, compare</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">))</span>
+<span class="go">1 loops, best of 3: 553 ms per loop</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;dopr54_c&#39;</span><span class="p">))</span>
+<span class="go">galpyWarning: Using C implementation to integrate orbits</span>
+<span class="go">10 loops, best of 3: 25.6 ms per loop</span>
+</pre></div>
+</div>
+<p>As this example shows, galpy will issue a warning that C is being
+used. Speed-ups by a factor of 20 are typical.</p>
+</div>
 <div class="section" id="example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">
 <h2>Example: The eccentricity distribution of the Milky Way&#8217;s thick disk<a class="headerlink" href="#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk" title="Permalink to this headline">¶</a></h2>
 <p>A straightforward application of galpy&#8217;s orbit initialization and
@@ -233,12 +274,12 @@ stars will take about half an hour)</p>
 </pre></div>
 </div>
 <p>We then find the following eccentricity distribution</p>
-<img alt="_images/dierickx-myehist.png" src="_images/dierickx-myehist.png" />
+<img alt="_images/dierickx-myehist6.png" src="_images/dierickx-myehist6.png" />
 <p>The eccentricity calculated by galpy compare well with those
 calculated by Dierickx et al., except for a few objects</p>
-<img alt="_images/dierickx-myee.png" src="_images/dierickx-myee.png" />
+<img alt="_images/dierickx-myee6.png" src="_images/dierickx-myee6.png" />
 <p>The script that calculates and plots everything can be downloaded
-<a class="reference download internal" href="_downloads/dierickx-edist.py"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>.</p>
+<a class="reference download internal" href="_downloads/dierickx-edist6.py"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>.</p>
 </div>
 </div>
 
@@ -256,6 +297,7 @@ calculated by Dierickx et al., except for a few objects</p>
 <li><a class="reference internal" href="#displaying-the-orbit">Displaying the orbit</a></li>
 <li><a class="reference internal" href="#orbit-characterization">Orbit characterization</a></li>
 <li><a class="reference internal" href="#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
+<li><a class="reference internal" href="#fast-orbit-integration">Fast orbit integration</a></li>
 <li><a class="reference internal" href="#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
 </ul>
 </li>
@@ -305,7 +347,7 @@ calculated by Dierickx et al., except for a few objects</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

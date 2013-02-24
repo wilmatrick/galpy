@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="galpy v0.1_alpha documentation" href="index.html" />
     <link rel="next" title="Basic usage: distribution functions" href="basic_df.html" />
-    <link rel="prev" title="Welcome to galpy’s documentation" href="index.html" /> 
+    <link rel="prev" title="Installation" href="installation.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="basic_df.html" title="Basic usage: distribution functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to galpy’s documentation"
+          <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
       </ul>
@@ -85,7 +85,7 @@ components do</p>
 </pre></div>
 </div>
 <p>You&#8217;ll see the following</p>
-<img alt="_images/rotcurve.png" src="_images/rotcurve.png" />
+<img alt="_images/rotcurve4.png" src="_images/rotcurve4.png" />
 <p>As a shortcut the <tt class="docutils literal"><span class="pre">[hp,mp,np]</span></tt> Milky-Way-like potential is defined as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
 </pre></div>
@@ -114,12 +114,26 @@ azimuth. We then integrate the orbit for a set of times <tt class="docutils lite
 </pre></div>
 </div>
 <p>Which gives</p>
-<img alt="_images/mp-orbit-integration.png" src="_images/mp-orbit-integration.png" />
+<img alt="_images/mp-orbit-integration4.png" src="_images/mp-orbit-integration4.png" />
 <p>The integrator used is not symplectic, so the energy error grows with time, but is small nonetheless</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mp-orbit-E.png" src="_images/mp-orbit-E.png" />
+<img alt="_images/mp-orbit-E4.png" src="_images/mp-orbit-E4.png" />
+<p>When we use a symplectic leapfrog integrator, we see that the energy
+error remains constant</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;leapfrog&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/mp-orbit-Esymp2.png" src="_images/mp-orbit-Esymp2.png" />
+<p>Because stars have typically only orbited the center of their galaxy
+tens of times, using symplectic integrators is mostly unnecessary
+(compared to planetary systems which orbits millions or billions of
+times). galpy contains fast integrators written in C, which can be
+accessed through the <tt class="docutils literal"><span class="pre">method=</span></tt> keyword (e.g.,
+<tt class="docutils literal"><span class="pre">integrate(...,method='dopr54_c')</span></tt> is a fast high-order
+Dormand-Prince method).</p>
 <p>When we integrate for much longer we see how the orbit fills up a
 torus (this could take a minute)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
@@ -127,19 +141,19 @@ torus (this could take a minute)</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/mp-long-orbit-integration.png" src="_images/mp-long-orbit-integration.png" />
+<img alt="_images/mp-long-orbit-integration4.png" src="_images/mp-long-orbit-integration4.png" />
 <p>As before, we can also integrate orbits in combinations of potentials. Assuming <tt class="docutils literal"><span class="pre">mp,</span> <span class="pre">np,</span></tt> and <tt class="docutils literal"><span class="pre">hp</span></tt> were defined as above, we can</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,[</span><span class="n">mp</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">np</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/mphpnp-orbit-integration.png" src="_images/mphpnp-orbit-integration.png" />
+<img alt="_images/mphpnp-orbit-integration4.png" src="_images/mphpnp-orbit-integration4.png" />
 <p>Energy is again approximately conserved</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mphpnp-orbit-E.png" src="_images/mphpnp-orbit-E.png" />
+<img alt="_images/mphpnp-orbit-E4.png" src="_images/mphpnp-orbit-E4.png" />
 </div>
 <div class="section" id="escape-velocity-curves">
 <h2>Escape velocity curves<a class="headerlink" href="#escape-velocity-curves" title="Permalink to this headline">¶</a></h2>
@@ -150,13 +164,13 @@ above</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">plotEscapecurve</span><span class="p">(</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/esc-miyamoto.png" src="_images/esc-miyamoto.png" />
+<img alt="_images/esc-miyamoto4.png" src="_images/esc-miyamoto4.png" />
 <p>or of the combination of potentials defined above</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">plotEscapecurve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plotEscapecurve</span><span class="p">([</span><span class="n">mp</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">np</span><span class="p">],</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/esc-comb.png" src="_images/esc-comb.png" />
+<img alt="_images/esc-comb4.png" src="_images/esc-comb4.png" />
 </div>
 </div>
 
@@ -177,8 +191,8 @@ above</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to galpy&#8217;s documentation</a></p>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="basic_df.html"
                         title="next chapter">Basic usage: distribution functions</a></p>
@@ -214,13 +228,13 @@ above</p>
           <a href="basic_df.html" title="Basic usage: distribution functions"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to galpy’s documentation"
+          <a href="installation.html" title="Installation"
              >previous</a> |</li>
         <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

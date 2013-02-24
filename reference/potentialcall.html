@@ -54,7 +54,7 @@
 <h1>galpy.potential.Potential.__call__<a class="headerlink" href="#galpy-potential-potential-call" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="galpy.potential.Potential.__call__">
-<tt class="descclassname">Potential.</tt><tt class="descname">__call__</tt><big>(</big><em>R</em>, <em>z</em>, <em>phi=0.0</em>, <em>t=0.0</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.__call__" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Potential.</tt><tt class="descname">__call__</tt><big>(</big><em>R</em>, <em>z</em>, <em>phi=0.0</em>, <em>t=0.0</em>, <em>dR=0</em>, <em>dphi=0</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>NAME:</dt>
 <dd>__call__</dd>
@@ -64,7 +64,8 @@
 <dd><p class="first">R - Cylindrical Galactocentric radius</p>
 <p>z - vertical height</p>
 <p>phi - azimuth (optional)</p>
-<p class="last">t - time (optional)</p>
+<p>t - time (optional)</p>
+<p class="last">dR= dphi=, if set to non-zero integers, return the dR, dphi&#8217;t derivative instead</p>
 </dd>
 <dt>OUTPUT:</dt>
 <dd>Phi(R,z,t)</dd>
@@ -126,7 +127,7 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2011, Jo Bovy.
+        &copy; Copyright 2010 - 2013, Jo Bovy.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

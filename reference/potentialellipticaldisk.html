@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Elliptical disk potential &mdash; galpy v0.1_alpha documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1_alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="up" title="Potential" href="potential.html" />
+    <link rel="next" title="Lopsided disk potential" href="potentiallopsideddisk.html" />
+    <link rel="prev" title="Cos(m phi) disk potential" href="potentialcosmphidisk.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="potentialcosmphidisk.html" title="Cos(m phi) disk potential"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+          <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="elliptical-disk-potential">
+<span id="ellipticaldisk"></span><h1>Elliptical disk potential<a class="headerlink" href="#elliptical-disk-potential" title="Permalink to this headline">¶</a></h1>
+<p>Like in <a class="reference external" href="http://adsabs.harvard.edu/abs/1994ApJ...421..178K">Kuijken &amp; Tremaine</a></p>
+<dl class="class">
+<dt id="galpy.potential.EllipticalDiskPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">EllipticalDiskPotential</tt><big>(</big><em>amp=1.0</em>, <em>phib=0.4363323129985824</em>, <em>p=0.0</em>, <em>twophio=0.01</em>, <em>tform=None</em>, <em>tsteady=None</em>, <em>cp=None</em>, <em>sp=None</em><big>)</big><a class="headerlink" href="#galpy.potential.EllipticalDiskPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements the Elliptical disk potential of Kuijken &amp; Tremaine (1994) 
+phi(R,phi) = phio (R/Ro)^p cos[2(phi-phib)]</p>
+<dl class="method">
+<dt id="galpy.potential.EllipticalDiskPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>phib=0.4363323129985824</em>, <em>p=0.0</em>, <em>twophio=0.01</em>, <em>tform=None</em>, <em>tsteady=None</em>, <em>cp=None</em>, <em>sp=None</em><big>)</big><a class="headerlink" href="#galpy.potential.EllipticalDiskPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div><p>initialize an Elliptical disk potential</p>
+<p>phi(R,phi) = phio (R/Ro)^p cos[2(phi-phib)]</p>
+</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>amp=  amplitude to be applied to the potential (default:
+1.), see twophio below</p>
+<p>tform= start of growth (to smoothly grow this potential</p>
+<p>tsteady= time delay at which the perturbation is fully grown (default: 2.)</p>
+<p>p= power-law index of the phi(R) = (R/Ro)^p part</p>
+<p>Either:</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p class="first">phib= angle (in rad; default=25 degree)</p>
+<p>twophio= potential perturbation (in terms of 2phio/vo^2 if vo=1 at Ro=1)</p>
+</li>
+<li><p class="first">cp, sp= twophio * cos(2phib), twophio * sin(2phib)</p>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(none)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-10-19 - Started - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="potentialcosmphidisk.html"
+                        title="previous chapter">Cos(m phi) disk potential</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="potentiallopsideddisk.html"
+                        title="next chapter">Lopsided disk potential</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/potentialellipticaldisk.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="potentialcosmphidisk.html" title="Cos(m phi) disk potential"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+          <li><a href="potential.html" >Potential</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
