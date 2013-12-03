@@ -85,7 +85,7 @@ components do</p>
 </pre></div>
 </div>
 <p>You&#8217;ll see the following</p>
-<img alt="_images/rotcurve11.png" src="_images/rotcurve11.png" />
+<img alt="_images/rotcurve.png" src="_images/rotcurve.png" />
 <p>As a shortcut the <tt class="docutils literal"><span class="pre">[hp,mp,np]</span></tt> Milky-Way-like potential is defined as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
 </pre></div>
@@ -163,19 +163,19 @@ azimuth. We then integrate the orbit for a set of times <tt class="docutils lite
 </pre></div>
 </div>
 <p>Which gives</p>
-<img alt="_images/mp-orbit-integration11.png" src="_images/mp-orbit-integration11.png" />
+<img alt="_images/mp-orbit-integration.png" src="_images/mp-orbit-integration.png" />
 <p>The integrator used is not symplectic, so the energy error grows with time, but is small nonetheless</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mp-orbit-E11.png" src="_images/mp-orbit-E11.png" />
+<img alt="_images/mp-orbit-E.png" src="_images/mp-orbit-E.png" />
 <p>When we use a symplectic leapfrog integrator, we see that the energy
 error remains constant</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;leapfrog&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mp-orbit-Esymp9.png" src="_images/mp-orbit-Esymp9.png" />
+<img alt="_images/mp-orbit-Esymp.png" src="_images/mp-orbit-Esymp.png" />
 <p>Because stars have typically only orbited the center of their galaxy
 tens of times, using symplectic integrators is mostly unnecessary
 (compared to planetary systems which orbits millions or billions of
@@ -190,19 +190,19 @@ torus (this could take a minute)</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/mp-long-orbit-integration11.png" src="_images/mp-long-orbit-integration11.png" />
+<img alt="_images/mp-long-orbit-integration.png" src="_images/mp-long-orbit-integration.png" />
 <p>As before, we can also integrate orbits in combinations of potentials. Assuming <tt class="docutils literal"><span class="pre">mp,</span> <span class="pre">np,</span></tt> and <tt class="docutils literal"><span class="pre">hp</span></tt> were defined as above, we can</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,[</span><span class="n">mp</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">np</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/mphpnp-orbit-integration11.png" src="_images/mphpnp-orbit-integration11.png" />
+<img alt="_images/mphpnp-orbit-integration.png" src="_images/mphpnp-orbit-integration.png" />
 <p>Energy is again approximately conserved</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mphpnp-orbit-E11.png" src="_images/mphpnp-orbit-E11.png" />
+<img alt="_images/mphpnp-orbit-E.png" src="_images/mphpnp-orbit-E.png" />
 </div>
 <div class="section" id="escape-velocity-curves">
 <h2>Escape velocity curves<a class="headerlink" href="#escape-velocity-curves" title="Permalink to this headline">¶</a></h2>
@@ -213,13 +213,13 @@ above</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">plotEscapecurve</span><span class="p">(</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/esc-miyamoto11.png" src="_images/esc-miyamoto11.png" />
+<img alt="_images/esc-miyamoto.png" src="_images/esc-miyamoto.png" />
 <p>or of the combination of potentials defined above</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">plotEscapecurve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plotEscapecurve</span><span class="p">([</span><span class="n">mp</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">np</span><span class="p">],</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/esc-comb11.png" src="_images/esc-comb11.png" />
+<img alt="_images/esc-comb.png" src="_images/esc-comb.png" />
 </div>
 </div>
 
