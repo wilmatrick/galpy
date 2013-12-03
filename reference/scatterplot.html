@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
     <link rel="up" title="galpy.util.bovy_plot" href="bovyplot.html" />
-    <link rel="next" title="galpy.util.bovy_coords" href="bovycoords.html" />
+    <link rel="next" title="galpy.util.bovy_conversion" href="bovyconversion.html" />
     <link rel="prev" title="galpy.util.bovy_plot.bovy_text" href="bovytext.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="bovycoords.html" title="galpy.util.bovy_coords"
+          <a href="bovyconversion.html" title="galpy.util.bovy_conversion"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="bovytext.html" title="galpy.util.bovy_plot.bovy_text"
@@ -76,6 +76,7 @@ regions and a regular scatterplot for outliers</div></blockquote>
 <p>contours - if False, don&#8217;t plot contours</p>
 <p>cntrcolors - color of contours (can be array as for bovy_dens2d)</p>
 <p>cntrlw, cntrls - linewidths and linestyles for contour</p>
+<p>cntrSmooth - use ndimage.gaussian_filter to smooth before contouring</p>
 <p>onedhists - if True, make one-d histograms on the sides</p>
 <p>onedhistx - if True, make one-d histograms on the side of the x distribution</p>
 <p>onedhisty - if True, make one-d histograms on the side of the y distribution</p>
@@ -109,8 +110,8 @@ scipy.histogramdd with the given range</dd>
   <p class="topless"><a href="bovytext.html"
                         title="previous chapter">galpy.util.bovy_plot.bovy_text</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="bovycoords.html"
-                        title="next chapter">galpy.util.bovy_coords</a></p>
+  <p class="topless"><a href="bovyconversion.html"
+                        title="next chapter">galpy.util.bovy_conversion</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/reference/scatterplot.txt"
@@ -140,7 +141,7 @@ scipy.histogramdd with the given range</dd>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="bovycoords.html" title="galpy.util.bovy_coords"
+          <a href="bovyconversion.html" title="galpy.util.bovy_conversion"
              >next</a> |</li>
         <li class="right" >
           <a href="bovytext.html" title="galpy.util.bovy_plot.bovy_text"

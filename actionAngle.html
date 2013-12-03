@@ -50,6 +50,10 @@
             
   <div class="section" id="action-angle-coordinates">
 <h1>Action-angle coordinates<a class="headerlink" href="#action-angle-coordinates" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The action-angle modules are currently being re-developed, so much of the documentation on this page is severely out-of-date!</p>
+</div>
 <p>galpy can calculate actions and angles for spherical and axisymmetric
 potentials. These are implemented in a separate module
 <tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt>, but the preferred method for accessing these is
@@ -139,15 +143,15 @@ rotation curve potential</p>
 </pre></div>
 </div>
 <p>shows a feature in the distribution</p>
-<img alt="_images/actionAngle-jrjp1.png" src="_images/actionAngle-jrjp1.png" />
+<img alt="_images/actionAngle-jrjp4.png" src="_images/actionAngle-jrjp4.png" />
 <p>If instead we use a power-law rotation curve with power-law index 1</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">=</span> <span class="n">PowerSphericalPotential</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">alpha</span><span class="o">=-</span><span class="mf">2.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">myjr</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">pp</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We find that the distribution is stretched, but the feature remains</p>
-<img alt="_images/actionAngle-jrjp-power1.png" src="_images/actionAngle-jrjp-power1.png" />
-<p>Code for this example can be found <a class="reference download internal" href="_downloads/sellwood-jrjp1.py"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>. For more information see
+<img alt="_images/actionAngle-jrjp-power4.png" src="_images/actionAngle-jrjp-power4.png" />
+<p>Code for this example can be found <a class="reference download internal" href="_downloads/sellwood-jrjp4.py"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>. For more information see
 <a class="reference external" href="http://adsabs.harvard.edu/abs/2010MNRAS.409..145S">2010MNRAS.409..145S</a>.</p>
 </div>
 </div>

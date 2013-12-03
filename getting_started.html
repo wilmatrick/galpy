@@ -85,15 +85,64 @@ components do</p>
 </pre></div>
 </div>
 <p>You&#8217;ll see the following</p>
-<img alt="_images/rotcurve4.png" src="_images/rotcurve4.png" />
+<img alt="_images/rotcurve11.png" src="_images/rotcurve11.png" />
 <p>As a shortcut the <tt class="docutils literal"><span class="pre">[hp,mp,np]</span></tt> Milky-Way-like potential is defined as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="units-in-galpy">
+<h2>Units in galpy<a class="headerlink" href="#units-in-galpy" title="Permalink to this headline">¶</a></h2>
+<p>Above we normalized the potentials such that they give a circular
+velocity of 1 at R=1. These are the standard galpy units (sometimes
+referred to as <em>natural units</em> in the documentation). galpy will work
+most robustly when using these natural units. When using galpy to
+model a real galaxy with, say, a circular velocity of 220 km/s at R=8
+kpc, all of the velocities should be scaled as v= V/[220 km/s] and all
+of the positions should be scaled as x = X/[8 kpc] when using galpy&#8217;s
+natural units.</p>
+<p>For convenience, a utility module <tt class="docutils literal"><span class="pre">bovy_conversion</span></tt> is included in
+galpy that helps in converting between physical units and natural
+units for various quantities. For example, in natural units the
+orbital time of a circular orbit at R=1 is <img class="math" src="_images/math/709acef3551b886e6754de72d59a88f00660f0d3.png" alt="2\pi"/>; in
+physical units this corresponds to</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util</span> <span class="kn">import</span> <span class="n">bovy_conversion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="mf">2.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">time_in_Gyr</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">0.223405444283</span>
+</pre></div>
+</div>
+<p>or about 223 Myr. We can also express forces in various physical
+units. For example, for the Milky-Way-like potential defined in galpy,
+we have that the vertical force at 1.1 kpc is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span><span class="p">,</span> <span class="n">evaluatezforces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.1</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_pcMyr2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">2.3941221528330314</span>
+</pre></div>
+</div>
+<p>which we can also express as an equivalent surface-density by dividing
+by <img class="math" src="_images/math/2b8b6ae74244ee0693c57f039e8b6858779b7dc0.png" alt="2\pi G"/></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.1</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_2piGmsolpc2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">84.681625645335686</span>
+</pre></div>
+</div>
+<p>Because the vertical force at the solar circle in the Milky Way at 1.1
+kpc above the plane is approximately <img class="math" src="_images/math/464139e505e744185b8b10d3a0c9fc4a6f78eca7.png" alt="70\,(2\pi G\,
+M_\odot\,\mathrm{pc}^{-2})"/> (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2013arXiv1309.0809B">2013arXiv1309.0809B</a>), this shows
+that our Milky-Way-like potential has a bit too heavy of a disk.</p>
+<p><tt class="docutils literal"><span class="pre">bovy_conversion</span></tt> further has functions to convert densities,
+masses, surface densities, and frequencies to physical units (actions
+are considered to be too obvious to be included); see <a class="reference internal" href="reference/bovyconversion.html#bovyconversion"><em>here</em></a> for a full list. As a final example, the local dark
+matter density in the Milky-Way-like potential is given by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_msolpc3</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">0.0085853601686596628</span>
+</pre></div>
+</div>
+<p>or about <img class="math" src="_images/math/4f51d62655c454c781b1906d3a2d0a209d6399d2.png" alt="0.0085\,M_\odot\,\mathrm{pc}^{-3}"/>, in line with
+current measurements (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...756...89B">2012ApJ...756...89B</a>).</p>
+</div>
 <div class="section" id="orbit-integration">
 <h2>Orbit integration<a class="headerlink" href="#orbit-integration" title="Permalink to this headline">¶</a></h2>
-<p>We can also integrate orbits in these potentials. Going back to a
+<p>We can also integrate orbits in all gaplpy potentials. Going back to a
 simple Miyamoto-Nagai potential, we initialize an orbit as follows</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">=</span> <span class="n">MiyamotoNagaiPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.0375</span><span class="p">,</span><span class="n">amp</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
@@ -114,19 +163,19 @@ azimuth. We then integrate the orbit for a set of times <tt class="docutils lite
 </pre></div>
 </div>
 <p>Which gives</p>
-<img alt="_images/mp-orbit-integration4.png" src="_images/mp-orbit-integration4.png" />
+<img alt="_images/mp-orbit-integration11.png" src="_images/mp-orbit-integration11.png" />
 <p>The integrator used is not symplectic, so the energy error grows with time, but is small nonetheless</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mp-orbit-E4.png" src="_images/mp-orbit-E4.png" />
+<img alt="_images/mp-orbit-E11.png" src="_images/mp-orbit-E11.png" />
 <p>When we use a symplectic leapfrog integrator, we see that the energy
 error remains constant</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;leapfrog&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mp-orbit-Esymp2.png" src="_images/mp-orbit-Esymp2.png" />
+<img alt="_images/mp-orbit-Esymp9.png" src="_images/mp-orbit-Esymp9.png" />
 <p>Because stars have typically only orbited the center of their galaxy
 tens of times, using symplectic integrators is mostly unnecessary
 (compared to planetary systems which orbits millions or billions of
@@ -141,19 +190,19 @@ torus (this could take a minute)</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/mp-long-orbit-integration4.png" src="_images/mp-long-orbit-integration4.png" />
+<img alt="_images/mp-long-orbit-integration11.png" src="_images/mp-long-orbit-integration11.png" />
 <p>As before, we can also integrate orbits in combinations of potentials. Assuming <tt class="docutils literal"><span class="pre">mp,</span> <span class="pre">np,</span></tt> and <tt class="docutils literal"><span class="pre">hp</span></tt> were defined as above, we can</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,[</span><span class="n">mp</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">np</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/mphpnp-orbit-integration4.png" src="_images/mphpnp-orbit-integration4.png" />
+<img alt="_images/mphpnp-orbit-integration11.png" src="_images/mphpnp-orbit-integration11.png" />
 <p>Energy is again approximately conserved</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/mphpnp-orbit-E4.png" src="_images/mphpnp-orbit-E4.png" />
+<img alt="_images/mphpnp-orbit-E11.png" src="_images/mphpnp-orbit-E11.png" />
 </div>
 <div class="section" id="escape-velocity-curves">
 <h2>Escape velocity curves<a class="headerlink" href="#escape-velocity-curves" title="Permalink to this headline">¶</a></h2>
@@ -164,13 +213,13 @@ above</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">plotEscapecurve</span><span class="p">(</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/esc-miyamoto4.png" src="_images/esc-miyamoto4.png" />
+<img alt="_images/esc-miyamoto11.png" src="_images/esc-miyamoto11.png" />
 <p>or of the combination of potentials defined above</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">plotEscapecurve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plotEscapecurve</span><span class="p">([</span><span class="n">mp</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">np</span><span class="p">],</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/esc-comb4.png" src="_images/esc-comb4.png" />
+<img alt="_images/esc-comb11.png" src="_images/esc-comb11.png" />
 </div>
 </div>
 
@@ -184,6 +233,7 @@ above</p>
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#rotation-curves">Rotation curves</a></li>
+<li><a class="reference internal" href="#units-in-galpy">Units in galpy</a></li>
 <li><a class="reference internal" href="#orbit-integration">Orbit integration</a></li>
 <li><a class="reference internal" href="#escape-velocity-curves">Escape velocity curves</a></li>
 </ul>
