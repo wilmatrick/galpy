@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quasi-isothermal DF &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <link rel="up" title="DF" href="df.html" />
+    <link rel="next" title="actionAngle" href="aa.html" />
+    <link rel="prev" title="galpy.df.quasiisothermaldf.vmomentdensity" href="quasidfvmomentdensity.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="aa.html" title="actionAngle"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="quasidfvmomentdensity.html" title="galpy.df.quasiisothermaldf.vmomentdensity"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+          <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="quasidfvmomentdensity.html"
+                        title="previous chapter">galpy.df.quasiisothermaldf.vmomentdensity</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aa.html"
+                        title="next chapter">actionAngle</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/dfquasiisothermal.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quasi-isothermal-df">
+<h1>Quasi-isothermal DF<a class="headerlink" href="#quasi-isothermal-df" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.df.quasiisothermaldf">
+<em class="property">class </em><tt class="descclassname">galpy.df.</tt><tt class="descname">quasiisothermaldf</tt><big>(</big><em>hr</em>, <em>sr</em>, <em>sz</em>, <em>hsr</em>, <em>hsz</em>, <em>pot=None</em>, <em>aA=None</em>, <em>cutcounter=False</em>, <em>_precomputerg=True</em>, <em>_precomputergrmax=None</em>, <em>_precomputergnLz=51</em>, <em>ro=1.0</em>, <em>lo=0.005681818181818182</em><big>)</big><a class="headerlink" href="#galpy.df.quasiisothermaldf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that represents a &#8216;Binney&#8217; quasi-isothermal DF</p>
+<dl class="method">
+<dt id="galpy.df.quasiisothermaldf.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>hr</em>, <em>sr</em>, <em>sz</em>, <em>hsr</em>, <em>hsz</em>, <em>pot=None</em>, <em>aA=None</em>, <em>cutcounter=False</em>, <em>_precomputerg=True</em>, <em>_precomputergrmax=None</em>, <em>_precomputergnLz=51</em>, <em>ro=1.0</em>, <em>lo=0.005681818181818182</em><big>)</big><a class="headerlink" href="#galpy.df.quasiisothermaldf.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>Initialize a quasi-isothermal DF</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>hr - radial scale length</p>
+<p>sr - radial velocity dispersion at the solar radius</p>
+<p>sz - vertical velocity dispersion at the solar radius</p>
+<p>hsr - radial-velocity-dispersion scale length</p>
+<p>hsz - vertial-velocity-dispersion scale length</p>
+<p>pot= Potential instance or list thereof</p>
+<p>aA= actionAngle instance used to convert (x,v) to actions</p>
+<p>cutcounter= if True, set counter-rotating stars&#8217; DF to zero</p>
+<p>ro= reference radius for surface mass and sigmas</p>
+<p>lo= reference angular momentum below where there are significant numbers of retrograde stars</p>
+</div></blockquote>
+<p>OTHER INPUTS:</p>
+<blockquote>
+<div><p>_precomputerg= if True (default), pre-compute the rL(L)</p>
+<p>_precomputergrmax= if set, this is the maximum R for which to pre-compute rg (default: 5*hr)</p>
+<p>_precomputergnLz if set, number of Lz to pre-compute rg for (default: 51)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>object</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2012-07-25 - Started - Bovy (<a class="reference external" href="mailto:IAS&#37;&#52;&#48;MPIA">IAS<span>&#64;</span>MPIA</a>)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="aa.html" title="actionAngle"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="quasidfvmomentdensity.html" title="galpy.df.quasiisothermaldf.vmomentdensity"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+          <li><a href="df.html" >DF</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

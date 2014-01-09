@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.potential.Potential.plot &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.potential.Potential.plot &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,10 +22,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
-    <link rel="next" title="galpy.potential.Potential.plotEscapecurve" href="potentialplotescapecurve.html" />
-    <link rel="prev" title="galpy.potential.Potential.phiforce" href="potentialphiforce.html" /> 
+    <link rel="next" title="galpy.potential.Potential.plotDensity" href="potentialplotdensity.html" />
+    <link rel="prev" title="galpy.potential.Potential.phi2deriv" href="potentialphi2deriv.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,62 +35,26 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="potentialplotescapecurve.html" title="galpy.potential.Potential.plotEscapecurve"
+          <a href="potentialplotdensity.html" title="galpy.potential.Potential.plotDensity"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="potentialphiforce.html" title="galpy.potential.Potential.phiforce"
+          <a href="potentialphi2deriv.html" title="galpy.potential.Potential.phi2deriv"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-potential-potential-plot">
-<h1>galpy.potential.Potential.plot<a class="headerlink" href="#galpy-potential-potential-plot" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.potential.Potential.plot">
-<tt class="descclassname">Potential.</tt><tt class="descname">plot</tt><big>(</big><em>t=0.0</em>, <em>rmin=0.0</em>, <em>rmax=1.5</em>, <em>nrs=21</em>, <em>zmin=-0.5</em>, <em>zmax=0.5</em>, <em>nzs=21</em>, <em>ncontours=21</em>, <em>savefilename=None</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.plot" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>plot</dd>
-<dt>PURPOSE:</dt>
-<dd>plot the potential</dd>
-<dt>INPUT:</dt>
-<dd>t - time tp plot potential at
-rmin - minimum R
-rmax - maximum R
-nrs - grid in R
-zmin - minimum z
-zmax - maximum z
-nzs - grid in z
-ncontours - number of contours
-savefilename - save to or restore from this savefile (pickle)</dd>
-<dt>OUTPUT:</dt>
-<dd>plot to output device</dd>
-<dt>HISTORY:</dt>
-<dd>2010-07-09 - Written - Bovy (NYU)</dd>
-</dl>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="potentialphiforce.html"
-                        title="previous chapter">galpy.potential.Potential.phiforce</a></p>
+  <p class="topless"><a href="potentialphi2deriv.html"
+                        title="previous chapter">galpy.potential.Potential.phi2deriv</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="potentialplotescapecurve.html"
-                        title="next chapter">galpy.potential.Potential.plotEscapecurve</a></p>
+  <p class="topless"><a href="potentialplotdensity.html"
+                        title="next chapter">galpy.potential.Potential.plotDensity</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/reference/potentialplot.txt"
@@ -111,6 +75,49 @@ savefilename - save to or restore from this savefile (pickle)</dd>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-potential-potential-plot">
+<h1>galpy.potential.Potential.plot<a class="headerlink" href="#galpy-potential-potential-plot" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.potential.Potential.plot">
+<tt class="descclassname">Potential.</tt><tt class="descname">plot</tt><big>(</big><em>t=0.0</em>, <em>rmin=0.0</em>, <em>rmax=1.5</em>, <em>nrs=21</em>, <em>zmin=-0.5</em>, <em>zmax=0.5</em>, <em>nzs=21</em>, <em>ncontours=21</em>, <em>savefilename=None</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>plot</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>plot the potential</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>t - time tp plot potential at</p>
+<p>rmin - minimum R</p>
+<p>rmax - maximum R</p>
+<p>nrs - grid in R</p>
+<p>zmin - minimum z</p>
+<p>zmax - maximum z</p>
+<p>nzs - grid in z</p>
+<p>ncontours - number of contours</p>
+<p>savefilename - save to or restore from this savefile (pickle)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>plot to output device</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2010-07-09 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -120,17 +127,18 @@ savefilename - save to or restore from this savefile (pickle)</dd>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="potentialplotescapecurve.html" title="galpy.potential.Potential.plotEscapecurve"
+          <a href="potentialplotdensity.html" title="galpy.potential.Potential.plotDensity"
              >next</a> |</li>
         <li class="right" >
-          <a href="potentialphiforce.html" title="galpy.potential.Potential.phiforce"
+          <a href="potentialphi2deriv.html" title="galpy.potential.Potential.phi2deriv"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to galpy’s documentation &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>Welcome to galpy’s documentation &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="#" />
+    <link rel="top" title="galpy v0.1 documentation" href="#" />
     <link rel="next" title="Installation" href="installation.html" /> 
   </head>
   <body>
@@ -35,156 +35,14 @@
         <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="N">next</a> |</li>
-        <li><a href="#">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="#">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="welcome-to-galpy-s-documentation">
-<h1>Welcome to galpy&#8217;s documentation<a class="headerlink" href="#welcome-to-galpy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>galpy is a python package for galactic dynamics. It supports orbit
-integration in a variety of potentials, evaluating and sampling
-various distribution functions, and the calculation of action-angle
-coordinates for some potentials.</p>
-<div class="section" id="quick-start-guide">
-<h2>Quick-start guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#advanced-installation">Advanced installation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#rotation-curves">Rotation curves</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#units-in-galpy">Units in galpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#orbit-integration">Orbit integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#escape-velocity-curves">Escape velocity curves</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="basic_df.html">Basic usage: distribution functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic_df.html#disk-distribution-functions">Disk distribution functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="orbit.html">A closer look at orbit integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-initialization">Orbit initialization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-integration">Orbit integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#displaying-the-orbit">Displaying the orbit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-characterization">Orbit characterization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#fast-orbit-integration">Fast orbit integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orbit.html#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="diskdf.html">More on disk distribution functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="diskdf.html#calculating-the-surface-mass-density-and-velocity-dispersion-profiles">Calculating the surface-mass density and velocity dispersion profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diskdf.html#using-corrected-disk-distribution-functions">Using corrected disk distribution functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diskdf.html#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="actionAngle.html">Action-angle coordinates</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-for-spherical-potentials">Action-angle coordinates for spherical potentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-for-axisymmetric-potentials">Action-angle coordinates for axisymmetric potentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#example-evidence-for-a-lindblad-resonance-in-the-solar-neighborhood">Example: Evidence for a Lindblad resonance in the Solar neighborhood</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="library-reference">
-<h2>Library reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="reference/orbit.html">Orbit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/orbit.html#class">Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/orbit.html#methods">Methods</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="reference/potential.html">Potential</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/potential.html#d-potentials">3D potentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/potential.html#id1">2D potentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/potential.html#id4">1D potentials</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="reference/df.html">DF</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/df.html#disk-distribution-functions">Disk distribution functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="reference/util.html">Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/bovyplot.html">bovy_plot: general wrappers for matplotlib plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/bovyconversion.html">bovy_conversion: transformation between *natural* units and *physical* units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/bovycoords.html">bovy_coords: coordinate transformation functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/bovyars.html">bovy_ars: adaptive-rejection sampling</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="papers-using-galpy">
-<h2>Papers using galpy<a class="headerlink" href="#papers-using-galpy" title="Permalink to this headline">¶</a></h2>
-<p>Please let me (bovy -at- ias.edu) know if you make use of <tt class="docutils literal"><span class="pre">galpy</span></tt> in a publication.</p>
-<ul>
-<li><dl class="first docutils">
-<dt><em>Tracing the Hercules stream around the Galaxy</em>, Jo Bovy (2010), <em>Astrophys. J.</em> <strong>725</strong>, 1676 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a>):</dt>
-<dd><p class="first last">Uses what later became the orbit integration routines and Dehnen and Shu disk distribution functions.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><em>The spatial structure of mono-abundance sub-populations of the Milky Way disk</em>, Jo Bovy, Hans-Walter Rix, Chao Liu, et al. (2012), <em>Astrophys. J.</em> <strong>753</strong>, 148 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...753..148B">2012ApJ...753..148B</a>):</dt>
-<dd><p class="first last">Employs galpy orbit integration in <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> to characterize the orbits in the SEGUE G dwarf sample.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><em>On the local dark matter density</em>, Jo Bovy &amp; Scott Tremaine (2012), <em>Astrophys. J.</em> <strong>756</strong>, 89 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...756...89B">2012ApJ...756...89B</a>):</dt>
-<dd><p class="first last">Uses <tt class="docutils literal"><span class="pre">galpy.potential</span></tt> force and density routines to characterize the difference between the vertical force and the surface density at large heights above the MW midplane.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><em>The Milky Way&#8217;s circular velocity curve between 4 and 14 kpc from APOGEE data</em>, Jo Bovy, Carlos Allende Prieto, Timothy C. Beers (2012), <em>Astrophys. J.</em> <strong>759</strong>, 131 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...759..131B">2012ApJ...759..131B</a>):</dt>
-<dd><p class="first last">Utilizes the Dehnen distribution function to inform a simple model of the velocity distribution of APOGEE stars in the Milky Way disk and to create mock data.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><em>A direct dynamical measurement of the Milky Way&#8217;s disk surface density profile, disk scale length, and dark matter profile at 4 kpc &lt; R &lt; 9 kpc</em>, Jo Bovy &amp; Hans-Walter Rix (2013), <em>Astrophys. J.</em> <strong>779</strong>, 115 (<a class="reference external" href="http://arxiv.org/abs/1309.0809">arXiv/1309.0809</a>):</dt>
-<dd><p class="first last">Makes use of potential models, the adiabatic and Staeckel actionAngle modules, and the quasiisothermal DF to model the dynamics of the SEGUE G dwarf sample in mono-abundance bins.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><em>Chemodynamics of the Milky Way. I. The first year of APOGEE data</em>, Friedrich Anders, Christina Chiappini, Basilio X. Santiago, et al. (2013), <em>Astron. &amp; Astrophys.</em> submitted (<a class="reference external" href="http://arxiv.org/abs/1311.4549">arXiv/1311.4549</a>):</dt>
-<dd><p class="first last">Employs galpy to perform orbit integrations in <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> to characterize the orbits of stars in the APOGEE sample.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</div>
-<div class="section" id="acknowledging-galpy">
-<h2>Acknowledging galpy<a class="headerlink" href="#acknowledging-galpy" title="Permalink to this headline">¶</a></h2>
-<p>Please link back to <tt class="docutils literal"><span class="pre">http://code.google.com/p/galpy/</span></tt> . When using the <tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt> modules, please cite <a class="reference external" href="http://arxiv.org/abs/1309.0809">arXiv/1309.0809</a> in addition to the papers describing the algorithm used. When orbit ingrations are used, you could cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a> (first galpy paper).</p>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Welcome to galpy&#8217;s documentation</a><ul>
@@ -192,6 +50,9 @@ coordinates for some potentials.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#library-reference">Library reference</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#papers-using-galpy">Papers using galpy</a></li>
@@ -224,6 +85,181 @@ coordinates for some potentials.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-galpy-s-documentation">
+<h1>Welcome to galpy&#8217;s documentation<a class="headerlink" href="#welcome-to-galpy-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>galpy is a python package for galactic dynamics. It supports orbit
+integration in a variety of potentials, evaluating and sampling
+various distribution functions, and the calculation of action-angle
+coordinates for all static potentials.</p>
+<div class="section" id="quick-start-guide">
+<h2>Quick-start guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#advanced-installation">Advanced installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#rotation-curves">Rotation curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#units-in-galpy">Units in galpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#orbit-integration">Orbit integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#escape-velocity-curves">Escape velocity curves</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="potential.html">Potentials in galpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="potential.html#potentials-and-forces">Potentials and forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potential.html#densities">Densities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potential.html#close-to-circular-orbits-and-orbital-frequencies">Close-to-circular orbits and orbital frequencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potential.html#adding-potentials-to-the-galpy-framework">Adding potentials to the galpy framework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic_df.html">Two-dimensional disk distribution functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#types-of-disk-distribution-functions">Types of disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#evaluating-moments-of-the-df">Evaluating moments of the DF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#using-corrected-disk-distribution-functions">Using corrected disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#oort-constants-and-functions">Oort constants and functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#sampling-data-from-the-df">Sampling data from the DF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="orbit.html">A closer look at orbit integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-initialization">Orbit initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-integration">Orbit integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#displaying-the-orbit">Displaying the orbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-characterization">Orbit characterization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#fast-orbit-integration">Fast orbit integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actionAngle.html">Action-angle coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-for-the-isochrone-potential">Action-angle coordinates for the isochrone potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-for-spherical-potentials">Action-angle coordinates for spherical potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-using-the-adiabatic-approximation">Action-angle coordinates using the adiabatic approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-using-the-staeckel-approximation">Action-angle coordinates using the Staeckel approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#action-angle-coordinates-using-an-orbit-integration-based-approximation">Action-angle coordinates using an orbit-integration-based approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#accessing-action-angle-coordinates-for-orbit-instances">Accessing action-angle coordinates for Orbit instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionAngle.html#example-evidence-for-a-lindblad-resonance-in-the-solar-neighborhood">Example: Evidence for a Lindblad resonance in the Solar neighborhood</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diskdf.html">Three-dimensional disk distribution functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diskdf.html#setting-up-the-df-and-basic-properties">Setting up the DF and basic properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diskdf.html#evaluating-moments">Evaluating moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diskdf.html#evaluating-and-sampling-the-full-probability-distribution-function">Evaluating and sampling the full probability distribution function</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="library-reference">
+<h2>Library reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/orbit.html">Orbit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/orbit.html#class">Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/orbit.html#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/potential.html">Potential</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/potential.html#d-potentials">3D potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/potential.html#id1">2D potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/potential.html#id4">1D potentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/df.html">DF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/df.html#two-dimensional-disk-distribution-functions">Two-dimensional Disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/df.html#three-dimensional-disk-distribution-functions">Three-dimensional Disk distribution functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/aa.html">actionAngle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/aa.html#general-instance-routines">General instance routines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/aa.html#specific-actionangle-modules">Specific actionAngle modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/util.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/bovyplot.html">bovy_plot: general wrappers for matplotlib plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/bovyconversion.html">bovy_conversion: transformation between *natural* units and *physical* units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/bovycoords.html">bovy_coords: coordinate transformation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/bovyars.html">bovy_ars: adaptive-rejection sampling</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="streamdf.html">Dynamical modeling of tidal streams</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="papers-using-galpy">
+<h2>Papers using galpy<a class="headerlink" href="#papers-using-galpy" title="Permalink to this headline">¶</a></h2>
+<p>Please let me (bovy -at- ias.edu) know if you make use of <tt class="docutils literal"><span class="pre">galpy</span></tt> in a publication.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Tracing the Hercules stream around the Galaxy</em>, Jo Bovy (2010), <em>Astrophys. J.</em> <strong>725</strong>, 1676 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a>):</dt>
+<dd><p class="first last">Uses what later became the orbit integration routines and Dehnen and Shu disk distribution functions.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>The spatial structure of mono-abundance sub-populations of the Milky Way disk</em>, Jo Bovy, Hans-Walter Rix, Chao Liu, et al. (2012), <em>Astrophys. J.</em> <strong>753</strong>, 148 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...753..148B">2012ApJ...753..148B</a>):</dt>
+<dd><p class="first last">Employs galpy orbit integration in <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> to characterize the orbits in the SEGUE G dwarf sample.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>On the local dark matter density</em>, Jo Bovy &amp; Scott Tremaine (2012), <em>Astrophys. J.</em> <strong>756</strong>, 89 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...756...89B">2012ApJ...756...89B</a>):</dt>
+<dd><p class="first last">Uses <tt class="docutils literal"><span class="pre">galpy.potential</span></tt> force and density routines to characterize the difference between the vertical force and the surface density at large heights above the MW midplane.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>The Milky Way&#8217;s circular velocity curve between 4 and 14 kpc from APOGEE data</em>, Jo Bovy, Carlos Allende Prieto, Timothy C. Beers, et al. (2012), <em>Astrophys. J.</em> <strong>759</strong>, 131 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...759..131B">2012ApJ...759..131B</a>):</dt>
+<dd><p class="first last">Utilizes the Dehnen distribution function to inform a simple model of the velocity distribution of APOGEE stars in the Milky Way disk and to create mock data.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>A direct dynamical measurement of the Milky Way&#8217;s disk surface density profile, disk scale length, and dark matter profile at 4 kpc &lt; R &lt; 9 kpc</em>, Jo Bovy &amp; Hans-Walter Rix (2013), <em>Astrophys. J.</em> <strong>779</strong>, 115 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2013ApJ...779..115B">2013ApJ...779..115B</a>):</dt>
+<dd><p class="first last">Makes use of potential models, the adiabatic and Staeckel actionAngle modules, and the quasiisothermal DF to model the dynamics of the SEGUE G dwarf sample in mono-abundance bins.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Chemodynamics of the Milky Way. I. The first year of APOGEE data</em>, Friedrich Anders, Christina Chiappini, Basilio X. Santiago, et al. (2013), <em>Astron. &amp; Astrophys.</em> submitted (<a class="reference external" href="http://arxiv.org/abs/1311.4549">arXiv/1311.4549</a>):</dt>
+<dd><p class="first last">Employs galpy to perform orbit integrations in <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> to characterize the orbits of stars in the APOGEE sample.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="acknowledging-galpy">
+<h2>Acknowledging galpy<a class="headerlink" href="#acknowledging-galpy" title="Permalink to this headline">¶</a></h2>
+<p>Please link back to <tt class="docutils literal"><span class="pre">http://github.com/jobovy/galpy</span></tt> . When using the <tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt> modules, please cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2013ApJ...779..115B">2013ApJ...779..115B</a> in addition to the papers describing the algorithm used. When orbit integrations are used, you could cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a> (first galpy paper).</p>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -235,11 +271,12 @@ coordinates for some potentials.</p>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >next</a> |</li>
-        <li><a href="#">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="#">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.df.diskdf.sigma2surfacemass &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.df.diskdf.sigma2surfacemass &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="DF" href="df.html" />
     <link rel="next" title="galpy.df.diskdf.sigma2" href="diskdfsigma2.html" />
     <link rel="prev" title="galpy.df.diskdf.oortK" href="diskdfoortK.html" /> 
@@ -40,57 +40,15 @@
         <li class="right" >
           <a href="diskdfoortK.html" title="galpy.df.diskdf.oortK"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-df-diskdf-sigma2surfacemass">
-<h1>galpy.df.diskdf.sigma2surfacemass<a class="headerlink" href="#galpy-df-diskdf-sigma2surfacemass" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.df.diskdf.sigma2surfacemass">
-<tt class="descclassname">diskdf.</tt><tt class="descname">sigma2surfacemass</tt><big>(</big><em>R</em>, <em>romberg=False</em>, <em>nsigma=None</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sigma2surfacemass" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>sigma2surfacemass</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>calculate the product sigma_R^2 x surface-mass at R by 
-marginalizing over velocity</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>R - radius at which to calculate the sigma_R^2 x surfacemass </dt>
-<dd>density (/ro)</dd>
-</dl>
-</div></blockquote>
-<p>OPTIONAL INPUT:</p>
-<blockquote>
-<div>nsigma - number of sigma to integrate the velocities over</div></blockquote>
-<p>KEYWORDS:</p>
-<blockquote>
-<div>romberg - if True, use a romberg integrator (default: False)</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>sigma_R^2 x surface-mass at R</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2010-03-XX - Written - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="diskdfoortK.html"
                         title="previous chapter">galpy.df.diskdf.oortK</a></p>
@@ -117,6 +75,46 @@ marginalizing over velocity</div></blockquote>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-diskdf-sigma2surfacemass">
+<h1>galpy.df.diskdf.sigma2surfacemass<a class="headerlink" href="#galpy-df-diskdf-sigma2surfacemass" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.diskdf.sigma2surfacemass">
+<tt class="descclassname">diskdf.</tt><tt class="descname">sigma2surfacemass</tt><big>(</big><em>R</em>, <em>romberg=False</em>, <em>nsigma=None</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sigma2surfacemass" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>sigma2surfacemass</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>calculate the product sigma_R^2 x surface-mass at R by marginalizing over velocity</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div>R - radius at which to calculate the sigma_R^2 x surfacemass density (/ro)</div></blockquote>
+<p>OPTIONAL INPUT:</p>
+<blockquote>
+<div>nsigma - number of sigma to integrate the velocities over</div></blockquote>
+<p>KEYWORDS:</p>
+<blockquote>
+<div>romberg - if True, use a romberg integrator (default: False)</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>sigma_R^2 x surface-mass at R</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2010-03-XX - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -131,12 +129,13 @@ marginalizing over velocity</div></blockquote>
         <li class="right" >
           <a href="diskdfoortK.html" title="galpy.df.diskdf.oortK"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" >DF</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

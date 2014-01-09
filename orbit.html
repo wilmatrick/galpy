@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>A closer look at orbit integration &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>A closer look at orbit integration &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="index.html" />
-    <link rel="next" title="More on disk distribution functions" href="diskdf.html" />
-    <link rel="prev" title="Basic usage: distribution functions" href="basic_df.html" /> 
+    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <link rel="next" title="Action-angle coordinates" href="actionAngle.html" />
+    <link rel="prev" title="Two-dimensional disk distribution functions" href="basic_df.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,14 +34,59 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="diskdf.html" title="More on disk distribution functions"
+          <a href="actionAngle.html" title="Action-angle coordinates"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="basic_df.html" title="Basic usage: distribution functions"
+          <a href="basic_df.html" title="Two-dimensional disk distribution functions"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">A closer look at orbit integration</a><ul>
+<li><a class="reference internal" href="#orbit-initialization">Orbit initialization</a></li>
+<li><a class="reference internal" href="#orbit-integration">Orbit integration</a></li>
+<li><a class="reference internal" href="#displaying-the-orbit">Displaying the orbit</a></li>
+<li><a class="reference internal" href="#orbit-characterization">Orbit characterization</a></li>
+<li><a class="reference internal" href="#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
+<li><a class="reference internal" href="#fast-orbit-integration">Fast orbit integration</a></li>
+<li><a class="reference internal" href="#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="basic_df.html"
+                        title="previous chapter">Two-dimensional disk distribution functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="actionAngle.html"
+                        title="next chapter">Action-angle coordinates</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/orbit.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
@@ -143,6 +188,21 @@ quantities to plot. E.g.,</p>
 </div>
 <p>gives the projection onto (R,vR):</p>
 <img alt="_images/lp-orbit-integration-RvR.png" src="_images/lp-orbit-integration-RvR.png" />
+<p>We can also plot the orbit in other coordinate systems such as
+Galactic longitude and latitude</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;ll&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;bb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which shows</p>
+<img alt="_images/lp-orbit-integration-lb.png" src="_images/lp-orbit-integration-lb.png" />
+<p>or RA and Dec</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;ra&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;dec&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/lp-orbit-integration-radec.png" src="_images/lp-orbit-integration-radec.png" />
+<p>See the documentation of the o.plot function and the o.ra(), o.ll(),
+etc. functions on how to provide the necessary parameters for the
+coordinate transformations.</p>
 </div>
 <div class="section" id="orbit-characterization">
 <h2>Orbit characterization<a class="headerlink" href="#orbit-characterization" title="Permalink to this headline">¶</a></h2>
@@ -187,14 +247,23 @@ behavior</p>
 <h2>Accessing the raw orbit<a class="headerlink" href="#accessing-the-raw-orbit" title="Permalink to this headline">¶</a></h2>
 <p>The value of <tt class="docutils literal"><span class="pre">R</span></tt>, <tt class="docutils literal"><span class="pre">vR</span></tt>, <tt class="docutils literal"><span class="pre">vT</span></tt>, <tt class="docutils literal"><span class="pre">z</span></tt>, <tt class="docutils literal"><span class="pre">vz</span></tt>, <tt class="docutils literal"><span class="pre">x</span></tt>, <tt class="docutils literal"><span class="pre">vx</span></tt>,
 <tt class="docutils literal"><span class="pre">y</span></tt>, <tt class="docutils literal"><span class="pre">vy</span></tt>, <tt class="docutils literal"><span class="pre">phi</span></tt>, and <tt class="docutils literal"><span class="pre">vphi</span></tt> at any time can be obtained by
-calling the corresponding function with as argument the time. If no
-time is given the initial condition is returned, and if a time is
-requested at which the orbit was not saved spline interpolation is
-used to return the value. Examples include</p>
+calling the corresponding function with as argument the time (the same
+holds for other coordinates <tt class="docutils literal"><span class="pre">ra</span></tt>, <tt class="docutils literal"><span class="pre">dec</span></tt>, <tt class="docutils literal"><span class="pre">pmra</span></tt>, <tt class="docutils literal"><span class="pre">pmdec</span></tt>,
+<tt class="docutils literal"><span class="pre">vra</span></tt>, <tt class="docutils literal"><span class="pre">vdec</span></tt>, <tt class="docutils literal"><span class="pre">ll</span></tt>, <tt class="docutils literal"><span class="pre">bb</span></tt>, <tt class="docutils literal"><span class="pre">pmll</span></tt>, <tt class="docutils literal"><span class="pre">pmbb</span></tt>, <tt class="docutils literal"><span class="pre">vll</span></tt>,
+<tt class="docutils literal"><span class="pre">vbb</span></tt>, <tt class="docutils literal"><span class="pre">vlos</span></tt>, <tt class="docutils literal"><span class="pre">dist</span></tt>, <tt class="docutils literal"><span class="pre">helioX</span></tt>, <tt class="docutils literal"><span class="pre">helioY</span></tt>, <tt class="docutils literal"><span class="pre">helioZ</span></tt>,
+<tt class="docutils literal"><span class="pre">U</span></tt>, <tt class="docutils literal"><span class="pre">V</span></tt>, and <tt class="docutils literal"><span class="pre">W</span></tt>). If no time is given the initial condition is
+returned, and if a time is requested at which the orbit was not saved
+spline interpolation is used to return the value. Examples include</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
 <span class="go">1.1545076874679474</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">phi</span><span class="p">(</span><span class="mf">99.</span><span class="p">)</span>
 <span class="go">88.105603035901169</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">ra</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span><span class="n">obs</span><span class="o">=</span><span class="p">[</span><span class="mf">8.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">array([ 285.76403985])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">helioX</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span>
+<span class="go">array([ 1.24888927])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">pmll</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="n">obs</span><span class="o">=</span><span class="p">[</span><span class="mf">8.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">245.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">vo</span><span class="o">=</span><span class="mf">230.</span><span class="p">)</span>
+<span class="go">array([-6.45263888])</span>
 </pre></div>
 </div>
 <p>We can also initialize an <tt class="docutils literal"><span class="pre">Orbit</span></tt> instance using the phase-space
@@ -287,48 +356,6 @@ calculated by Dierickx et al., except for a few objects</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">A closer look at orbit integration</a><ul>
-<li><a class="reference internal" href="#orbit-initialization">Orbit initialization</a></li>
-<li><a class="reference internal" href="#orbit-integration">Orbit integration</a></li>
-<li><a class="reference internal" href="#displaying-the-orbit">Displaying the orbit</a></li>
-<li><a class="reference internal" href="#orbit-characterization">Orbit characterization</a></li>
-<li><a class="reference internal" href="#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
-<li><a class="reference internal" href="#fast-orbit-integration">Fast orbit integration</a></li>
-<li><a class="reference internal" href="#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="basic_df.html"
-                        title="previous chapter">Basic usage: distribution functions</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="diskdf.html"
-                        title="next chapter">More on disk distribution functions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/orbit.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -338,16 +365,17 @@ calculated by Dierickx et al., except for a few objects</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="diskdf.html" title="More on disk distribution functions"
+          <a href="actionAngle.html" title="Action-angle coordinates"
              >next</a> |</li>
         <li class="right" >
-          <a href="basic_df.html" title="Basic usage: distribution functions"
+          <a href="basic_df.html" title="Two-dimensional disk distribution functions"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

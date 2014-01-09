@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dynamical modeling of tidal streams &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <link rel="prev" title="galpy.util.bovy_ars.bovy_ars" href="reference/bovyars.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reference/bovyars.html" title="galpy.util.bovy_ars.bovy_ars"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dynamical modeling of tidal streams</a><ul>
+<li><a class="reference internal" href="#modeling-streams-in-galpy">Modeling streams in galpy</a></li>
+<li><a class="reference internal" href="#calculating-the-average-stream-location-track">Calculating the average stream location (track)</a></li>
+<li><a class="reference internal" href="#mock-stream-data-generation">Mock stream data generation</a></li>
+<li><a class="reference internal" href="#evaluating-and-marginalizing-the-full-pdf">Evaluating and marginalizing the full PDF</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="reference/bovyars.html"
+                        title="previous chapter">galpy.util.bovy_ars.bovy_ars</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/streamdf.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dynamical-modeling-of-tidal-streams">
+<h1>Dynamical modeling of tidal streams<a class="headerlink" href="#dynamical-modeling-of-tidal-streams" title="Permalink to this headline">¶</a></h1>
+<p>galpy contains tools to model the dynamics of tidal streams, making
+extensive use of action-angle variables. As an example, we can model
+the dynamics of the following tidal stream (that of Bovy 2014; ). This
+movie shows the disruption of a cluster on a GD-1-like orbit around
+the Milky Way:</p>
+<embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_orbplane_comov.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>The blue line is the orbit of the progenitor cluster and the black
+points are cluster members. The disruption is shown in an approximate
+orbital plane and the movie is comoving with the progenitor cluster.</p>
+<p>Streams can be represented by simple dynamical models in action-angle
+coordinates. In action-angle coordinates, stream members are stripped
+from the progenitor cluster onto orbits specified by a set of actions
+<img class="math" src="_images/math/c901526645b0c88607e099694451c37eb82c9d21.png" alt="(J_R,J_\phi,J_Z)"/>, which remain constant after the stars have
+been stripped. This is shown in the following movie, which shows the
+generation of the stream in action space</p>
+<embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_jrjzlz_debris.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>The color-coding gives the angular momentum <img class="math" src="_images/math/1f46726e8068693262c34035325a282e0e31030e.png" alt="J_\phi"/> and the
+black dot shows the progenitor orbit. These actions were calculated
+using <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleIsochroneApprox</span></tt>. The points
+move slightly because of small errors in the action calculation (these
+are correlated, so the cloud of points moves coherently because of
+calculation errors). The same movie that also shows the actions of
+stars in the cluster can be found <a class="reference external" href="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_jrjzlz.mpg">here</a>. This
+shows that the actions of stars in the cluster are not conserved
+(because the self-gravity of the cluster is important), but that the
+actions of stream members freeze once they are stripped. The angle
+difference between stars in a stream and the progenitor increases
+linearly with time, which is shown in the following movie:</p>
+<embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_arazap.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>where the radial and vertical angle difference with respect to the
+progenitor (co-moving at <img class="math" src="_images/math/ae5e3f79dca756f4b67aa96f147c799271797ea3.png" alt="(\theta_R,\theta_\phi,\theta_Z) =
+(\pi,\pi,\pi)"/>) is shown for each snapshot (the color-coding gives
+<img class="math" src="_images/math/5d873e5ed4680baf96a3bdcab69191a9c8b25db6.png" alt="\theta_\phi"/>).</p>
+<p>One last movie provides further insight in how a stream evolves over
+time. The following movie shows the evolution of the stream in the two
+dimensional plane of frequency and angle along the stream (that is,
+both are projections of the three dimensional frequencies or angles
+onto the angle direction along the stream). The points are color-coded
+by the time at which they were removed from the progenitor cluster.</p>
+<embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_oparapar.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>It is clear that disruption happens in bursts (at pericenter passages)
+and that the initial frequency distribution at the time of removal
+does not change (much) with time. However, stars removed at larger
+frequency difference move away from the cluster faster, such that the
+end of the stream is primarily made up of stars with large frequency
+differences with respect to the progenitor. This leads to a gradient
+in the typical orbit in the stream, and the stream is on average <em>not</em>
+on a single orbit.</p>
+<div class="section" id="modeling-streams-in-galpy">
+<h2>Modeling streams in galpy<a class="headerlink" href="#modeling-streams-in-galpy" title="Permalink to this headline">¶</a></h2>
+<p>In galpy we can model streams using the tools in
+<tt class="docutils literal"><span class="pre">galpy.df.streamdf</span></tt>. We setup a streamdf instance by specifying the
+host gravitational potential <tt class="docutils literal"><span class="pre">pot=</span></tt>, an actionAngle method
+(typically <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleIsochroneApprox</span></tt>), a
+<tt class="docutils literal"><span class="pre">galpy.orbit.Orbit</span></tt> instance with the position of the progenitor, a
+parameter related to the velocity dispersion of the progenitor, and
+the time since disruption began. We first import all of the necessary
+modules</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.df</span> <span class="kn">import</span> <span class="n">streamdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">LogarithmicHaloPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleIsochroneApprox</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util</span> <span class="kn">import</span> <span class="n">bovy_conversion</span> <span class="c">#for unit conversions</span>
+</pre></div>
+</div>
+<p>setup the potential and actionAngle instances</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lp</span><span class="o">=</span> <span class="n">LogarithmicHaloPotential</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAI</span><span class="o">=</span> <span class="n">actionAngleIsochroneApprox</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">lp</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>define a progenitor Orbit instance</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">obs</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">([</span><span class="mf">1.56148083</span><span class="p">,</span><span class="mf">0.35081535</span><span class="p">,</span><span class="o">-</span><span class="mf">1.15481504</span><span class="p">,</span><span class="mf">0.88719443</span><span class="p">,</span><span class="o">-</span><span class="mf">0.47713334</span><span class="p">,</span><span class="mf">0.12019596</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>and instantiate the streamdf model</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sigv</span><span class="o">=</span> <span class="mf">0.365</span> <span class="c">#km/s</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">=</span> <span class="n">streamdf</span><span class="p">(</span><span class="n">sigv</span><span class="o">/</span><span class="mf">220.</span><span class="p">,</span><span class="n">progenitor</span><span class="o">=</span><span class="n">obs</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">lp</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aAI</span><span class="p">,</span><span class="n">leading</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">nTrackChunks</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span><span class="n">tdisrupt</span><span class="o">=</span><span class="mf">4.5</span><span class="o">/</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">time_in_Gyr</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>for a leading stream. This runs in about half a minute on a 2011
+Macbook Air.</p>
+<p>We can calculate some simple properties of the stream, such as the
+ratio of the largest and second-to-largest eigenvalue of the Hessian
+<img class="math" src="_images/math/cc270331c32b1dbd0254f6740c84fe220f4e0ed8.png" alt="\partial \mathbf{\Omega} / \partial \mathbf{J}"/></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">freqEigvalRatio</span><span class="p">(</span><span class="n">isotropic</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">34.450028399901434</span>
+</pre></div>
+</div>
+<p>or the model&#8217;s ratio of the largest and second-to-largest eigenvalue
+of the model frequency variance matrix</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">freqEigvalRatio</span><span class="p">()</span>
+<span class="go">29.625538344985291</span>
+</pre></div>
+</div>
+<p>The fact that this ratio is so large means that an approximately one
+dimensional stream will form.</p>
+<p>Similarly, we can calculate the angle between the frequency vector of
+the progenitor and of the model mean frequency vector</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">misalignment</span><span class="p">()</span>
+<span class="go">-0.49526013844831596</span>
+</pre></div>
+</div>
+<p>which returns this angle in degrees. We can also calculate the angle
+between the frequency vector of the progenitor and the principal
+eigenvector of <img class="math" src="_images/math/cc270331c32b1dbd0254f6740c84fe220f4e0ed8.png" alt="\partial \mathbf{\Omega} / \partial \mathbf{J}"/></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">misalignment</span><span class="p">(</span><span class="n">isotropic</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go"> 1.2825116841963993</span>
+</pre></div>
+</div>
+<p>(the reason these are obtained by specifying <tt class="docutils literal"><span class="pre">isotropic=True</span></tt> is
+that these would be the ratio of the eigenvalues or the angle if we
+assumed that the disrupted materials action distribution were
+isotropic).</p>
+</div>
+<div class="section" id="calculating-the-average-stream-location-track">
+<h2>Calculating the average stream location (track)<a class="headerlink" href="#calculating-the-average-stream-location-track" title="Permalink to this headline">¶</a></h2>
+<p>We can display the stream track in various coordinate systems as
+follows</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/sdf_track_rz.png" src="_images/sdf_track_rz.png" />
+<p>which shows the track in Galactocentric <em>R</em> and <em>Z</em> coordinates as
+well as an estimate of the spread around the track as the dash-dotted
+line. We can overplot the points along the track along which the
+<img class="math" src="_images/math/c5fbb4abbcbc54325da39868b3af380471aaaecd.png" alt="(\mathbf{x},\mathbf{v}) \rightarrow
+(\mathbf{\Omega},\boldsymbol{\theta})"/> transformation and the track
+position is explicitly calculated, by turning off the interpolation</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/sdf_track_rz_points.png" src="_images/sdf_track_rz_points.png" />
+<p>We can also overplot the orbit of the progenitor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotProgenitor</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to give</p>
+<img alt="_images/sdf_track_rz_progenitor.png" src="_images/sdf_track_rz_progenitor.png" />
+<p>We can do the same in other coordinate systems, for example <em>X</em> and
+<em>Z</em> (as in Figure 1 of Bovy 2014)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotProgenitor</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xlim</span><span class="p">(</span><span class="mf">12.</span><span class="p">,</span><span class="mf">14.5</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">7.6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/sdf_track_xz.png" src="_images/sdf_track_xz.png" />
+<p>or we can calculate the track in observable coordinates, e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;ll&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;dist&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;ll&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;dist&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotProgenitor</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;ll&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;dist&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xlim</span><span class="p">(</span><span class="mf">155.</span><span class="p">,</span><span class="mf">255.</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">14.8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which displays</p>
+<img alt="_images/sdf_track_ldist.png" src="_images/sdf_track_ldist.png" />
+<p>Coordinate transformations to physical coordinates are done using
+parameters set when initializing the <tt class="docutils literal"><span class="pre">sdf</span></tt> instance. See the help
+for <tt class="docutils literal"><span class="pre">?streamdf</span></tt> for a complete list of initialization parameters.</p>
+</div>
+<div class="section" id="mock-stream-data-generation">
+<h2>Mock stream data generation<a class="headerlink" href="#mock-stream-data-generation" title="Permalink to this headline">¶</a></h2>
+<p>We can also easily generate mock data from the stream model. This uses
+<tt class="docutils literal"><span class="pre">streamdf.sample</span></tt>. For example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">RvR</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns the sampled points as a set
+<img class="math" src="_images/math/3507c1c06d163e89c8e50c56c4dd1fd06378eb25.png" alt="(R,v_R,v_T,Z,v_Z,\phi)"/> in natural galpy coordinates. We can
+plot these and compare them to the track location</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">RvR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="n">RvR</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span> <span class="c">#multiply by the physical distance scale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xlim</span><span class="p">(</span><span class="mf">12.</span><span class="p">,</span><span class="mf">16.5</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span><span class="mf">7.6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/sdf_mock_rz.png" src="_images/sdf_mock_rz.png" />
+<p>Similarly, we can generate mock data in observable coordinates</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lb</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">lb</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and plot it</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;ll&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;dist&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">lb</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">lb</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xlim</span><span class="p">(</span><span class="mf">155.</span><span class="p">,</span><span class="mf">235.</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">10.8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which displays</p>
+<img alt="_images/sdf_mock_lb.png" src="_images/sdf_mock_lb.png" />
+<p>We can also just generate mock stream data in frequency-angle coordinates</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mockaA</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">returnaAdt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns a tuple with three components: an array with shape [3,N]
+of frequency vectors <img class="math" src="_images/math/30918553a8abffe426c57cef427d199c6054ba77.png" alt="(\Omega_R,\Omega_\phi,\Omega_Z)"/>, an array
+with shape [3,N] of angle vectors
+<img class="math" src="_images/math/b1280dc6dc25e5d2a34e9809f15693007e35ecb0.png" alt="(\theta_R,\theta_\phi,\theta_Z)"/> and <img class="math" src="_images/math/0ffb94c0fa16a9d1a2a3b0e47ed218d773425512.png" alt="t_s"/>, the stripping
+time. We can plot the vertical versus the radial angle</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">mockaA</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">mockaA</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/sdf_mock_aa_oroz.png" src="_images/sdf_mock_aa_oroz.png" />
+<p>or we can plot the magnitude of the angle offset as a function of
+stripping time</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">mockaA</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">mockaA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">sdf</span><span class="o">.</span><span class="n">_progenitor_angle</span><span class="p">,(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/sdf_mock_aa_adt.png" src="_images/sdf_mock_aa_adt.png" />
+</div>
+<div class="section" id="evaluating-and-marginalizing-the-full-pdf">
+<h2>Evaluating and marginalizing the full PDF<a class="headerlink" href="#evaluating-and-marginalizing-the-full-pdf" title="Permalink to this headline">¶</a></h2>
+<p>We can also evaluate the stream PDF, the probability of a
+<img class="math" src="_images/math/773cebb960b3f7bbdfdb0f5bbd3c4c5fbe38a065.png" alt="(\mathbf{x},\mathbf{v})"/> phase-space position in the stream. We
+can evaluate the PDF, for example, at the location of the progenitor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="p">(</span><span class="n">obs</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">phi</span><span class="p">())</span>
+<span class="go">array([-33.16985861])</span>
+</pre></div>
+</div>
+<p>which returns the natural log of the PDF. If we go to slightly higher in
+<em>Z</em> and slightly smaller in <em>R</em>, the PDF becomes zero</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="p">(</span><span class="n">obs</span><span class="o">.</span><span class="n">R</span><span class="p">()</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">obs</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">z</span><span class="p">()</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">obs</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">phi</span><span class="p">())</span>
+<span class="go">array([-inf])</span>
+</pre></div>
+</div>
+<p>because this phase-space position cannot be reached by a leading
+stream star. We can also marginalize the PDF over unobserved
+directions. For example, similar to Figure 10 in Bovy (2014), we can
+evaluate the PDF <img class="math" src="_images/math/8d06813e2c385c7de43fd4760ddc2ba0911c45ea.png" alt="p(X|Z)"/> near a point on the track, say near
+<em>Z</em> =2 kpc (=0.25 in natural units. We first find the approximate
+Gaussian PDF near this point, calculated from the stream track and
+dispersion (see above)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">gaussApprox</span><span class="p">([</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mf">2.</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>where the input is a array with entries [X,Y,Z,vX,vY,vZ] and we
+substitute None for directions that we want to establish the
+approximate PDF for. So the above expression returns an approximation
+to <img class="math" src="_images/math/7e9403d976444830797b9277ce39489731bf1212.png" alt="p(X,Y,v_X,v_Y,v_Z|Z)"/>. This approximation allows us to get a
+sense of where the PDF peaks and what its width is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span>
+<span class="go">14.267559400127833</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">8.</span>
+<span class="go">0.04152968631186698</span>
+</pre></div>
+</div>
+<p>We can now evaluate the PDF <img class="math" src="_images/math/8d06813e2c385c7de43fd4760ddc2ba0911c45ea.png" alt="p(X|Z)"/> as a function of <em>X</em> near
+the peak</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="mi">21</span><span class="p">)</span><span class="o">+</span><span class="n">meanp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sdf</span><span class="o">.</span><span class="n">callMarg</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mf">2.</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logps</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and we normalize the PDF</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">/=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">8.</span>
+</pre></div>
+</div>
+<p>and plot it together with the Gaussian approximation</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="n">ps</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">8.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">xs</span><span class="o">-</span><span class="n">meanp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mf">2.</span><span class="o">/</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/sdf_pxz.png" src="_images/sdf_pxz.png" />
+<p>Sometimes it is hard to automatically determine the closest point on
+the calculated track if only one phase-space coordinate is given. For
+example, this happens when evaluating <img class="math" src="_images/math/2f329e26b5af5069f03308c0bebf751bca88105b.png" alt="p(Z|X)"/> for <em>X</em> &gt; 13 kpc
+here, where there are two branches of the track in <em>Z</em> (see the figure
+of the track above). In that case, we can determine the closest track
+point on one of the branches by hand and then provide this closest
+point as the basis of PDF calculations. The following example shows
+how this is done for the upper <em>Z</em> branch at <em>X</em> = 13.5 kpc, which is
+near <em>Z</em> =5 kpc (Figure 10 in Bovy 2014).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cindx</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">find_closest_trackpoint</span><span class="p">(</span><span class="mf">13.5</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mf">5.32</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>gives the index of the closest point on the calculated track. This index can then be given as an argument for the PDF functions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">gaussApprox</span><span class="p">([</span><span class="mf">13.5</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="n">cindx</span><span class="o">=</span><span class="n">cindx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>computes the approximate <img class="math" src="_images/math/3e79c31f98655b3f2aae2d83b519494844a0f549.png" alt="p(Y,Z,v_X,v_Y,v_Z|X)"/> near the upper
+<em>Z</em> branch. In <em>Z</em>, this PDF has mean and dispersion</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span>
+<span class="go">5.4005530328542077</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="mf">8.</span>
+<span class="go">0.05796023309510244</span>
+</pre></div>
+</div>
+<p>We can then evaluate <img class="math" src="_images/math/2f329e26b5af5069f03308c0bebf751bca88105b.png" alt="p(Z|X)"/> for the upper branch as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="mi">21</span><span class="p">)</span><span class="o">+</span><span class="n">meanp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sdf</span><span class="o">.</span><span class="n">callMarg</span><span class="p">([</span><span class="mf">13.5</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="n">cindx</span><span class="o">=</span><span class="n">cindx</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logps</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">/=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">zs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">zs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">8.</span>
+</pre></div>
+</div>
+<p>and we can again plot this and the approximation</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">zs</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="n">ps</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">zs</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">8.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">zs</span><span class="o">-</span><span class="n">meanp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mf">2.</span><span class="o">/</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/sdf-pzx.png" src="_images/sdf-pzx.png" />
+<p>The approximate PDF in this case is very close to the correct
+PDF. When supplying the closest track point, care needs to be taken
+that this really is the closest track point. Otherwise the approximate
+PDF will not be quite correct.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reference/bovyars.html" title="galpy.util.bovy_ars.bovy_ars"
+             >previous</a> |</li>
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

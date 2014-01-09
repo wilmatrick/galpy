@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dehnen DF &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>Dehnen DF &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="DF" href="df.html" />
     <link rel="next" title="Shu DF" href="dfshu.html" />
     <link rel="prev" title="galpy.df.diskdf.sampleVRVT" href="diskdfsampleVRVT.html" /> 
@@ -40,69 +40,15 @@
         <li class="right" >
           <a href="diskdfsampleVRVT.html" title="galpy.df.diskdf.sampleVRVT"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="dehnen-df">
-<h1>Dehnen DF<a class="headerlink" href="#dehnen-df" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="galpy.df.dehnendf">
-<em class="property">class </em><tt class="descclassname">galpy.df.</tt><tt class="descname">dehnendf</tt><big>(</big><em>surfaceSigma=&lt;class galpy.df_src.surfaceSigmaProfile.expSurfaceSigmaProfile at 0x104b5a390&gt;</em>, <em>profileParams=(0.3333333333333333</em>, <em>1.0</em>, <em>0.2)</em>, <em>correct=False</em>, <em>beta=0.0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.dehnendf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dehnen&#8217;s &#8216;new&#8217; df</p>
-<dl class="method">
-<dt id="galpy.df.dehnendf.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>surfaceSigma=&lt;class galpy.df_src.surfaceSigmaProfile.expSurfaceSigmaProfile at 0x104b5a390&gt;</em>, <em>profileParams=(0.3333333333333333</em>, <em>1.0</em>, <em>0.2)</em>, <em>correct=False</em>, <em>beta=0.0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.dehnendf.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>__init__</dd>
-<dt>PURPOSE:</dt>
-<dd>Initialize a Dehnen &#8216;new&#8217; DF</dd>
-<dt>INPUT:</dt>
-<dd><dl class="first docutils">
-<dt>surfaceSigma - instance or class name of the target </dt>
-<dd>surface density and sigma_R profile 
-(default: both exponential)</dd>
-<dt>profileParams - parameters of the surface and sigma_R profile:</dt>
-<dd><p class="first">(xD,xS,Sro) where</p>
-<blockquote class="last">
-<div><p>xD - disk surface mass scalelength / Ro</p>
-<p>xS - disk velocity dispersion scalelength / Ro</p>
-<p>Sro - disk velocity dispersion at Ro (/vo)</p>
-<p>Directly given to the &#8216;surfaceSigmaProfile class, so
-could be anything that class takes</p>
-</div></blockquote>
-</dd>
-</dl>
-<p>beta - power-law index of the rotation curve</p>
-<p>correct - if True, correct the DF</p>
-<ul class="last simple">
-<li>DFcorrection kwargs (except for those already specified)</li>
-</ul>
-</dd>
-</dl>
-<p>OUTPUT:
-HISTORY:</p>
-<blockquote>
-<div>2010-03-10 - Written - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="diskdfsampleVRVT.html"
                         title="previous chapter">galpy.df.diskdf.sampleVRVT</a></p>
@@ -129,6 +75,63 @@ HISTORY:</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dehnen-df">
+<h1>Dehnen DF<a class="headerlink" href="#dehnen-df" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.df.dehnendf">
+<em class="property">class </em><tt class="descclassname">galpy.df.</tt><tt class="descname">dehnendf</tt><big>(</big><em>surfaceSigma=&lt;class galpy.df_src.surfaceSigmaProfile.expSurfaceSigmaProfile at 0x10900f390&gt;</em>, <em>profileParams=(0.3333333333333333</em>, <em>1.0</em>, <em>0.2)</em>, <em>correct=False</em>, <em>beta=0.0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.dehnendf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dehnen&#8217;s &#8216;new&#8217; df</p>
+<dl class="method">
+<dt id="galpy.df.dehnendf.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>surfaceSigma=&lt;class galpy.df_src.surfaceSigmaProfile.expSurfaceSigmaProfile at 0x10900f390&gt;</em>, <em>profileParams=(0.3333333333333333</em>, <em>1.0</em>, <em>0.2)</em>, <em>correct=False</em>, <em>beta=0.0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.dehnendf.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>NAME:</dt>
+<dd>__init__</dd>
+<dt>PURPOSE:</dt>
+<dd>Initialize a Dehnen &#8216;new&#8217; DF</dd>
+<dt>INPUT:</dt>
+<dd><dl class="first docutils">
+<dt>surfaceSigma - instance or class name of the target </dt>
+<dd>surface density and sigma_R profile 
+(default: both exponential)</dd>
+<dt>profileParams - parameters of the surface and sigma_R profile:</dt>
+<dd><p class="first">(xD,xS,Sro) where</p>
+<blockquote class="last">
+<div><p>xD - disk surface mass scalelength / Ro</p>
+<p>xS - disk velocity dispersion scalelength / Ro</p>
+<p>Sro - disk velocity dispersion at Ro (/vo)</p>
+<p>Directly given to the &#8216;surfaceSigmaProfile class, so
+could be anything that class takes</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>beta - power-law index of the rotation curve</p>
+<p>correct - if True, correct the DF</p>
+<p class="last">+DFcorrection kwargs (except for those already specified)</p>
+</dd>
+</dl>
+<p>OUTPUT:</p>
+<blockquote>
+<div>instance</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2010-03-10 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -143,12 +146,13 @@ HISTORY:</p>
         <li class="right" >
           <a href="diskdfsampleVRVT.html" title="galpy.df.diskdf.sampleVRVT"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" >DF</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

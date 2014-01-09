@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Steady-state logarithmic spiral potential &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>Steady-state logarithmic spiral potential &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Transient logarithmic spiral potential" href="potentialtransientlogspiral.html" />
     <link rel="prev" title="Lopsided disk potential" href="potentiallopsideddisk.html" /> 
@@ -40,75 +40,15 @@
         <li class="right" >
           <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="steady-state-logarithmic-spiral-potential">
-<h1>Steady-state logarithmic spiral  potential<a class="headerlink" href="#steady-state-logarithmic-spiral-potential" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="galpy.potential.SteadyLogSpiralPotential">
-<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">SteadyLogSpiralPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that implements a steady-state spiral potential</p>
-<p>V(r,phi,t) = A/alpha cos(alpha ln(r) - m(phi - Omegas*t-gamma))</p>
-<dl class="method">
-<dt id="galpy.potential.SteadyLogSpiralPotential.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>__init__</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>initialize a logarithmic spiral potential</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><p>amp - amplitude to be applied to the potential (default:
-1., A below)</p>
-<dl class="docutils">
-<dt>gamma - angle between sun-GC line and the line connecting the </dt>
-<dd>peak of the spiral pattern at the Solar radius 
-(in rad; default=45 degree)</dd>
-</dl>
-<p>A - force amplitude (alpha*potential-amplitude; default=0.035)</p>
-<p>omegas= - pattern speed (default=0.65)</p>
-<p>m= number of arms</p>
-<p>Either provide:</p>
-<blockquote>
-<div><ol class="loweralpha simple">
-<li>alpha=</li>
-<li>p= pitch angle (rad)</li>
-</ol>
-</div></blockquote>
-<p>tform - start of spiral growth / spiral period (default: -Infinity)</p>
-<dl class="docutils">
-<dt>tsteady - time from tform at which the spiral is fully grown </dt>
-<dd>/ spiral period (default: tform+2 periods)</dd>
-</dl>
-</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>(none)</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2011-03-27 - Started - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="potentiallopsideddisk.html"
                         title="previous chapter">Lopsided disk potential</a></p>
@@ -135,6 +75,62 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="steady-state-logarithmic-spiral-potential">
+<h1>Steady-state logarithmic spiral  potential<a class="headerlink" href="#steady-state-logarithmic-spiral-potential" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.potential.SteadyLogSpiralPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">SteadyLogSpiralPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements a steady-state spiral potential</p>
+<p>V(r,phi,t) = A/alpha cos(alpha ln(r) - m(phi - Omegas*t-gamma))</p>
+<dl class="method">
+<dt id="galpy.potential.SteadyLogSpiralPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>initialize a logarithmic spiral potential</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>amp - amplitude to be applied to the potential (default:
+1., A below)</p>
+<p>gamma - angle between sun-GC line and the line connecting the peak of the spiral pattern at the Solar radius (in rad; default=45 degree)</p>
+<p>A - force amplitude (alpha*potential-amplitude; default=0.035)</p>
+<p>omegas= - pattern speed (default=0.65)</p>
+<p>m= number of arms</p>
+<p>Either provide:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>alpha=</li>
+<li>p= pitch angle (rad)</li>
+</ol>
+</div></blockquote>
+<p>tform - start of spiral growth / spiral period (default: -Infinity)</p>
+<p>tsteady - time from tform at which the spiral is fully grown / spiral period (default: tform+2 periods)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(none)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-03-27 - Started - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -149,12 +145,13 @@
         <li class="right" >
           <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

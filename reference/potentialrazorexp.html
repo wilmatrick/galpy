@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Razor-thin exponential disk potential &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>Razor-thin exponential disk potential &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="galpy.potential.planarPotential.__call__" href="potential2dcall.html" />
     <link rel="prev" title="Power-law density spherical potential" href="potentialpowerspher.html" /> 
@@ -40,58 +40,15 @@
         <li class="right" >
           <a href="potentialpowerspher.html" title="Power-law density spherical potential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="razor-thin-exponential-disk-potential">
-<h1>Razor-thin exponential disk potential<a class="headerlink" href="#razor-thin-exponential-disk-potential" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="galpy.potential.RazorThinExponentialDiskPotential">
-<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">RazorThinExponentialDiskPotential</tt><big>(</big><em>amp=1.0</em>, <em>ro=1.0</em>, <em>hr=0.3333333333333333</em>, <em>maxiter=20</em>, <em>tol=0.001</em>, <em>normalize=False</em>, <em>new=True</em>, <em>glorder=100</em><big>)</big><a class="headerlink" href="#galpy.potential.RazorThinExponentialDiskPotential" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that implements the razor-thin exponential disk potential
-rho(R,z) = rho_0 e^-R/h_R delta(z)</p>
-<dl class="method">
-<dt id="galpy.potential.RazorThinExponentialDiskPotential.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>ro=1.0</em>, <em>hr=0.3333333333333333</em>, <em>maxiter=20</em>, <em>tol=0.001</em>, <em>normalize=False</em>, <em>new=True</em>, <em>glorder=100</em><big>)</big><a class="headerlink" href="#galpy.potential.RazorThinExponentialDiskPotential.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>__init__</dd>
-<dt>PURPOSE:</dt>
-<dd>initialize a razor-thin-exponential disk potential</dd>
-<dt>INPUT:</dt>
-<dd><p class="first">amp - amplitude to be applied to the potential (default: 1)
-hr - disk scale-length in terms of ro
-tol - relative accuracy of potential-evaluations
-maxiter - scipy.integrate keyword
-normalize - if True, normalize such that vc(1.,0.)=1., or, if</p>
-<blockquote class="last">
-<div>given as a number, such that the force is this fraction 
-of the force necessary to make vc(1.,0.)=1.</div></blockquote>
-</dd>
-<dt>OUTPUT:</dt>
-<dd>RazorThinExponentialDiskPotential object</dd>
-<dt>HISTORY:</dt>
-<dd>2012-12-27 - Written - Bovy (IAS)</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="potentialpowerspher.html"
                         title="previous chapter">Power-law density spherical potential</a></p>
@@ -118,6 +75,52 @@ of the force necessary to make vc(1.,0.)=1.</div></blockquote>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="razor-thin-exponential-disk-potential">
+<h1>Razor-thin exponential disk potential<a class="headerlink" href="#razor-thin-exponential-disk-potential" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.potential.RazorThinExponentialDiskPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">RazorThinExponentialDiskPotential</tt><big>(</big><em>amp=1.0</em>, <em>ro=1.0</em>, <em>hr=0.3333333333333333</em>, <em>maxiter=20</em>, <em>tol=0.001</em>, <em>normalize=False</em>, <em>new=True</em>, <em>glorder=100</em><big>)</big><a class="headerlink" href="#galpy.potential.RazorThinExponentialDiskPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements the razor-thin exponential disk potential
+rho(R,z) = rho_0 e^-R/h_R delta(z)</p>
+<dl class="method">
+<dt id="galpy.potential.RazorThinExponentialDiskPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>ro=1.0</em>, <em>hr=0.3333333333333333</em>, <em>maxiter=20</em>, <em>tol=0.001</em>, <em>normalize=False</em>, <em>new=True</em>, <em>glorder=100</em><big>)</big><a class="headerlink" href="#galpy.potential.RazorThinExponentialDiskPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>initialize a razor-thin-exponential disk potential</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>amp - amplitude to be applied to the potential (default: 1)</p>
+<p>hr - disk scale-length in terms of ro</p>
+<p>tol - relative accuracy of potential-evaluations</p>
+<p>maxiter - scipy.integrate keyword</p>
+<p>normalize - if True, normalize such that vc(1.,0.)=1., or, if given as a number, such that the force is this fraction of the force necessary to make vc(1.,0.)=1.</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>RazorThinExponentialDiskPotential object</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2012-12-27 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -132,12 +135,13 @@ of the force necessary to make vc(1.,0.)=1.</div></blockquote>
         <li class="right" >
           <a href="potentialpowerspher.html" title="Power-law density spherical potential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

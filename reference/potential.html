@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Potential &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>Potential &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="next" title="galpy.potential.Potential.__call__" href="potentialcall.html" />
     <link rel="prev" title="galpy.orbit.Orbit.zmax" href="orbitzmax.html" /> 
   </head>
@@ -39,9 +39,86 @@
         <li class="right" >
           <a href="orbitzmax.html" title="galpy.orbit.Orbit.zmax"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Potential</a><ul>
+<li><a class="reference internal" href="#d-potentials">3D potentials</a><ul>
+<li><a class="reference internal" href="#general-instance-routines">General instance routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#general-3d-potential-routines">General 3D potential routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#specific-potentials">Specific potentials</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">2D potentials</a><ul>
+<li><a class="reference internal" href="#id2">General instance routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#general-axisymmetric-potential-instance-routines">General axisymmetric potential instance routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#general-2d-potential-routines">General 2D potential routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">Specific potentials</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">1D potentials</a><ul>
+<li><a class="reference internal" href="#id5">General instance routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#general-1d-potential-routines">General 1D potential routines</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">Specific potentials</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="orbitzmax.html"
+                        title="previous chapter">galpy.orbit.Orbit.zmax</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="potentialcall.html"
+                        title="next chapter">galpy.potential.Potential.__call__</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/potential.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
@@ -61,13 +138,17 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialdens.html">dens</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialdvcircdr.html">dvcircdR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialepifreq.html">epifreq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialflattening.html">flattening</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentiallindbladR.html">lindbladR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialomegac.html">omegac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialphiforce.html">phiforce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialphi2deriv.html">phi2deriv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplot.html">plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialplotdensity.html">plotDensity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotescapecurve.html">plotEscapecurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotrotcurve.html">plotRotcurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialr2deriv.html">R2deriv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialr2deriv.html">Rzderiv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrforce.html">Rforce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrl.html">rl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialtoplanar.html">toPlanar</a></li>
@@ -92,11 +173,14 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialphiforces.html">evaluatephiforces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialevaluate.html">evaluatePotentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialr2derivs.html">evaluateR2derivs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialrzderivs.html">evaluateRzderivs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrforces.html">evaluateRforces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialz2derivs.html">evaluatez2derivs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialzforces.html">evaluatezforces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialflattenings.html">flattening</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentiallindbladRs.html">lindbladR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialomegacs.html">omegac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialplotdensities.html">plotDensities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotescapecurves.html">plotEscapecurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplots.html">plotPotentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotrotcurves.html">plotRotcurve</a></li>
@@ -150,7 +234,7 @@
 </div>
 <div class="section" id="general-axisymmetric-potential-instance-routines">
 <h3>General axisymmetric potential instance routines<a class="headerlink" href="#general-axisymmetric-potential-instance-routines" title="Permalink to this headline">¶</a></h3>
-<p>Use as <tt class="docutils literal"><span class="pre">method(...)</span></tt></p>
+<p>Use as <tt class="docutils literal"><span class="pre">Potential-instance.method(...)</span></tt></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="potential2depifreq.html">epifreq</a></li>
@@ -245,80 +329,6 @@ potentials in the mid-plane.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Potential</a><ul>
-<li><a class="reference internal" href="#d-potentials">3D potentials</a><ul>
-<li><a class="reference internal" href="#general-instance-routines">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-3d-potential-routines">General 3D potential routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#specific-potentials">Specific potentials</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id1">2D potentials</a><ul>
-<li><a class="reference internal" href="#id2">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-axisymmetric-potential-instance-routines">General axisymmetric potential instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-2d-potential-routines">General 2D potential routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#id3">Specific potentials</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id4">1D potentials</a><ul>
-<li><a class="reference internal" href="#id5">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-1d-potential-routines">General 1D potential routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#id6">Specific potentials</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="orbitzmax.html"
-                        title="previous chapter">galpy.orbit.Orbit.zmax</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="potentialcall.html"
-                        title="next chapter">galpy.potential.Potential.__call__</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/reference/potential.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -333,11 +343,12 @@ potentials in the mid-plane.</p>
         <li class="right" >
           <a href="orbitzmax.html" title="galpy.orbit.Orbit.zmax"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.util.bovy_coords.lb_to_radec &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.util.bovy_coords.lb_to_radec &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="galpy.util.bovy_coords" href="bovycoords.html" />
     <link rel="next" title="galpy.util.bovy_coords.pmllpmbb_to_pmrapmdec" href="coordspmllpmbbtopmrapmdec.html" />
     <link rel="prev" title="galpy.util.bovy_coords.lb_to_radec" href="coordslbtoradec.html" /> 
@@ -40,49 +40,16 @@
         <li class="right" >
           <a href="coordslbtoradec.html" title="galpy.util.bovy_coords.lb_to_radec"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li>
           <li><a href="bovycoords.html" accesskey="U">galpy.util.bovy_coords</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-util-bovy-coords-lb-to-radec">
-<h1>galpy.util.bovy_coords.lb_to_radec<a class="headerlink" href="#galpy-util-bovy-coords-lb-to-radec" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="galpy.util.bovy_coords.lbd_to_XYZ">
-<tt class="descclassname">galpy.util.bovy_coords.</tt><tt class="descname">lbd_to_XYZ</tt><big>(</big><em>l</em>, <em>b</em>, <em>d</em>, <em>degree=False</em><big>)</big><a class="headerlink" href="#galpy.util.bovy_coords.lbd_to_XYZ" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>lbd_to_XYZ</dd>
-<dt>PURPOSE:</dt>
-<dd>transform from spherical Galactic coordinates to rectangular Galactic coordinates
-works with vector inputs</dd>
-<dt>INPUT:</dt>
-<dd>l - Galactic longitude (rad)
-b - Galactic lattitude (rad)
-d - distance (arbitrary units)
-degree - (bool) if True, l and b are in degrees</dd>
-<dt>OUTPUT:</dt>
-<dd>[X,Y,Z] in whatever units d was in
-For vector inputs [:,3]</dd>
-<dt>HISTORY:</dt>
-<dd>2009-10-24- Written - Bovy (NYU)</dd>
-</dl>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="coordslbtoradec.html"
                         title="previous chapter">galpy.util.bovy_coords.lb_to_radec</a></p>
@@ -109,6 +76,46 @@ For vector inputs [:,3]</dd>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-util-bovy-coords-lb-to-radec">
+<h1>galpy.util.bovy_coords.lb_to_radec<a class="headerlink" href="#galpy-util-bovy-coords-lb-to-radec" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="galpy.util.bovy_coords.lbd_to_XYZ">
+<tt class="descclassname">galpy.util.bovy_coords.</tt><tt class="descname">lbd_to_XYZ</tt><big>(</big><em>l</em>, <em>b</em>, <em>d</em>, <em>degree=False</em><big>)</big><a class="headerlink" href="#galpy.util.bovy_coords.lbd_to_XYZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>lbd_to_XYZ</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>transform from spherical Galactic coordinates to rectangular Galactic coordinates (works with vector inputs)</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>l - Galactic longitude (rad)</p>
+<p>b - Galactic lattitude (rad)</p>
+<p>d - distance (arbitrary units)</p>
+<p>degree - (bool) if True, l and b are in degrees</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div><p>[X,Y,Z] in whatever units d was in</p>
+<p>For vector inputs [:,3]</p>
+</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2009-10-24- Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -123,13 +130,14 @@ For vector inputs [:,3]</dd>
         <li class="right" >
           <a href="coordslbtoradec.html" title="galpy.util.bovy_coords.lb_to_radec"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li>
           <li><a href="bovycoords.html" >galpy.util.bovy_coords</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.orbit.Orbit.vbb &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.orbit.Orbit.vbb &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Orbit" href="orbit.html" />
     <link rel="next" title="galpy.orbit.Orbit.vdec" href="orbitvdec.html" />
     <link rel="prev" title="galpy.orbit.Orbit.V" href="orbitv.html" /> 
@@ -40,55 +40,15 @@
         <li class="right" >
           <a href="orbitv.html" title="galpy.orbit.Orbit.V"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="orbit.html" accesskey="U">Orbit</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-orbit-orbit-vbb">
-<h1>galpy.orbit.Orbit.vbb<a class="headerlink" href="#galpy-orbit-orbit-vbb" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.orbit.Orbit.vbb">
-<tt class="descclassname">Orbit.</tt><tt class="descname">vbb</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.orbit.Orbit.vbb" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>vbb</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>return velocity in Galactic latitude (km/s)</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><p>t - (optional) time at which to get pmbb</p>
-<dl class="docutils">
-<dt>obs=[X,Y,Z,vx,vy,vz] - (optional) position and velocity of observer </dt>
-<dd>(in kpc and km/s) (default=[8.5,0.,0.,0.,235.,0.])
-OR Orbit object that corresponds to the orbit
-of the observer</dd>
-</dl>
-<p>ro= distance in kpc corresponding to R=1. (default: 8.5)</p>
-<p>vo= velocity in km/s corresponding to v=1. (default: 235.)</p>
-</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>v_b(t) in km/s</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2011-02-24 - Written - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="orbitv.html"
                         title="previous chapter">galpy.orbit.Orbit.V</a></p>
@@ -115,6 +75,49 @@ of the observer</dd>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-orbit-orbit-vbb">
+<h1>galpy.orbit.Orbit.vbb<a class="headerlink" href="#galpy-orbit-orbit-vbb" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.orbit.Orbit.vbb">
+<tt class="descclassname">Orbit.</tt><tt class="descname">vbb</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.orbit.Orbit.vbb" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>vbb</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>return velocity in Galactic latitude (km/s)</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>t - (optional) time at which to get vbb</p>
+<dl class="docutils">
+<dt>obs=[X,Y,Z,vx,vy,vz] - (optional) position and velocity of observer </dt>
+<dd>(in kpc and km/s) (default=[8.5,0.,0.,0.,235.,0.])
+OR Orbit object that corresponds to the orbit
+of the observer</dd>
+</dl>
+<p>ro= distance in kpc corresponding to R=1. (default: 8.5)</p>
+<p>vo= velocity in km/s corresponding to v=1. (default: 235.)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>v_b(t) in km/s</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-02-24 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -129,12 +132,13 @@ of the observer</dd>
         <li class="right" >
           <a href="orbitv.html" title="galpy.orbit.Orbit.V"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="orbit.html" >Orbit</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

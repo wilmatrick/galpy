@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>More on disk distribution functions &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>Three-dimensional disk distribution functions &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="index.html" />
-    <link rel="next" title="Action-angle coordinates" href="actionAngle.html" />
-    <link rel="prev" title="A closer look at orbit integration" href="orbit.html" /> 
+    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <link rel="next" title="Orbit" href="reference/orbit.html" />
+    <link rel="prev" title="Action-angle coordinates" href="actionAngle.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,159 +34,35 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="actionAngle.html" title="Action-angle coordinates"
+          <a href="reference/orbit.html" title="Orbit"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="orbit.html" title="A closer look at orbit integration"
+          <a href="actionAngle.html" title="Action-angle coordinates"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="more-on-disk-distribution-functions">
-<h1>More on disk distribution functions<a class="headerlink" href="#more-on-disk-distribution-functions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="calculating-the-surface-mass-density-and-velocity-dispersion-profiles">
-<h2>Calculating the surface-mass density and velocity dispersion profiles<a class="headerlink" href="#calculating-the-surface-mass-density-and-velocity-dispersion-profiles" title="Permalink to this headline">¶</a></h2>
-<p>For a disk distribution function (i.e., a <tt class="docutils literal"><span class="pre">dehnendf</span></tt> or a <tt class="docutils literal"><span class="pre">shudf</span></tt>
-object) we can calculate the resulting surface-mass density profile
-using <tt class="docutils literal"><span class="pre">surfacemass</span></tt>, <tt class="docutils literal"><span class="pre">sigma2</span></tt>, and <tt class="docutils literal"><span class="pre">sigma2surfacemass</span></tt>. The
-latter calculates the product of the velocity dispersion squared and
-the surface-mass density. E.g.,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.df</span> <span class="kn">import</span> <span class="n">dehnendf</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dfc</span><span class="o">=</span> <span class="n">dehnendf</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dfc</span><span class="o">.</span><span class="n">surfacemass</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
-<span class="go">    0.050820867101511534</span>
-</pre></div>
-</div>
-<p>We can plot the surface-mass density as follows</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Rs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">5.</span><span class="p">,</span><span class="mi">151</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">=</span> <span class="p">[</span><span class="n">dfc</span><span class="o">.</span><span class="n">surfacemass</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">Rs</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">Rs</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="_images/diskdf-surfacemass.png" src="_images/diskdf-surfacemass.png" />
-<p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">Rs</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
-</pre></div>
-</div>
-<img alt="_images/diskdf-logsurfacemass.png" src="_images/diskdf-logsurfacemass.png" />
-<p>which shows the exponential behavior expected for an exponential
-disk. We can compare this to the input surface-mass density</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">input_out</span><span class="o">=</span> <span class="p">[</span><span class="n">dfc</span><span class="o">.</span><span class="n">targetSurfacemass</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">Rs</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">Rs</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">input_out</span><span class="p">)</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
-</pre></div>
-</div>
-<img alt="_images/diskdf-surfacemassdiff.png" src="_images/diskdf-surfacemassdiff.png" />
-<p>which shows that there are significant differences between the desired
-surface-mass density and the actual surface-mass density. We can do
-the same for the velocity-dispersion profile</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">=</span> <span class="p">[</span><span class="n">dfc</span><span class="o">.</span><span class="n">sigma2</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">Rs</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">input_out</span><span class="o">=</span> <span class="p">[</span><span class="n">dfc</span><span class="o">.</span><span class="n">targetSigma2</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">Rs</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">Rs</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">input_out</span><span class="p">)</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
-</pre></div>
-</div>
-<img alt="_images/diskdf-sigma2diff.png" src="_images/diskdf-sigma2diff.png" />
-</div>
-<div class="section" id="using-corrected-disk-distribution-functions">
-<h2>Using corrected disk distribution functions<a class="headerlink" href="#using-corrected-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
-<p>As shown above, for a given surface-mass density and velocity
-dispersion profile, the disk distribution functions of <a class="reference internal" href="basic_df.html#usagediskdfs"><em>Basic
-Usage: Disk distribution functions</em></a> only do a poor job
-of reproducing the desired profiles. We can correct this by
-calculating a set of <em>corrections</em> to the input profiles such that the
-output profiles more closely resemble the desired profiles (see
-<a class="reference external" href="http://adsabs.harvard.edu/abs/1999AJ....118.1201D">1999AJ....118.1201D</a>). galpy supports
-the calculation of these corrections, and comes with some
-pre-calculated corrections. For example, the following initializes a
-<tt class="docutils literal"><span class="pre">dehnendf</span></tt> with corrections up to 20th order (the default)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dfc</span><span class="o">=</span> <span class="n">dehnendf</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">correct</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The following figure shows the difference between the actual
-surface-mass density profile and the desired profile for 1, 2, 3, 4,
-5, 10, 15, and 20 iterations</p>
-<img alt="_images/testSurfacemassCorrections_sigma0_0.5.png" src="_images/testSurfacemassCorrections_sigma0_0.5.png" />
-<p>and the same for the velocity-dispersion profile</p>
-<img alt="_images/testSigmaCorrections_sigma0_0.5.png" src="_images/testSigmaCorrections_sigma0_0.5.png" />
-<p>galpy will automatically save any new corrections that you calculate.</p>
-</div>
-<div class="section" id="example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">
-<h2>Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar<a class="headerlink" href="#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar" title="Permalink to this headline">¶</a></h2>
-<p>We can combine the orbit integration capabilities of galpy with the
-provided distribution functions and see the effect of the Galactic bar
-on stellar velocities. By backward integrating orbits starting at the
-Solar position in a potential that includes the Galactic bar we can
-evaluate what the velocity distribution is that we should see today if
-the Galactic bar stirred up a steady-state disk. For this we
-initialize a flat rotation curve potential and Dehnen&#8217;s bar potential</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">LogarithmicHaloPotential</span><span class="p">,</span> <span class="n">DehnenBarPotential</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lp</span><span class="o">=</span> <span class="n">LogarithmicHaloPotential</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">=</span> <span class="n">DehnenBarPotential</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The Dehnen bar potential is initialized to start bar formation four bar
-periods before the present day and to have completely formed the bar two
-bar periods ago. We can integrate back to the time before
-bar-formation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dp</span><span class="o">.</span><span class="n">_tform</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>where <tt class="docutils literal"><span class="pre">dp._tform</span></tt> is the time of bar-formation (in the usual
-time-coordinates).</p>
-<p>We initialize orbits on a grid in velocity space and integrate them</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ins</span><span class="o">=</span><span class="p">[[</span><span class="n">Orbit</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7</span><span class="o">+</span><span class="mf">1.4</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="n">jj</span><span class="p">,</span><span class="mf">1.</span><span class="o">-</span><span class="mf">0.6</span><span class="o">+</span><span class="mf">1.2</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="n">ii</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span> <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="o">=</span><span class="p">[[</span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,[</span><span class="n">lp</span><span class="p">,</span><span class="n">dp</span><span class="p">])</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ins</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>We can then evaluate the weight of these orbits by assuming that the
-disk was in a steady-state before bar-formation with a Dehnen
-distribution function. We evaluate the Dehnen distribution function at
-<tt class="docutils literal"><span class="pre">dp._tform</span></tt> for each of the orbits</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dfc</span><span class="o">=</span> <span class="n">dehnendf</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">correct</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">=</span> <span class="p">[[</span><span class="n">dfc</span><span class="p">(</span><span class="n">o</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">_tform</span><span class="p">))</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ins</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This gives</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util.bovy_plot</span> <span class="kn">import</span> <span class="n">bovy_dens2d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bovy_dens2d</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s">&#39;gist_yarg&#39;</span><span class="p">,</span><span class="n">contours</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="nb">xrange</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.7</span><span class="p">],</span><span class="n">yrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">1.6</span><span class="p">],</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$v_R$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$v_T$&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="_images/diskdf-dehnenhercules.png" src="_images/diskdf-dehnenhercules.png" />
-<p>For more information see <a class="reference external" href="http://adsabs.harvard.edu/abs/2000AJ....119..800D">2000AJ....119..800D</a> and
-<a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a>. Note that the
-x-axis in the Figure above is defined as minus the x-axis in these
-papers.</p>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">More on disk distribution functions</a><ul>
-<li><a class="reference internal" href="#calculating-the-surface-mass-density-and-velocity-dispersion-profiles">Calculating the surface-mass density and velocity dispersion profiles</a></li>
-<li><a class="reference internal" href="#using-corrected-disk-distribution-functions">Using corrected disk distribution functions</a></li>
-<li><a class="reference internal" href="#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar</a></li>
+<li><a class="reference internal" href="#">Three-dimensional disk distribution functions</a><ul>
+<li><a class="reference internal" href="#setting-up-the-df-and-basic-properties">Setting up the DF and basic properties</a></li>
+<li><a class="reference internal" href="#evaluating-moments">Evaluating moments</a></li>
+<li><a class="reference internal" href="#evaluating-and-sampling-the-full-probability-distribution-function">Evaluating and sampling the full probability distribution function</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="orbit.html"
-                        title="previous chapter">A closer look at orbit integration</a></p>
-  <h4>Next topic</h4>
   <p class="topless"><a href="actionAngle.html"
-                        title="next chapter">Action-angle coordinates</a></p>
+                        title="previous chapter">Action-angle coordinates</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference/orbit.html"
+                        title="next chapter">Orbit</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/diskdf.txt"
@@ -207,6 +83,262 @@ papers.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="three-dimensional-disk-distribution-functions">
+<h1>Three-dimensional disk distribution functions<a class="headerlink" href="#three-dimensional-disk-distribution-functions" title="Permalink to this headline">¶</a></h1>
+<p>galpy contains a fully three-dimensional disk distribution:
+<tt class="docutils literal"><span class="pre">galpy.df.quasiisothermaldf</span></tt>, which is an approximately isothermal
+distribution function expressed in terms of action&#8211;angle variables
+(see <a class="reference external" href="http://adsabs.harvard.edu/abs/2010MNRAS.401.2318B">2010MNRAS.401.2318B</a> and
+<a class="reference external" href="http://adsabs.harvard.edu/abs/2011MNRAS.413.1889B">2011MNRAS.413.1889B</a>). Recent
+research shows that this distribution function provides a good model
+for the DF of mono-abundance sub-populations (MAPs) of the Milky Way
+disk (see <a class="reference external" href="http://adsabs.harvard.edu/abs/2013MNRAS.434..652T">2013MNRAS.434..652T</a> and
+<a class="reference external" href="http://adsabs.harvard.edu/abs/2013ApJ...779..115B">2013ApJ...779..115B</a>). This
+distribution function family requires action-angle coordinates to
+evaluate the DF, so <tt class="docutils literal"><span class="pre">galpy.df.quasiisothermaldf</span></tt> makes heavy use of
+the routines in <tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt> (in particular those in
+<tt class="docutils literal"><span class="pre">galpy.actionAngleAdiabatic</span></tt> and
+<tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleStaeckel</span></tt>).</p>
+<div class="section" id="setting-up-the-df-and-basic-properties">
+<h2>Setting up the DF and basic properties<a class="headerlink" href="#setting-up-the-df-and-basic-properties" title="Permalink to this headline">¶</a></h2>
+<p>The quasi-isothermal DF is defined by a gravitational potential and a
+set of parameters describing the radial surface-density profile and
+the radial and vertical velocity dispersion as a function of
+radius. In addition, we have to provide an instance of a
+<tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt> class to calculate the actions for a given
+position and velocity. For example, for a
+<tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> potential using the adiabatic
+approximation for the actions, we import and define the following</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleAdiabatic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.df</span> <span class="kn">import</span> <span class="n">quasiisothermaldf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and then setup the <tt class="docutils literal"><span class="pre">quasiisothermaldf</span></tt> instance</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">=</span> <span class="n">quasiisothermaldf</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aA</span><span class="p">,</span><span class="n">cutcounter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which sets up a DF instance with a radial scale length of
+<img class="math" src="_images/math/da601f3d98db9036fd5940bb59c11502d420153e.png" alt="R_0/3"/>, a local radial and vertical velocity dispersion of
+<img class="math" src="_images/math/99165218e44946408be755a0a69fa796f50beb45.png" alt="0.2\,V_c(R_0)"/> and <img class="math" src="_images/math/e0e64d54aeecb1601027154ca55f8e3f42304216.png" alt="0.1\,V_c(R_0)"/>, respectively, and a
+radial scale lengths of the velocity dispersions squared of
+<img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/>. <tt class="docutils literal"><span class="pre">cutcounter=True</span></tt> specifies that counter-rotating stars
+are explicitly excluded (normally these are just exponentially
+suppressed). As for the two-dimensional disk DFs, these parameters are
+merely input (or target) parameters; the true density and velocity
+dispersion profiles calculated by evaluating the relevant moments of
+the DF (see below) are not exactly exponential and have scale lengths
+and local normalizations that deviate slightly from these input
+parameters. We can estimate the DF&#8217;s actual radial scale length near
+<img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/> as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">0.33843243662586048</span>
+</pre></div>
+</div>
+<p>which is quite close to the input value of 1/3. Similarly, we can
+estimate the scale lengths of the dispersions squared</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hsr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">1.1527209864858059</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hsz</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">1.0441867587783933</span>
+</pre></div>
+</div>
+<p>The vertical profile is fully specified by the velocity dispersions
+and radial density / dispersion profiles under the assumption of
+dynamical equilibrium. We can estimate the scale height of this DF at
+a given radius and height as follows</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">0.018715154050080292</span>
+</pre></div>
+</div>
+<p>Near the mid-plane this vertical scale height becomes very large
+because the vertical profile flattens, e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="o">/</span><span class="mf">100.</span><span class="p">)</span>
+<span class="go">0.85435378664432149</span>
+</pre></div>
+</div>
+<p>or even</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">128674.27506772846</span>
+</pre></div>
+</div>
+<p>which is basically infinity.</p>
+</div>
+<div class="section" id="evaluating-moments">
+<h2>Evaluating moments<a class="headerlink" href="#evaluating-moments" title="Permalink to this headline">¶</a></h2>
+<p>We can evaluate various moments of the DF giving the density, mean
+velocities, and velocity dispersions. For example, the mean radial
+velocity is again everywhere zero because the potential and the DF are
+axisymmetric</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">meanvR</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>Likewise, the mean vertical velocity is everywhere zero</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">meanvz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>The mean rotational velocity has a more interesting dependence on
+position. Near the plane, this is the same as that calculated for a similar two-dimensional disk DF (see <a class="reference internal" href="basic_df.html#dftwod-moments"><em>Evaluating moments of the DF</em></a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">meanvT</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">0.9150884078276913</span>
+</pre></div>
+</div>
+<p>However, this value decreases as one moves further from the plane. The
+<tt class="docutils literal"><span class="pre">quasiisothermaldf</span></tt> allows us to calculate the average rotational
+velocity as a function of height above the plane. For example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mvts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdf</span><span class="o">.</span><span class="n">meanvT</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span><span class="n">mvts</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/qdf-meanvtz.png" src="_images/qdf-meanvtz.png" />
+<p>We can also calculate the second moments of the DF. We can check
+whether the radial and velocity dispersions at <img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/> are close
+to their input values</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qdf</span><span class="o">.</span><span class="n">sigmaR2</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
+<span class="go">0.20918647082092351</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qdf</span><span class="o">.</span><span class="n">sigmaz2</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
+<span class="go">0.092564222527283468</span>
+</pre></div>
+</div>
+<p>and they are pretty close. We can also calculate the mixed <em>R</em> and <em>z</em>
+moment, for example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">sigmaRz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>or expressed as an angle (the <em>tilt of the velocity ellipsoid</em>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">tilt</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>This tilt is zero because we are using the adiabatic approximation. As
+this approximation assumes that the motions in the plane are decoupled
+from the vertical motions of stars, the mixed moment is zero. However,
+this approximation is invalid for stars that go far above the
+plane. By using the Staeckel approximation to calculate the actions,
+we can model this coupling better. Setting up a <tt class="docutils literal"><span class="pre">quasiisothermaldf</span></tt>
+instance with the Staeckel approximation</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleStaeckel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">=</span> <span class="n">quasiisothermaldf</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aAS</span><span class="p">,</span><span class="n">cutcounter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>we can similarly calculate the tilt</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">.</span><span class="n">tilt</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">5.4669442080366721</span>
+</pre></div>
+</div>
+<p>or about 5 degrees. As a function of height, we find</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tilts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdfS</span><span class="o">.</span><span class="n">tilt</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span><span class="n">tilts</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/qdf_tiltz.png" src="_images/qdf_tiltz.png" />
+<p>We can also calculate the density and surface density (the zero-th
+velocity moments). For example, the vertical density</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">densz</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdf</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">denszS</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdfS</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can compare the vertical profiles calculated using the adiabatic
+and Staeckel action-angle approximations</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">semilogy</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span><span class="n">densz</span><span class="o">/</span><span class="n">densz</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">semilogy</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span><span class="n">denszS</span><span class="o">/</span><span class="n">denszS</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/qdf-densz.png" src="_images/qdf-densz.png" />
+<p>Similarly, we can calculate the radial profile of the surface density</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surfr</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdf</span><span class="o">.</span><span class="n">surfacemass_z</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surfrS</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdfS</span><span class="o">.</span><span class="n">surfacemass_z</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>and compare them with each other and an exponential with scale length
+1/3</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">semilogy</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">surfr</span><span class="o">/</span><span class="n">surfr</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">semilogy</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">surfrS</span><span class="o">/</span><span class="n">surfrS</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">semilogy</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">rs</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/qdf-densr.png" src="_images/qdf-densr.png" />
+<p>The two radial profiles are almost indistinguishable and are very
+close, if somewhat shallower, than the pure exponential profile.</p>
+<p>General velocity moments, including all higher order moments, are
+implemented in <tt class="docutils literal"><span class="pre">quasiisothermaldf.vmomentdensity</span></tt>.</p>
+</div>
+<div class="section" id="evaluating-and-sampling-the-full-probability-distribution-function">
+<h2>Evaluating and sampling the full probability distribution function<a class="headerlink" href="#evaluating-and-sampling-the-full-probability-distribution-function" title="Permalink to this headline">¶</a></h2>
+<p>We can evaluate the distribution itself by calling the object, e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="c">#input: R,vR,vT,z,vz</span>
+<span class="go">array([ 10.16445158])</span>
+</pre></div>
+</div>
+<p>or as a function of rotational velocity, for example in the mid-plane</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvt</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdfS</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">vt</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="k">for</span> <span class="n">vt</span> <span class="ow">in</span> <span class="n">vts</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">vts</span><span class="p">,</span><span class="n">pvt</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pvt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">vts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">vts</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/qdf-callvt.png" src="_images/qdf-callvt.png" />
+<p>This is, however, not the true distribution of rotational velocities
+at <em>R</em> =0 and <em>z</em> =0, because it is conditioned on zero radial and
+vertical velocities. We can calculate the distribution of rotational
+velocities marginalized over the radial and vertical velocities as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">.</span><span class="n">pvT</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="c">#input vT,R,z</span>
+<span class="go">15.464330302557528</span>
+</pre></div>
+</div>
+<p>or as a function of rotational velocity</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pvt</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qdfS</span><span class="o">.</span><span class="n">pvT</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="k">for</span> <span class="n">vt</span> <span class="ow">in</span> <span class="n">vts</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>overplotting this over the previous distribution gives</p>
+<img alt="_images/qdf-pvt.png" src="_images/qdf-pvt.png" />
+<p>which is slightly different from the conditioned
+distribution. Similarly, we can calculate marginalized velocity
+probabilities <tt class="docutils literal"><span class="pre">`pvR</span></tt>, <tt class="docutils literal"><span class="pre">pvz</span></tt>, <tt class="docutils literal"><span class="pre">pvRvT</span></tt>, <tt class="docutils literal"><span class="pre">pvRvz</span></tt>, and
+<tt class="docutils literal"><span class="pre">pvTvz</span></tt>. These are all multiplied with the density, such that
+marginalizing these over the remaining velocity component results in
+the density.</p>
+<p>We can sample velocities at a given location using
+<tt class="docutils literal"><span class="pre">quasiisothermaldf.sampleV</span></tt> (there is currently no support for
+sampling locations from the density profile, although that is rather
+trivial):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vs</span><span class="o">=</span> <span class="n">qdfS</span><span class="o">.</span><span class="n">sampleV</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span><span class="p">(</span><span class="n">vs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;step&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>gives</p>
+<img alt="_images/qdf-pvtwsamples.png" src="_images/qdf-pvtwsamples.png" />
+<p>which shows very good agreement with the green (marginalized over <em>vR</em>
+and <em>vz</em>) curve (as it should).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -216,16 +348,17 @@ papers.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="actionAngle.html" title="Action-angle coordinates"
+          <a href="reference/orbit.html" title="Orbit"
              >next</a> |</li>
         <li class="right" >
-          <a href="orbit.html" title="A closer look at orbit integration"
+          <a href="actionAngle.html" title="Action-angle coordinates"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.df.diskdf.sampleVRVT &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.df.diskdf.sampleVRVT &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="DF" href="df.html" />
     <link rel="next" title="Dehnen DF" href="dfdehnen.html" />
     <link rel="prev" title="hhgalpy.df.diskdf.sampleLOS" href="diskdfsampleLOS.html" /> 
@@ -40,56 +40,15 @@
         <li class="right" >
           <a href="diskdfsampleLOS.html" title="hhgalpy.df.diskdf.sampleLOS"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-df-diskdf-samplevrvt">
-<h1>galpy.df.diskdf.sampleVRVT<a class="headerlink" href="#galpy-df-diskdf-samplevrvt" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.df.diskdf.sampleVRVT">
-<tt class="descclassname">diskdf.</tt><tt class="descname">sampleVRVT</tt><big>(</big><em>R</em>, <em>n=1</em>, <em>nsigma=None</em>, <em>target=True</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sampleVRVT" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>sampleVRVT</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>sample a radial and azimuthal velocity at R</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><p>R - Galactocentric distance</p>
-<p>n= number of distances to sample</p>
-<p>nsigma= number of sigma to rejection-sample on</p>
-<dl class="docutils">
-<dt>target= if True, sample using the &#8216;target&#8217; sigma_R</dt>
-<dd>rather than the actual sigma_R (default=True)</dd>
-</dl>
-</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>list of samples</div></blockquote>
-<p>BUGS:</p>
-<blockquote>
-<div>should use the fact that vR and vT separate</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2011-03-24 - Written - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="diskdfsampleLOS.html"
                         title="previous chapter">hhgalpy.df.diskdf.sampleLOS</a></p>
@@ -116,6 +75,47 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-diskdf-samplevrvt">
+<h1>galpy.df.diskdf.sampleVRVT<a class="headerlink" href="#galpy-df-diskdf-samplevrvt" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.diskdf.sampleVRVT">
+<tt class="descclassname">diskdf.</tt><tt class="descname">sampleVRVT</tt><big>(</big><em>R</em>, <em>n=1</em>, <em>nsigma=None</em>, <em>target=True</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sampleVRVT" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>sampleVRVT</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>sample a radial and azimuthal velocity at R</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>R - Galactocentric distance</p>
+<p>n= number of distances to sample</p>
+<p>nsigma= number of sigma to rejection-sample on</p>
+<p>target= if True, sample using the &#8216;target&#8217; sigma_R rather than the actual sigma_R (default=True)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>list of samples</div></blockquote>
+<p>BUGS:</p>
+<blockquote>
+<div>should use the fact that vR and vT separate</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-03-24 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -130,12 +130,13 @@
         <li class="right" >
           <a href="diskdfsampleLOS.html" title="hhgalpy.df.diskdf.sampleLOS"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" >DF</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

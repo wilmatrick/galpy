@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.potential.Potential.dens &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.potential.Potential.dens &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="galpy.potential.Potential.dvcircdR" href="potentialdvcircdr.html" />
     <link rel="prev" title="galpy.potential.Potential.__call__" href="potentialcall.html" /> 
@@ -40,58 +40,15 @@
         <li class="right" >
           <a href="potentialcall.html" title="galpy.potential.Potential.__call__"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-potential-potential-dens">
-<h1>galpy.potential.Potential.dens<a class="headerlink" href="#galpy-potential-potential-dens" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.potential.Potential.dens">
-<tt class="descclassname">Potential.</tt><tt class="descname">dens</tt><big>(</big><em>R</em>, <em>z</em>, <em>phi=0.0</em>, <em>t=0.0</em>, <em>forcepoisson=False</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.dens" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>dens</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>evaluate the density rho(R,z,t)</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><p>R - Cylindrical Galactocentric radius</p>
-<p>z - vertical height</p>
-<p>phi - azimuth (optional)</p>
-<p>t - time (optional)</p>
-</div></blockquote>
-<p>KEYWORDS:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>forcepoisson= if True, calculate the density through the Poisson </dt>
-<dd>equation, even if an explicit expression for the 
-density exists</dd>
-</dl>
-</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>rho (R,z,phi,t)</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2010-08-08 - Written - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="potentialcall.html"
                         title="previous chapter">galpy.potential.Potential.__call__</a></p>
@@ -118,6 +75,47 @@ density exists</dd>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-potential-potential-dens">
+<h1>galpy.potential.Potential.dens<a class="headerlink" href="#galpy-potential-potential-dens" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.potential.Potential.dens">
+<tt class="descclassname">Potential.</tt><tt class="descname">dens</tt><big>(</big><em>R</em>, <em>z</em>, <em>phi=0.0</em>, <em>t=0.0</em>, <em>forcepoisson=False</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.dens" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>dens</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>evaluate the density rho(R,z,t)</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>R - Cylindrical Galactocentric radius</p>
+<p>z - vertical height</p>
+<p>phi - azimuth (optional)</p>
+<p>t - time (optional)</p>
+</div></blockquote>
+<p>KEYWORDS:</p>
+<blockquote>
+<div>forcepoisson= if True, calculate the density through the Poisson equation, even if an explicit expression for the density exists</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>rho (R,z,phi,t)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2010-08-08 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -132,12 +130,13 @@ density exists</dd>
         <li class="right" >
           <a href="potentialcall.html" title="galpy.potential.Potential.__call__"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

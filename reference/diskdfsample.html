@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.df.diskdf.sample &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.df.diskdf.sample &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="DF" href="df.html" />
     <link rel="next" title="galpy.df.diskdf.sampledSurfacemassLOS" href="diskdfsampledSurfacemassLOS.html" />
     <link rel="prev" title="galpy.df.diskdf.vmomentsurfacemass" href="diskdfvmomentsurfacemass.html" /> 
@@ -40,64 +40,15 @@
         <li class="right" >
           <a href="diskdfvmomentsurfacemass.html" title="galpy.df.diskdf.vmomentsurfacemass"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-df-diskdf-sample">
-<h1>galpy.df.diskdf.sample<a class="headerlink" href="#galpy-df-diskdf-sample" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.df.diskdf.sample">
-<tt class="descclassname">diskdf.</tt><tt class="descname">sample</tt><big>(</big><em>n=1</em>, <em>rrange=None</em>, <em>returnROrbit=True</em>, <em>returnOrbit=False</em>, <em>nphi=1.0</em>, <em>los=None</em>, <em>losdeg=True</em>, <em>nsigma=None</em>, <em>maxd=None</em>, <em>target=True</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sample" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>sample</dd>
-<dt>PURPOSE:</dt>
-<dd>sample n*nphi points from this DF</dd>
-<dt>INPUT:</dt>
-<dd><dl class="first docutils">
-<dt>n - number of desired sample (specifying this rather than calling </dt>
-<dd>this routine n times is more efficient)</dd>
-<dt>rrange - if you only want samples in this rrange, set this keyword </dt>
-<dd>(only works when asking for an (RZ)Orbit</dd>
-<dt>returnROrbit - if True, return a planarROrbit instance: </dt>
-<dd>[R,vR,vT] (default)</dd>
-</dl>
-<p>returnOrbit - if True, return a planarOrbit instance (including phi)
-nphi - number of azimuths to sample for each E,L
-los= line of sight sampling along this line of sight
-losdeg= los in degrees? (default=True)
-target= if True, use target surface mass and sigma2 profiles</p>
-<blockquote>
-<div>(default=True)</div></blockquote>
-<p class="last">nsigma= number of sigma to rejection-sample on
-maxd= maximum distance to consider (for the rejection sampling)</p>
-</dd>
-<dt>OUTPUT:</dt>
-<dd><p class="first">n*nphi list of [[E,Lz],...] or list of planar(R)Orbits
-CAUTION: lists of EL need to be post-processed to account for the</p>
-<blockquote class="last">
-<div>kappa/omega_R discrepancy</div></blockquote>
-</dd>
-<dt>HISTORY:</dt>
-<dd>2010-07-10 - Started  - Bovy (NYU)</dd>
-</dl>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="diskdfvmomentsurfacemass.html"
                         title="previous chapter">galpy.df.diskdf.vmomentsurfacemass</a></p>
@@ -124,6 +75,58 @@ CAUTION: lists of EL need to be post-processed to account for the</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-diskdf-sample">
+<h1>galpy.df.diskdf.sample<a class="headerlink" href="#galpy-df-diskdf-sample" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.diskdf.sample">
+<tt class="descclassname">diskdf.</tt><tt class="descname">sample</tt><big>(</big><em>n=1</em>, <em>rrange=None</em>, <em>returnROrbit=True</em>, <em>returnOrbit=False</em>, <em>nphi=1.0</em>, <em>los=None</em>, <em>losdeg=True</em>, <em>nsigma=None</em>, <em>maxd=None</em>, <em>target=True</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>sample</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>sample n*nphi points from this DF</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>n - number of desired sample (specifying this rather than calling this routine n times is more efficient)</p>
+<p>rrange - if you only want samples in this rrange, set this keyword (only works when asking for an (RZ)Orbit</p>
+<dl class="docutils">
+<dt>returnROrbit - if True, return a planarROrbit instance: </dt>
+<dd>[R,vR,vT] (default)</dd>
+</dl>
+<p>returnOrbit - if True, return a planarOrbit instance (including phi)</p>
+<p>nphi - number of azimuths to sample for each E,L</p>
+<p>los= line of sight sampling along this line of sight</p>
+<p>losdeg= los in degrees? (default=True)</p>
+<p>target= if True, use target surface mass and sigma2 profiles (default=True)</p>
+<p>nsigma= number of sigma to rejection-sample on</p>
+<p>maxd= maximum distance to consider (for the rejection sampling)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div><p>n*nphi list of [[E,Lz],...] or list of planar(R)Orbits</p>
+<dl class="docutils">
+<dt>CAUTION: lists of EL need to be post-processed to account for the </dt>
+<dd>kappa/omega_R discrepancy</dd>
+</dl>
+</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2010-07-10 - Started  - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -138,12 +141,13 @@ CAUTION: lists of EL need to be post-processed to account for the</p>
         <li class="right" >
           <a href="diskdfvmomentsurfacemass.html" title="galpy.df.diskdf.vmomentsurfacemass"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" >DF</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

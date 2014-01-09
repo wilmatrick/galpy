@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.df.diskdf.sampledSurfacemassLOS &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.df.diskdf.sampledSurfacemassLOS &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="DF" href="df.html" />
     <link rel="next" title="hhgalpy.df.diskdf.sampleLOS" href="diskdfsampleLOS.html" />
     <link rel="prev" title="galpy.df.diskdf.sample" href="diskdfsample.html" /> 
@@ -40,53 +40,15 @@
         <li class="right" >
           <a href="diskdfsample.html" title="galpy.df.diskdf.sample"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-df-diskdf-sampledsurfacemasslos">
-<h1>galpy.df.diskdf.sampledSurfacemassLOS<a class="headerlink" href="#galpy-df-diskdf-sampledsurfacemasslos" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.df.diskdf.sampledSurfacemassLOS">
-<tt class="descclassname">diskdf.</tt><tt class="descname">sampledSurfacemassLOS</tt><big>(</big><em>l</em>, <em>n=1</em>, <em>maxd=None</em>, <em>target=True</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sampledSurfacemassLOS" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>sampledSurfacemassLOS</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>sample a distance along the line of sight</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><p>l - Galactic longitude (in rad)</p>
-<p>n= number of distances to sample</p>
-<p>maxd= maximum distance to consider (for the rejection sampling)</p>
-<dl class="docutils">
-<dt>target= if True, sample from the &#8216;target&#8217; surface mass density,</dt>
-<dd>rather than the actual surface mass density (default=True)</dd>
-</dl>
-</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>list of samples</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2011-03-24 - Written - Bovy (NYU)</div></blockquote>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="diskdfsample.html"
                         title="previous chapter">galpy.df.diskdf.sample</a></p>
@@ -113,6 +75,44 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-diskdf-sampledsurfacemasslos">
+<h1>galpy.df.diskdf.sampledSurfacemassLOS<a class="headerlink" href="#galpy-df-diskdf-sampledsurfacemasslos" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.diskdf.sampledSurfacemassLOS">
+<tt class="descclassname">diskdf.</tt><tt class="descname">sampledSurfacemassLOS</tt><big>(</big><em>l</em>, <em>n=1</em>, <em>maxd=None</em>, <em>target=True</em><big>)</big><a class="headerlink" href="#galpy.df.diskdf.sampledSurfacemassLOS" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>sampledSurfacemassLOS</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>sample a distance along the line of sight</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>l - Galactic longitude (in rad)</p>
+<p>n= number of distances to sample</p>
+<p>maxd= maximum distance to consider (for the rejection sampling)</p>
+<p>target= if True, sample from the &#8216;target&#8217; surface mass density, rather than the actual surface mass density (default=True)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>list of samples</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-03-24 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -127,12 +127,13 @@
         <li class="right" >
           <a href="diskdfsample.html" title="galpy.df.diskdf.sample"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="df.html" >DF</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

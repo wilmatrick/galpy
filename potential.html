@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Potentials in galpy &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <link rel="next" title="Two-dimensional disk distribution functions" href="basic_df.html" />
+    <link rel="prev" title="Introduction" href="getting_started.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="basic_df.html" title="Two-dimensional disk distribution functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Potentials in galpy</a><ul>
+<li><a class="reference internal" href="#potentials-and-forces">Potentials and forces</a></li>
+<li><a class="reference internal" href="#densities">Densities</a></li>
+<li><a class="reference internal" href="#close-to-circular-orbits-and-orbital-frequencies">Close-to-circular orbits and orbital frequencies</a></li>
+<li><a class="reference internal" href="#adding-potentials-to-the-galpy-framework">Adding potentials to the galpy framework</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="basic_df.html"
+                        title="next chapter">Two-dimensional disk distribution functions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/potential.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="potentials-in-galpy">
+<h1>Potentials in galpy<a class="headerlink" href="#potentials-in-galpy" title="Permalink to this headline">¶</a></h1>
+<p>galpy contains a large variety of potentials in <tt class="docutils literal"><span class="pre">galpy.potential</span></tt>
+that can be used for orbit integration, the calculation of
+action-angle coordinates, as part of steady-state distribution
+functions, and to study the properties of gravitational
+potentials. This section introduces some of these features.</p>
+<div class="section" id="potentials-and-forces">
+<h2>Potentials and forces<a class="headerlink" href="#potentials-and-forces" title="Permalink to this headline">¶</a></h2>
+<p>Various 3D and 2D potentials are contained in galpy, list in the
+<a class="reference internal" href="reference/potential.html#potential-api"><em>API page</em></a>. Another way to list the latest overview
+of potentials included with galpy is to run</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">galpy.potential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">galpy</span><span class="o">.</span><span class="n">potential</span><span class="p">)</span> <span class="k">if</span> <span class="s">&#39;Potential&#39;</span> <span class="ow">in</span> <span class="n">p</span><span class="p">]</span>
+<span class="go">[&#39;CosmphiDiskPotential&#39;,</span>
+<span class="go"> &#39;DehnenBarPotential&#39;,</span>
+<span class="go"> &#39;DoubleExponentialDiskPotential&#39;,</span>
+<span class="go"> &#39;EllipticalDiskPotential&#39;,</span>
+<span class="go"> &#39;FlattenedPowerPotential&#39;,</span>
+<span class="go"> &#39;HernquistPotential&#39;,</span>
+<span class="go">....]</span>
+</pre></div>
+</div>
+<p>(list cut here for brevity). Section <a class="reference internal" href="getting_started.html#rotcurves"><em>Rotation curves</em></a> explains how to initialize potentials and how to display
+the rotation curve of single Potential instances or of combinations of
+such instances. Similarly, we can evaluate a Potential instance</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MiyamotoNagaiPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">=</span> <span class="n">MiyamotoNagaiPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.0375</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">-1.2889062500000001</span>
+</pre></div>
+</div>
+<p>Most member functions of Potential instances have corresponding
+functions in the galpy.potential module that allow them to be
+evaluated for lists of multiple Potential
+instances. <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> is such a list of three
+Potential instances</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">MWPotential</span>
+<span class="go">[&lt;galpy.potential_src.MiyamotoNagaiPotential.MiyamotoNagaiPotential instance at 0x1078d5c20&gt;, &lt;galpy.potential_src.TwoPowerSphericalPotential.NFWPotential instance at 0x1078d5c68&gt;, &lt;galpy.potential_src.TwoPowerSphericalPotential.HernquistPotential instance at 0x1078d5cb0&gt;]</span>
+</pre></div>
+</div>
+<p>and we can evaluate the potential by using the <tt class="docutils literal"><span class="pre">evaluatePotentials</span></tt>
+function</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">evaluatePotentials</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluatePotentials</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span>
+<span class="go">-4.5525780402192924</span>
+</pre></div>
+</div>
+<p>We can plot the potential of axisymmetric potentials (or of
+non-axisymmetric potentials at phi=0) using the <tt class="docutils literal"><span class="pre">plot</span></tt> member
+function</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which produces the following plot</p>
+<img alt="_images/mp-potential.png" src="_images/mp-potential.png" />
+<p>Similarly, we can plot combinations of Potentials using
+<tt class="docutils literal"><span class="pre">plotPotentials</span></tt>, e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plotPotentials</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/MWPotential-potential.png" src="_images/MWPotential-potential.png" />
+<p>These functions have arguments that can provide custom <tt class="docutils literal"><span class="pre">R</span></tt> and <tt class="docutils literal"><span class="pre">z</span></tt>
+ranges for the plot, the number of grid points, the number of
+contours, and many other parameters determining the appearance of
+these figures.</p>
+<p>galpy also allows the forces corresponding to a gravitational
+potential to be calculated. Again for the Miyamoto-Nagai Potential
+instance from above</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">Rforce</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">-1.0</span>
+</pre></div>
+</div>
+<p>This value of -1.0 is due to the normalization of the potential such
+that the circular velocity is 1. at R=1. Similarly, the vertical force
+is zero in the mid-plane</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">zforce</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">-0.0</span>
+</pre></div>
+</div>
+<p>but not further from the mid-plane</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">zforce</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">-0.53488743705310848</span>
+</pre></div>
+</div>
+<p>As explained in <a class="reference internal" href="getting_started.html#units"><em>Units in galpy</em></a>, these forces are in
+standard galpy units, and we can convert them to physical units using
+methods in the <tt class="docutils literal"><span class="pre">galpy.util.bovy_conversion</span></tt> module. For example,
+assuming a physical circular velocity of 220 km/s at R=8 kpc</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util</span> <span class="kn">import</span> <span class="n">bovy_conversion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">zforce</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_kmsMyr</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">-3.3095671288657584 #km/s/Myr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">zforce</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_2piGmsolpc2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">-119.72021771473301 #2 \pi G Msol / pc^2</span>
+</pre></div>
+</div>
+<p>Again, there are functions in <tt class="docutils literal"><span class="pre">galpy.potential</span></tt> that allow for the
+evaluation of the forces for lists of Potential instances, such that</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">evaluateRforces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluateRforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span>
+<span class="go">-1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">evaluatezforces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_2piGmsolpc2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mf">82.898379883714099</span> <span class="c">#2 \pi G Msol / pc^2</span>
+</pre></div>
+</div>
+<p>We can evaluate the flattening of the potential as
+<img class="math" src="_images/math/99582acd4982fbed1ac12b603d2ad1a3d670b51f.png" alt="\sqrt{|z\,F_R/R\,F_Z|}"/> for a Potential instance as well as for
+a list of such instances</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">flattening</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">0.4549542914935209</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">flattening</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flattening</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="go">0.5593251065691105</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="densities">
+<h2>Densities<a class="headerlink" href="#densities" title="Permalink to this headline">¶</a></h2>
+<p>galpy can also calculate the densities corresponding to gravitational
+potentials. For many potentials, the densities are explicitly
+implemented, but if they are not, the density is calculated using the
+Poisson equation (second derivatives of the potential have to be
+implemented for this). For example, for the Miyamoto-Nagai potential,
+the density is explicitly implemented</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">1.1145444383277576</span>
+</pre></div>
+</div>
+<p>and we can also calculate this using the Poisson equation</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">forcepoisson</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">1.1145444383277574</span>
+</pre></div>
+</div>
+<p>which are the same to machine precision</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">forcepoisson</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">-</span><span class="n">mp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">-2.2204460492503131e-16</span>
+</pre></div>
+</div>
+<p>Similarly, all of the potentials in <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt>
+have explicitly-implemented densities, so we can do</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">evaluateDensities</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluateDensities</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span>
+<span class="go">0.71812049194200644</span>
+</pre></div>
+</div>
+<p>In physical coordinates, this becomes</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">evaluateDensities</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_msolpc3</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">0.1262386383150029 #Msol / pc^3</span>
+</pre></div>
+</div>
+<p>We can also plot densities</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">plotDensities</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plotDensities</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">rmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">zmin</span><span class="o">=-</span><span class="mf">0.25</span><span class="p">,</span><span class="n">nrs</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span><span class="n">nzs</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<img alt="_images/MWPotential-density.png" src="_images/MWPotential-density.png" />
+<p>Another example of this is for an exponential disk potential</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">DoubleExponentialDiskPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">=</span> <span class="n">DoubleExponentialDiskPotential</span><span class="p">(</span><span class="n">hr</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span><span class="n">hz</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="mf">20.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The density computed using the Poisson equation now requires multiple
+numerical integrations, so the agreement between the analytical
+density and that computed using the Poisson equation is slightly less good, but still better than a percent</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">forcepoisson</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">-</span><span class="n">dp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span><span class="o">/</span><span class="n">dp</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">0.0032522956769123019</span>
+</pre></div>
+</div>
+<p>The density is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">.</span><span class="n">plotDensity</span><span class="p">(</span><span class="n">rmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">zmin</span><span class="o">=-</span><span class="mf">0.25</span><span class="p">,</span><span class="n">nrs</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span><span class="n">nzs</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/dp-density.png" src="_images/dp-density.png" />
+<p>and the potential is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zmin</span><span class="o">=-</span><span class="mf">0.25</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/dp-potential.png" src="_images/dp-potential.png" />
+<p>Clearly, the potential is much less flattened than the density.</p>
+</div>
+<div class="section" id="close-to-circular-orbits-and-orbital-frequencies">
+<h2>Close-to-circular orbits and orbital frequencies<a class="headerlink" href="#close-to-circular-orbits-and-orbital-frequencies" title="Permalink to this headline">¶</a></h2>
+<p>We can also compute the properties of close-to-circular orbits. First
+of all, we can calculate the circular velocity and its derivative</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">vcirc</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">dvcircdR</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">-0.163777427566978</span>
+</pre></div>
+</div>
+<p>or, for lists of Potential instances</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">vcirc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vcirc</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">dvcircdR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dvcircdR</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">0.012084123754590059</span>
+</pre></div>
+</div>
+<p>We can also calculate the various frequencies for close-to-circular
+orbits. For example, the rotational frequency</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">omegac</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">1.2784598203204887</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">omegac</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">omegac</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">1.2389547535552212</span>
+</pre></div>
+</div>
+<p>and the epicycle frequency</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">epifreq</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">1.7774973530267848</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">epifreq</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epifreq</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">1.8144833328444094</span>
+</pre></div>
+</div>
+<p>as well as the vertical frequency</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">verticalfreq</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="go">3.7859388972001828</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">verticalfreq</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verticalfreq</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">3.0000000000000004</span>
+</pre></div>
+</div>
+<p>For close-to-circular orbits, we can also compute the radii of the
+Lindblad resonances. For example, for a frequency similar to that of
+the Milky Way&#8217;s bar</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">lindbladR</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="s">&#39;corotation&#39;</span><span class="p">)</span> <span class="c">#args are pattern speed and m of pattern</span>
+<span class="go">0.6027911166042229 #~ 5kpc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mp</span><span class="o">.</span><span class="n">lindbladR</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">.</span><span class="n">lindbladR</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="n">m</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">0.9906190683480501</span>
+</pre></div>
+</div>
+<p>The <tt class="xref docutils literal"><span class="pre">None</span></tt> here means that there is no inner Lindblad resonance, the
+<tt class="docutils literal"><span class="pre">m=-2</span></tt> resonance is in the Solar neighborhood (see the section on
+the <a class="reference internal" href="basic_df.html#hercules"><em>Hercules stream</em></a> in this documentation).</p>
+</div>
+<div class="section" id="adding-potentials-to-the-galpy-framework">
+<h2>Adding potentials to the galpy framework<a class="headerlink" href="#adding-potentials-to-the-galpy-framework" title="Permalink to this headline">¶</a></h2>
+<p>Potentials in galpy can be used in many places such as orbit
+integration, distribution functions, or the calculation of
+action-angle variables, and in most cases any instance of a potential
+class that inherits from the general <tt class="docutils literal"><span class="pre">Potential</span></tt> class (or a list of
+such instances) can be given. For example, all orbit integration
+routines work with any list of instances of the general <tt class="docutils literal"><span class="pre">Potential</span></tt>
+class. Adding new potentials to galpy therefore allows them to be used
+everywhere in galpy where general <tt class="docutils literal"><span class="pre">Potential</span></tt> instances can be
+used. Adding a new class of potentials to galpy consists of the
+following series of steps (some of these are also given in the file
+<tt class="docutils literal"><span class="pre">README.dev</span></tt> in the galpy distribution):</p>
+<ol class="arabic simple">
+<li>Implement the new potential in a class that inherits from <tt class="docutils literal"><span class="pre">galpy.potential.Potential</span></tt>. The new class should have an <tt class="docutils literal"><span class="pre">__init__</span></tt> method that sets up the necessary parameters for the class. An amplitude parameter <tt class="docutils literal"><span class="pre">amp=</span></tt> should be taken as an argument for this class and before performing any other setup, the   <tt class="docutils literal"><span class="pre">galpy.potential.Potential.__init__(self,amp=amp)</span></tt> method should   be called to setup the amplitude. To add support for normalizing the   potential to standard galpy units, one can call the   <tt class="docutils literal"><span class="pre">galpy.potential.Potential.normalize</span></tt> function at the end of the __init__ function.</li>
+</ol>
+<blockquote>
+<div><p>The new potential class should implement some of the following
+functions:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">_evaluate(R,z,phi=0,t=0,dR=0,dphi=0)</span></tt> which evaluates the
+potential itself (<em>without</em> the amp factor, which is added in the
+<tt class="docutils literal"><span class="pre">__call__</span></tt> method of the general Potential class). This function
+should also call the relevant derivatives if dR or dphi is not
+equal to zero (this is used only in some of the razor-thin disk
+distribution functions, so doing this properly is not that
+important).</li>
+<li><tt class="docutils literal"><span class="pre">_Rforce(self,R,z,phi=0.,t=0.)</span></tt> which evaluates the radial force
+in cylindrical coordinates (-d potential / d R).</li>
+<li><tt class="docutils literal"><span class="pre">_zforce(self,R,z,phi=0.,t=0.)</span></tt> which evaluates the vertical force
+in cylindrical coordinates (-d potential / d z).</li>
+<li><tt class="docutils literal"><span class="pre">_R2deriv(self,R,z,phi=0.,t=0.)</span></tt> which evaluates the second
+(cylindrical) radial derivative of the potential (d^2 potential /
+d R^2).</li>
+<li><tt class="docutils literal"><span class="pre">_z2deriv(self,R,z,phi=0.,t=0.)</span></tt> which evaluates the second
+(cylindrical) vertical derivative of the potential (d^2 potential /
+d z^2).</li>
+<li><tt class="docutils literal"><span class="pre">_Rzderiv(self,R,z,phi=0.,t=0.)</span></tt> which evaluates the mixed
+(cylindrical) radial and vertical derivative of the potential (d^2
+potential / d R d z).</li>
+<li><tt class="docutils literal"><span class="pre">_dens(self,R,z,phi=0.,t=0.)</span></tt> which evaluates the density. If
+not given, the density is computed using the Poisson equation from
+the first and second derivatives of the potential (if all are
+implemented).</li>
+<li><tt class="docutils literal"><span class="pre">_phiforce(self,R,z,phi=0.,t=0.)</span></tt>: the azimuthal force in
+cylindrical coordinates (assumed zero if not implemented).</li>
+<li><tt class="docutils literal"><span class="pre">_phi2deriv(self,R,z,phi=0.,t=0.)</span></tt>: the second azimuthal
+derivative of the potential in cylindrical coordinates (d^2
+potential / d phi^2; assumed zero if not given).</li>
+<li><tt class="docutils literal"><span class="pre">_Rphideriv(self,R,z,phi=0.,t=0.)</span></tt>: the mixed radial and
+azimuthal derivative of the potential in cylindrical coordinates
+(d^2 potential / d R d phi; assumed zero if not given).</li>
+</ul>
+<p>The code for <tt class="docutils literal"><span class="pre">galpy.potential.MiyamotoNagaiPotential</span></tt> gives a good
+template to follow for 3D axisymmetric potentials. Similarly, the
+code for <tt class="docutils literal"><span class="pre">galpy.potential.CosmphiDiskPotential</span></tt> provides a good
+template for 2D, non-axisymmetric potentials.</p>
+<p>After this step, the new potential will work in any part of galpy
+that uses pure python potentials. To get the potential to work with
+the C implementations of orbit integration or action-angle
+calculations, the potential also has to be implemented in C and the
+potential has to be passed from python to C.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>To add a C implementation of the potential, implement it in a .c file under <tt class="docutils literal"><span class="pre">potential_src/potential_c_ext</span></tt>. Look at <tt class="docutils literal"><span class="pre">potential_src/potential_c_ext/LogarithmicHaloPotential.c</span></tt> for the right format for 3D, axisymmetric potentials, or at <tt class="docutils literal"><span class="pre">potential_src/potential_c_ext/LopsidedDiskPotential.c</span></tt> for 2D, non-axisymmetric potentials.</li>
+</ol>
+<blockquote>
+<div><p>For orbit integration, the functions such as:</p>
+<ul class="simple">
+<li>double LogarithmicHaloPotentialRforce(double R,double Z, double phi,double t,struct potentialArg * potentialArgs)</li>
+<li>double LogarithmicHaloPotentialzforce(double R,double Z, double phi,double t,struct potentialArg * potentialArgs)</li>
+</ul>
+<p>are most important. For some of the action-angle calculations</p>
+<ul class="simple">
+<li>double LogarithmicHaloPotentialEval(double R,double Z, double phi,double t,struct potentialArg * potentialArgs)</li>
+</ul>
+<p>is most important (i.e., for those algorithms that evaluate the potential). The arguments of the potential are passed in a <tt class="docutils literal"><span class="pre">potentialArgs</span></tt> structure that contains <tt class="docutils literal"><span class="pre">args</span></tt>, which are the arguments that should be unpacked. Again, looking at some example code will make this clear. The <tt class="docutils literal"><span class="pre">potentialArgs</span></tt> structure is defined in <tt class="docutils literal"><span class="pre">potential_src/potential_c_ext/galpy_potentials.h</span></tt>.</p>
+</div></blockquote>
+<p>3. Add the potential&#8217;s function declarations to
+<tt class="docutils literal"><span class="pre">potential_src/potential_c_ext/galpy_potentials.h</span></tt></p>
+<p>4. (4. and 5. for planar orbit integration) Edit the code under
+<tt class="docutils literal"><span class="pre">orbit_src/orbit_c_ext/integratePlanarOrbit.c</span></tt> to set up your new
+potential (in the <strong>parse_leapFuncArgs</strong> function).</p>
+<p>5. Edit the code in <tt class="docutils literal"><span class="pre">orbit_src/integratePlanarOrbit.py</span></tt> to set up your
+new potential (in the <strong>_parse_pot</strong> function).</p>
+<p>6. Edit the code under <tt class="docutils literal"><span class="pre">orbit_src/orbit_c_ext/integrateFullOrbit.c</span></tt> to
+set up your new potential (in the <strong>parse_leapFuncArgs_Full</strong> function).</p>
+<p>7. Edit the code in <tt class="docutils literal"><span class="pre">orbit_src/integrateFullOrbit.py</span></tt> to set up your
+new potential (in the <strong>_parse_pot</strong> function).</p>
+<p>8. (for using the actionAngleStaeckel methods in C) Edit the code in
+<tt class="docutils literal"><span class="pre">actionAngle_src/actionAngle_c_ext/actionAngle.c</span></tt> to parse the new
+potential (in the <strong>parse_actionAngleArgs</strong> function).</p>
+<p>9. Finally, add <tt class="docutils literal"><span class="pre">self.hasC=</span> <span class="pre">True</span></tt> to the initialization of the
+potential in question (after the initialization of the super class, or
+otherwise it will be undone).</p>
+<p>After following the relevant steps, the new potential class can be
+used in any galpy context in which C is used to speed up computations.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="basic_df.html" title="Two-dimensional disk distribution functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

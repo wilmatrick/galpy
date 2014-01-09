@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.util.bovy_coords.sphergal_to_rectgal &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.util.bovy_coords.sphergal_to_rectgal &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="galpy.util.bovy_coords" href="bovycoords.html" />
     <link rel="next" title="galpy.util.bovy_coords.uv_to_Rz" href="coordsuvtoRz.html" />
     <link rel="prev" title="galpy.util.bovy_coords.Rz_to_uv" href="coordsRztouv.html" /> 
@@ -40,52 +40,16 @@
         <li class="right" >
           <a href="coordsRztouv.html" title="galpy.util.bovy_coords.Rz_to_uv"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li>
           <li><a href="bovycoords.html" accesskey="U">galpy.util.bovy_coords</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-util-bovy-coords-sphergal-to-rectgal">
-<h1>galpy.util.bovy_coords.sphergal_to_rectgal<a class="headerlink" href="#galpy-util-bovy-coords-sphergal-to-rectgal" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="galpy.util.bovy_coords.sphergal_to_rectgal">
-<tt class="descclassname">galpy.util.bovy_coords.</tt><tt class="descname">sphergal_to_rectgal</tt><big>(</big><em>l</em>, <em>b</em>, <em>d</em>, <em>vr</em>, <em>pmll</em>, <em>pmbb</em>, <em>degree=False</em><big>)</big><a class="headerlink" href="#galpy.util.bovy_coords.sphergal_to_rectgal" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>sphergal_to_rectgal</dd>
-<dt>PURPOSE:</dt>
-<dd>transform phase-space coordinates in spherical Galactic coordinates to
-rectangular Galactic coordinates
-Can take vector inputs</dd>
-<dt>INPUT:</dt>
-<dd>l - Galactic longitude (rad)
-b - Galactic lattitude (rad)
-d - distance (kpc)
-vr - line-of-sight velocity (km/s)
-pmll - proper motion in the Galactic longitude direction (mu_l*cos(b) ) (mas/yr)
-pmbb - proper motion in the Galactic lattitude (mas/yr)
-degree - (bool) if True, l and b are in degrees</dd>
-<dt>OUTPUT:</dt>
-<dd>(X,Y,Z,vx,vy,vz) in (kpc,kpc,kpc,km/s,km/s,km/s)</dd>
-<dt>HISTORY:</dt>
-<dd>2009-10-25 - Written - Bovy (NYU)</dd>
-</dl>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="coordsRztouv.html"
                         title="previous chapter">galpy.util.bovy_coords.Rz_to_uv</a></p>
@@ -112,6 +76,47 @@ degree - (bool) if True, l and b are in degrees</dd>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-util-bovy-coords-sphergal-to-rectgal">
+<h1>galpy.util.bovy_coords.sphergal_to_rectgal<a class="headerlink" href="#galpy-util-bovy-coords-sphergal-to-rectgal" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="galpy.util.bovy_coords.sphergal_to_rectgal">
+<tt class="descclassname">galpy.util.bovy_coords.</tt><tt class="descname">sphergal_to_rectgal</tt><big>(</big><em>l</em>, <em>b</em>, <em>d</em>, <em>vr</em>, <em>pmll</em>, <em>pmbb</em>, <em>degree=False</em><big>)</big><a class="headerlink" href="#galpy.util.bovy_coords.sphergal_to_rectgal" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>sphergal_to_rectgal</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>transform phase-space coordinates in spherical Galactic coordinates to rectangular Galactic coordinates (can take vector inputs)</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>l - Galactic longitude (rad)</p>
+<p>b - Galactic lattitude (rad)</p>
+<p>d - distance (kpc)</p>
+<p>vr - line-of-sight velocity (km/s)</p>
+<p>pmll - proper motion in the Galactic longitude direction (mu_l*cos(b) ) (mas/yr)</p>
+<p>pmbb - proper motion in the Galactic lattitude (mas/yr)</p>
+<p>degree - (bool) if True, l and b are in degrees</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(X,Y,Z,vx,vy,vz) in (kpc,kpc,kpc,km/s,km/s,km/s)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2009-10-25 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -126,13 +131,14 @@ degree - (bool) if True, l and b are in degrees</dd>
         <li class="right" >
           <a href="coordsRztouv.html" title="galpy.util.bovy_coords.Rz_to_uv"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li>
           <li><a href="bovycoords.html" >galpy.util.bovy_coords</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

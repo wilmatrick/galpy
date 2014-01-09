@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>actionAngleIsochroneApprox &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <link rel="up" title="actionAngle" href="aa.html" />
+    <link rel="next" title="Utilities" href="util.html" />
+    <link rel="prev" title="actionAngleStaeckelGrid" href="aastaeckelgrid.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="util.html" title="Utilities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="aastaeckelgrid.html" title="actionAngleStaeckelGrid"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+          <li><a href="aa.html" accesskey="U">actionAngle</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aastaeckelgrid.html"
+                        title="previous chapter">actionAngleStaeckelGrid</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="util.html"
+                        title="next chapter">Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/aaisochroneapprox.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="actionangleisochroneapprox">
+<h1>actionAngleIsochroneApprox<a class="headerlink" href="#actionangleisochroneapprox" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.actionAngle.actionAngleIsochroneApprox">
+<em class="property">class </em><tt class="descclassname">galpy.actionAngle.</tt><tt class="descname">actionAngleIsochroneApprox</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.actionAngle.actionAngleIsochroneApprox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action-angle formalism using an isochrone potential as an approximate potential and using a Fox &amp; Binney (2014?) like algorithm to calculate the actions using orbit integrations and a torus-machinery-like angle-fit to get the angles and frequencies (Bovy 2014)</p>
+<dl class="method">
+<dt id="galpy.actionAngle.actionAngleIsochroneApprox.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.actionAngle.actionAngleIsochroneApprox.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>NAME:</dt>
+<dd>__init__</dd>
+<dt>PURPOSE:</dt>
+<dd>initialize an actionAngleIsochroneApprox object</dd>
+</dl>
+<p>INPUT:</p>
+<blockquote>
+<div><p>Either:</p>
+<blockquote>
+<div><p>b= scale parameter of the isochrone parameter</p>
+<p>ip= instance of a IsochronePotential</p>
+<p>aAI= instance of an actionAngleIsochrone</p>
+</div></blockquote>
+<p>pot= potential to calculate action-angle variables for</p>
+<p>tintJ= (default: 100) time to integrate orbits for to estimate actions</p>
+<p>ntintJ= (default: 10000) number of time-integration points actions</p>
+<p>integrate_method= (default: &#8216;dopr54_c&#8217;) integration method to use</p>
+</div></blockquote>
+<p>OUTPUT:
+HISTORY:</p>
+<blockquote>
+<div>2013-09-10 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="util.html" title="Utilities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="aastaeckelgrid.html" title="actionAngleStaeckelGrid"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+          <li><a href="aa.html" >actionAngle</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

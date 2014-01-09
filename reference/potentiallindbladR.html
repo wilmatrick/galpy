@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.potential.Potential.lindbladR &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.potential.Potential.lindbladR &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,10 +22,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="galpy.potential.Potential.omegac" href="potentialomegac.html" />
-    <link rel="prev" title="galpy.potential.Potential.epifreq" href="potentialepifreq.html" /> 
+    <link rel="prev" title="galpy.potential.Potential.flattening" href="potentialflattening.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,58 +38,20 @@
           <a href="potentialomegac.html" title="galpy.potential.Potential.omegac"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="potentialepifreq.html" title="galpy.potential.Potential.epifreq"
+          <a href="potentialflattening.html" title="galpy.potential.Potential.flattening"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-potential-potential-lindbladr">
-<h1>galpy.potential.Potential.lindbladR<a class="headerlink" href="#galpy-potential-potential-lindbladr" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="galpy.potential.Potential.lindbladR">
-<tt class="descclassname">Potential.</tt><tt class="descname">lindbladR</tt><big>(</big><em>OmegaP</em>, <em>m=2</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.lindbladR" title="Permalink to this definition">¶</a></dt>
-<dd><p>NAME:</p>
-<blockquote>
-<div>lindbladR</div></blockquote>
-<p>PURPOSE:</p>
-<blockquote>
-<div>calculate the radius of a Lindblad resonance</div></blockquote>
-<p>INPUT:</p>
-<blockquote>
-<div><p>OmegaP - pattern speed</p>
-<dl class="docutils">
-<dt>m= order of the resonance (as in m(O-Op)=kappa (negative m for </dt>
-<dd>outer)
-use m=&#8217;corotation&#8217; for corotation
-+scipy.optimize.brentq xtol,rtol,maxiter kwargs</dd>
-</dl>
-</div></blockquote>
-<p>OUTPUT:</p>
-<blockquote>
-<div>radius of Linblad resonance, None if there is no resonance</div></blockquote>
-<p>HISTORY:</p>
-<blockquote>
-<div>2011-10-09 - Written - Bovy (IAS)</div></blockquote>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="potentialepifreq.html"
-                        title="previous chapter">galpy.potential.Potential.epifreq</a></p>
+  <p class="topless"><a href="potentialflattening.html"
+                        title="previous chapter">galpy.potential.Potential.flattening</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="potentialomegac.html"
                         title="next chapter">galpy.potential.Potential.omegac</a></p>
@@ -113,6 +75,46 @@ use m=&#8217;corotation&#8217; for corotation
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-potential-potential-lindbladr">
+<h1>galpy.potential.Potential.lindbladR<a class="headerlink" href="#galpy-potential-potential-lindbladr" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.potential.Potential.lindbladR">
+<tt class="descclassname">Potential.</tt><tt class="descname">lindbladR</tt><big>(</big><em>OmegaP</em>, <em>m=2</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.potential.Potential.lindbladR" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>lindbladR</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>calculate the radius of a Lindblad resonance</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>OmegaP - pattern speed</p>
+<dl class="docutils">
+<dt>m= order of the resonance (as in m(O-Op)=kappa (negative m for outer)</dt>
+<dd>use m=&#8217;corotation&#8217; for corotation
++scipy.optimize.brentq xtol,rtol,maxiter kwargs</dd>
+</dl>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>radius of Linblad resonance, None if there is no resonance</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-10-09 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -125,14 +127,15 @@ use m=&#8217;corotation&#8217; for corotation
           <a href="potentialomegac.html" title="galpy.potential.Potential.omegac"
              >next</a> |</li>
         <li class="right" >
-          <a href="potentialepifreq.html" title="galpy.potential.Potential.epifreq"
+          <a href="potentialflattening.html" title="galpy.potential.Potential.flattening"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flattened Power-law potential &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>Flattened Power-law potential &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Hernquist potential" href="potentialhernquist.html" />
     <link rel="prev" title="Jaffe potential" href="potentialjaffe.html" /> 
@@ -40,63 +40,15 @@
         <li class="right" >
           <a href="potentialjaffe.html" title="Jaffe potential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="flattened-power-law-potential">
-<h1>Flattened Power-law potential<a class="headerlink" href="#flattened-power-law-potential" title="Permalink to this headline">¶</a></h1>
-<p>Flattening is in the potential as in <a class="reference external" href="http://adsabs.harvard.edu/abs/1994MNRAS.267..333E">Evans (1994)</a> rather than in the density</p>
-<dl class="class">
-<dt id="galpy.potential.FlattenedPowerPotential">
-<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">FlattenedPowerPotential</tt><big>(</big><em>amp=1.0</em>, <em>alpha=1.0</em>, <em>q=1.0</em>, <em>core=1e-08</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.FlattenedPowerPotential" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>Class that implements a power-law potential that is flattened in the potential (NOT the density)</dt>
-<dd>amp</dd>
-<dt>phi(R,z)=-  &#8212;&#8212;&#8212;&#8212;&#8212;- ; m^2 = R^2 + z^2/q^2</dt>
-<dd>alpha m^lpha</dd>
-</dl>
-<dl class="method">
-<dt id="galpy.potential.FlattenedPowerPotential.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>alpha=1.0</em>, <em>q=1.0</em>, <em>core=1e-08</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.FlattenedPowerPotential.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>__init__</dd>
-<dt>PURPOSE:</dt>
-<dd>initialize a flattened power-law potential</dd>
-<dt>INPUT:</dt>
-<dd><p class="first">amp - amplitude to be applied to the potential (default: 1)
-alpha - power
-q - flattening
-core - core radius
-normalize - if True, normalize such that vc(1.,0.)=1., or, if</p>
-<blockquote class="last">
-<div>given as a number, such that the force is this fraction 
-of the force necessary to make vc(1.,0.)=1.</div></blockquote>
-</dd>
-<dt>OUTPUT:</dt>
-<dd>(none)</dd>
-<dt>HISTORY:</dt>
-<dd>2013-01-09 - Written - Bovy (IAS)</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="potentialjaffe.html"
                         title="previous chapter">Jaffe potential</a></p>
@@ -123,6 +75,57 @@ of the force necessary to make vc(1.,0.)=1.</div></blockquote>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="flattened-power-law-potential">
+<h1>Flattened Power-law potential<a class="headerlink" href="#flattened-power-law-potential" title="Permalink to this headline">¶</a></h1>
+<p>Flattening is in the potential as in <a class="reference external" href="http://adsabs.harvard.edu/abs/1994MNRAS.267..333E">Evans (1994)</a> rather than in the density</p>
+<dl class="class">
+<dt id="galpy.potential.FlattenedPowerPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">FlattenedPowerPotential</tt><big>(</big><em>amp=1.0</em>, <em>alpha=1.0</em>, <em>q=1.0</em>, <em>core=1e-08</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.FlattenedPowerPotential" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Class that implements a power-law potential that is flattened in the potential (NOT the density)</dt>
+<dd>amp</dd>
+<dt>phi(R,z)=-  &#8212;&#8212;&#8212;&#8212;&#8212;- ; m^2 = R^2 + z^2/q^2</dt>
+<dd>alpha m^lpha</dd>
+</dl>
+<dl class="method">
+<dt id="galpy.potential.FlattenedPowerPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>alpha=1.0</em>, <em>q=1.0</em>, <em>core=1e-08</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.FlattenedPowerPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>initialize a flattened power-law potential</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>amp - amplitude to be applied to the potential (default: 1)</p>
+<p>alpha - power</p>
+<p>q - flattening</p>
+<p>core - core radius</p>
+<p>normalize - if True, normalize such that vc(1.,0.)=1., or, if given as a number, such that the force is this fraction of the force necessary to make vc(1.,0.)=1.</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(none)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2013-01-09 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -137,12 +140,13 @@ of the force necessary to make vc(1.,0.)=1.</div></blockquote>
         <li class="right" >
           <a href="potentialjaffe.html" title="Jaffe potential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

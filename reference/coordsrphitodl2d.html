@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.util.bovy_coords.rphi_to_dl_2d &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <title>galpy.util.bovy_coords.rphi_to_dl_2d &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="../index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
     <link rel="up" title="galpy.util.bovy_coords" href="bovycoords.html" />
     <link rel="next" title="galpy.util.bovy_coords.Rz_to_coshucosv" href="coordsRztocoshucosv.html" />
     <link rel="prev" title="galpy.util.bovy_coords.rect_to_cyl_vec" href="coordsrecttocylvec.html" /> 
@@ -40,50 +40,16 @@
         <li class="right" >
           <a href="coordsrecttocylvec.html" title="galpy.util.bovy_coords.rect_to_cyl_vec"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li>
           <li><a href="bovycoords.html" accesskey="U">galpy.util.bovy_coords</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="galpy-util-bovy-coords-rphi-to-dl-2d">
-<h1>galpy.util.bovy_coords.rphi_to_dl_2d<a class="headerlink" href="#galpy-util-bovy-coords-rphi-to-dl-2d" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="galpy.util.bovy_coords.rphi_to_dl_2d">
-<tt class="descclassname">galpy.util.bovy_coords.</tt><tt class="descname">rphi_to_dl_2d</tt><big>(</big><em>R</em>, <em>phi</em>, <em>degree=False</em>, <em>ro=1.0</em>, <em>phio=0.0</em><big>)</big><a class="headerlink" href="#galpy.util.bovy_coords.rphi_to_dl_2d" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>NAME:</dt>
-<dd>rphi_to_dl_2d</dd>
-<dt>PURPOSE:</dt>
-<dd>convert Galactocentric radius and azimuth to distance and Galactic
-longitude</dd>
-<dt>INPUT:</dt>
-<dd>R - Galactocentric radius
-phi - Galactocentric azimuth [rad/deg if degree]</dd>
-<dt>KEYWORDS:</dt>
-<dd>degree= (False): phi is in degrees rather than rad
-ro= (1) Galactocentric radius of the observer
-phio= (0) Galactocentric azimuth of the observer [rad/deg if degree]</dd>
-<dt>OUTPUT:</dt>
-<dd>(d,l); phi in degree if degree</dd>
-<dt>HISTORY:</dt>
-<dd>2012-01-04 - Written - Bovy (IAS)</dd>
-</dl>
-</dd></dl>
-
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="coordsrecttocylvec.html"
                         title="previous chapter">galpy.util.bovy_coords.rect_to_cyl_vec</a></p>
@@ -110,6 +76,48 @@ phio= (0) Galactocentric azimuth of the observer [rad/deg if degree]</dd>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-util-bovy-coords-rphi-to-dl-2d">
+<h1>galpy.util.bovy_coords.rphi_to_dl_2d<a class="headerlink" href="#galpy-util-bovy-coords-rphi-to-dl-2d" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="galpy.util.bovy_coords.rphi_to_dl_2d">
+<tt class="descclassname">galpy.util.bovy_coords.</tt><tt class="descname">rphi_to_dl_2d</tt><big>(</big><em>R</em>, <em>phi</em>, <em>degree=False</em>, <em>ro=1.0</em>, <em>phio=0.0</em><big>)</big><a class="headerlink" href="#galpy.util.bovy_coords.rphi_to_dl_2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>rphi_to_dl_2d</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>convert Galactocentric radius and azimuth to distance and Galactic longitude</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>R - Galactocentric radius</p>
+<p>phi - Galactocentric azimuth [rad/deg if degree]</p>
+</div></blockquote>
+<p>KEYWORDS:</p>
+<blockquote>
+<div><p>degree= (False): phi is in degrees rather than rad</p>
+<p>ro= (1) Galactocentric radius of the observer</p>
+<p>phio= (0) Galactocentric azimuth of the observer [rad/deg if degree]</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(d,l); phi in degree if degree</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2012-01-04 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -124,13 +132,14 @@ phio= (0) Galactocentric azimuth of the observer [rad/deg if degree]</dd>
         <li class="right" >
           <a href="coordsrecttocylvec.html" title="galpy.util.bovy_coords.rect_to_cyl_vec"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1_alpha documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li>
           <li><a href="bovycoords.html" >galpy.util.bovy_coords</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

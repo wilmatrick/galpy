@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; galpy v0.1_alpha documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>Installation &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1_alpha',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1_alpha documentation" href="index.html" />
+    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
     <link rel="next" title="Introduction" href="getting_started.html" />
     <link rel="prev" title="Welcome to galpy’s documentation" href="index.html" /> 
   </head>
@@ -39,47 +39,14 @@
         <li class="right" >
           <a href="index.html" title="Welcome to galpy’s documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>galpy can be installed using the standard python <tt class="docutils literal"><span class="pre">setup.py</span></tt> installation:</p>
-<div class="highlight-python"><pre>&gt; python setup.py install</pre>
-</div>
-<p>or:</p>
-<div class="highlight-python"><pre>&gt; python setup.py install --prefix=~/local</pre>
-</div>
-<p>for a local installation. A basic installation works with just the
-numpy/scipy/matplotlib stack.</p>
-<div class="section" id="advanced-installation">
-<h2>Advanced installation<a class="headerlink" href="#advanced-installation" title="Permalink to this headline">¶</a></h2>
-<p>Certain advanced features require the GNU Scientific Library (<a class="reference external" href="http://www.gnu.org/software/gsl/">GSL</a>), with action calculations
-requiring version 1.14 or higher. On a Mac you can make sure that the
-correct architecture is installed using <a class="reference external" href="http://mxcl.github.com/homebrew/">Homebrew</a> as:</p>
-<div class="highlight-python"><pre>&gt; brew install gsl --universal</pre>
-</div>
-<p>You should be able to check your version  using:</p>
-<div class="highlight-python"><pre>&gt; gsl-config --version</pre>
-</div>
-<p>Other advanced features, including calculating the normalization of
-certain distribution functions using Gauss-Legendre integration
-require numpy version 1.7.0 or higher.</p>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo-small.png" alt="Logo"/>
+            </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
@@ -114,6 +81,51 @@ require numpy version 1.7.0 or higher.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>galpy can be installed using pip as:</p>
+<div class="highlight-python"><pre>&gt; pip install galpy</pre>
+</div>
+<p>or to upgrade without upgrading the dependencies:</p>
+<div class="highlight-python"><pre>&gt; pip install -U --no-deps galpy</pre>
+</div>
+<p>Some advanced features require the GNU Scientific Library (GSL; see below). If you want to use these, install the GSL first (or install it later and re-install using the upgrade command above).</p>
+<p>galpy can also be installed from the source code downloaded from github using the standard python <tt class="docutils literal"><span class="pre">setup.py</span></tt> installation:</p>
+<div class="highlight-python"><pre>&gt; python setup.py install</pre>
+</div>
+<p>or:</p>
+<div class="highlight-python"><pre>&gt; python setup.py install --prefix=~/local</pre>
+</div>
+<p>for a local installation. A basic installation works with just the
+numpy/scipy/matplotlib stack. Some basic tests can be performed by executing:</p>
+<div class="highlight-python"><pre>&gt; nosetests -v -w nose/</pre>
+</div>
+<div class="section" id="advanced-installation">
+<h2>Advanced installation<a class="headerlink" href="#advanced-installation" title="Permalink to this headline">¶</a></h2>
+<p>Certain advanced features require the GNU Scientific Library (<a class="reference external" href="http://www.gnu.org/software/gsl/">GSL</a>), with action calculations
+requiring version 1.14 or higher. On a Mac you can make sure that the
+correct architecture is installed using <a class="reference external" href="http://mxcl.github.com/homebrew/">Homebrew</a> as:</p>
+<div class="highlight-python"><pre>&gt; brew install gsl --universal</pre>
+</div>
+<p>You should be able to check your version  using:</p>
+<div class="highlight-python"><pre>&gt; gsl-config --version</pre>
+</div>
+<p>Other advanced features, including calculating the normalization of
+certain distribution functions using Gauss-Legendre integration
+require numpy version 1.7.0 or higher.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -128,11 +140,12 @@ require numpy version 1.7.0 or higher.</p>
         <li class="right" >
           <a href="index.html" title="Welcome to galpy’s documentation"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1_alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>galpy.df.quasiisothermaldf.__call__ &mdash; galpy v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <link rel="up" title="DF" href="df.html" />
+    <link rel="next" title="galpy.df.quasiisothermaldf.density" href="quasidfdensity.html" />
+    <link rel="prev" title="Shu DF" href="dfshu.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="quasidfdensity.html" title="galpy.df.quasiisothermaldf.density"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dfshu.html" title="Shu DF"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+          <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dfshu.html"
+                        title="previous chapter">Shu DF</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="quasidfdensity.html"
+                        title="next chapter">galpy.df.quasiisothermaldf.density</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/quasidfcall.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-quasiisothermaldf-call">
+<h1>galpy.df.quasiisothermaldf.__call__<a class="headerlink" href="#galpy-df-quasiisothermaldf-call" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.quasiisothermaldf.__call__">
+<tt class="descclassname">quasiisothermaldf.</tt><tt class="descname">__call__</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.quasiisothermaldf.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>NAME:</dt>
+<dd>__call__</dd>
+<dt>PURPOSE:</dt>
+<dd>return the DF</dd>
+<dt>INPUT:</dt>
+<dd><dl class="first docutils">
+<dt>Either:</dt>
+<dd><dl class="first docutils">
+<dt>a)(jr,lz,jz) tuple</dt>
+<dd><dl class="first last docutils">
+<dt>where:</dt>
+<dd>jr - radial action
+lz - z-component of angular momentum
+jz - vertical action</dd>
+</dl>
+</dd>
+</dl>
+<ol class="last loweralpha simple" start="2">
+<li>R,vR,vT,z,vz</li>
+<li>Orbit instance: initial condition used if that&#8217;s it, orbit(t)
+if there is a time given as well</li>
+</ol>
+</dd>
+</dl>
+<p>log= if True, return the natural log</p>
+<p>+scipy.integrate.quadrature kwargs</p>
+<p class="last">func= function of (jr,lz,jz) to multiply f with (useful for moments)</p>
+</dd>
+<dt>OUTPUT:</dt>
+<dd>value of DF</dd>
+<dt>HISTORY:</dt>
+<dd>2012-07-25 - Written - Bovy (<a class="reference external" href="mailto:IAS&#37;&#52;&#48;MPIA">IAS<span>&#64;</span>MPIA</a>)</dd>
+<dt>NOTE:</dt>
+<dd><p class="first">For Miyamoto-Nagai/adiabatic approximation this seems to take 
+about 30 ms / evaluation in the extended Solar neighborhood
+For a MWPotential/adiabatic approximation this takes about 
+50 ms / evaluation in the extended Solar neighborhood</p>
+<p>For adiabatic-approximation grid this seems to take 
+about 0.67 to 0.75 ms / evaluation in the extended Solar 
+neighborhood (includes some out of the grid)</p>
+<p class="last">up to 200x faster when called with vector R,vR,vT,z,vz</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="quasidfdensity.html" title="galpy.df.quasiisothermaldf.density"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dfshu.html" title="Shu DF"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+          <li><a href="df.html" >DF</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2013, Jo Bovy.
+      Last updated on Jan 09, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
