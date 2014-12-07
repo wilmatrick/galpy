@@ -1,19 +1,24 @@
-
-
+---
+redirect_to:
+  - galpy.readthedocs.org
+---
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to galpy’s documentation &mdash; galpy v0.1 documentation</title>
+    <title>Welcome to galpy’s documentation &mdash; galpy 1.0.beta documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0.beta',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +27,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="#" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0.beta documentation" href="#" />
     <link rel="next" title="Installation" href="installation.html" /> 
   </head>
   <body>
@@ -35,7 +41,7 @@
         <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="N">next</a> |</li>
-        <li><a href="#">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">galpy 1.0.beta documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -46,15 +52,9 @@
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Welcome to galpy&#8217;s documentation</a><ul>
-<li><a class="reference internal" href="#quick-start-guide">Quick-start guide</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#library-reference">Library reference</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#tutorials">Tutorials</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#quick-start-guide">Quick-start guide</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#library-reference">Library reference</a></li>
 <li><a class="reference internal" href="#papers-using-galpy">Papers using galpy</a></li>
 <li><a class="reference internal" href="#acknowledging-galpy">Acknowledging galpy</a></li>
 </ul>
@@ -73,7 +73,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -116,6 +116,7 @@ coordinates for all static potentials.</p>
 <li class="toctree-l2"><a class="reference internal" href="potential.html#potentials-and-forces">Potentials and forces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="potential.html#densities">Densities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="potential.html#close-to-circular-orbits-and-orbital-frequencies">Close-to-circular orbits and orbital frequencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potential.html#using-interpolations-of-potentials">Using interpolations of potentials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="potential.html#adding-potentials-to-the-galpy-framework">Adding potentials to the galpy framework</a></li>
 </ul>
 </li>
@@ -125,6 +126,7 @@ coordinates for all static potentials.</p>
 <li class="toctree-l2"><a class="reference internal" href="basic_df.html#using-corrected-disk-distribution-functions">Using corrected disk distribution functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic_df.html#oort-constants-and-functions">Oort constants and functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic_df.html#sampling-data-from-the-df">Sampling data from the DF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_df.html#non-axisymmetric-time-dependent-disk-distribution-functions">Non-axisymmetric, time-dependent disk distribution functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic_df.html#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar</a></li>
 </ul>
 </li>
@@ -135,6 +137,7 @@ coordinates for all static potentials.</p>
 <li class="toctree-l2"><a class="reference internal" href="orbit.html#orbit-characterization">Orbit characterization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="orbit.html#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="orbit.html#fast-orbit-integration">Fast orbit integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.html#integration-of-the-phase-space-volume">Integration of the phase-space volume</a></li>
 <li class="toctree-l2"><a class="reference internal" href="orbit.html#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
 </ul>
 </li>
@@ -157,6 +160,20 @@ coordinates for all static potentials.</p>
 </ul>
 </div>
 </div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="streamdf.html">Dynamical modeling of tidal streams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="streamdf.html#modeling-streams-in-galpy">Modeling streams in galpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streamdf.html#calculating-the-average-stream-location-track">Calculating the average stream location (track)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streamdf.html#mock-stream-data-generation">Mock stream data generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streamdf.html#evaluating-and-marginalizing-the-full-pdf">Evaluating and marginalizing the full PDF</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="library-reference">
 <h2>Library reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -173,8 +190,10 @@ coordinates for all static potentials.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/df.html">DF</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/df.html#two-dimensional-disk-distribution-functions">Two-dimensional Disk distribution functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/df.html#three-dimensional-disk-distribution-functions">Three-dimensional Disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/df.html#two-dimensional-axisymmetric-disk-distribution-functions">Two-dimensional, axisymmetric disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/df.html#two-dimensional-non-axisymmetric-disk-distribution-functions">Two-dimensional, non-axisymmetric disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/df.html#three-dimensional-disk-distribution-functions">Three-dimensional disk distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/df.html#the-distribution-function-of-a-tidal-stream">The distribution function of a tidal stream</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/aa.html">actionAngle</a><ul>
@@ -189,14 +208,6 @@ coordinates for all static potentials.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/bovyars.html">bovy_ars: adaptive-rejection sampling</a></li>
 </ul>
 </li>
-</ul>
-</div>
-</div>
-<div class="section" id="tutorials">
-<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="streamdf.html">Dynamical modeling of tidal streams</a></li>
 </ul>
 </div>
 </div>
@@ -235,8 +246,26 @@ coordinates for all static potentials.</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><em>Chemodynamics of the Milky Way. I. The first year of APOGEE data</em>, Friedrich Anders, Christina Chiappini, Basilio X. Santiago, et al. (2013), <em>Astron. &amp; Astrophys.</em> submitted (<a class="reference external" href="http://arxiv.org/abs/1311.4549">arXiv/1311.4549</a>):</dt>
+<dt><em>The peculiar pulsar population of the central parsec</em>, Jason Dexter &amp; Ryan M. O&#8217;Leary (2013), <em>Astrophys. J. Lett.</em>, <strong>783</strong>, L7 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2014ApJ...783L...7D">2014ApJ...783L...7D</a>):</dt>
+<dd><p class="first last">Uses galpy for orbit integration of pulsars kicked out of the Galactic center.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Chemodynamics of the Milky Way. I. The first year of APOGEE data</em>, Friedrich Anders, Christina Chiappini, Basilio X. Santiago, et al. (2013), <em>Astron. &amp; Astrophys.</em>, <strong>564</strong>, A115 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2014A%26A...564A.115A">2014A&amp;A...564A.115A</a>):</dt>
 <dd><p class="first last">Employs galpy to perform orbit integrations in <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> to characterize the orbits of stars in the APOGEE sample.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Dynamical modeling of tidal streams</em>, Jo Bovy (2014), <em>Astrophys. J</em>, in press (<a class="reference external" href="http://arxiv.org/abs/1401.2985">arXiv/1401.2985</a>):</dt>
+<dd><p class="first last">Introduces <tt class="docutils literal"><span class="pre">galpy.df.streamdf</span></tt> and <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleIsochroneApprox</span></tt> for modeling tidal streams using simple models formulated in action-angle space (see the tutorial above).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>The Milky Way Tomography with SDSS. V. Mapping the Dark Matter Halo</em>, Sarah R. Loebman, Zeljko Ivezic Thomas R. Quinn, Jo Bovy, Charlotte R. Christensen, Mario Juric, Rok Roskar, Alyson M. Brooks, &amp; Fabio Governato (2014), <em>Astrophys. J</em>, in press (<a class="reference external" href="http://arxiv.org/abs/1408.5388">arXiv/1408.5388</a>):</dt>
+<dd><p class="first last">Uses <tt class="docutils literal"><span class="pre">galpy.potential</span></tt> functions to calculate the acceleration field of the best-fit potential in Bovy &amp; Rix (2013) above.</p>
 </dd>
 </dl>
 </li>
@@ -244,7 +273,12 @@ coordinates for all static potentials.</p>
 </div>
 <div class="section" id="acknowledging-galpy">
 <h2>Acknowledging galpy<a class="headerlink" href="#acknowledging-galpy" title="Permalink to this headline">¶</a></h2>
-<p>Please link back to <tt class="docutils literal"><span class="pre">http://github.com/jobovy/galpy</span></tt> . When using the <tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt> modules, please cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2013ApJ...779..115B">2013ApJ...779..115B</a> in addition to the papers describing the algorithm used. When orbit integrations are used, you could cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a> (first galpy paper).</p>
+<p>If you use galpy in a publication, please cite <a class="reference external" href="http://sns.ias.edu/~bovy/galpy-paper.html">Bovy (2015)</a> and link to
+<tt class="docutils literal"><span class="pre">http://github.com/jobovy/galpy</span></tt>. Please also send me a reference to
+the paper or send a pull request including your paper in the list of
+galpy papers on this page (this page is at
+doc/source/index.rst). Thanks!</p>
+<p>When using the <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleAdiabatic</span></tt> and <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleStaeckel</span></tt> modules, please cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2013ApJ...779..115B">2013ApJ...779..115B</a> in addition to the papers describing the algorithm used. When using <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleIsochroneApprox</span></tt>, please cite <a class="reference external" href="http://arxiv.org/abs/1401.2985">arXiv/1401.2985</a>, which introduced this technique.</p>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -271,13 +305,13 @@ coordinates for all static potentials.</p>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >next</a> |</li>
-        <li><a href="#">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">galpy 1.0.beta documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

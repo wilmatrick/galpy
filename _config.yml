@@ -1,4 +1,2 @@
 gems:
   - jekyll-redirect-from
-redirect_to:
-  - galpy.readthedocs.org
