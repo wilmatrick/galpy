@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>A closer look at orbit integration &mdash; galpy v0.1 documentation</title>
+    <title>A closer look at orbit integration &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
     <link rel="next" title="Action-angle coordinates" href="actionAngle.html" />
     <link rel="prev" title="Two-dimensional disk distribution functions" href="basic_df.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="basic_df.html" title="Two-dimensional disk distribution functions"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -50,12 +52,18 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">A closer look at orbit integration</a><ul>
-<li><a class="reference internal" href="#orbit-initialization">Orbit initialization</a></li>
+<li><a class="reference internal" href="#orbit-initialization">Orbit initialization</a><ul>
+<li><a class="reference internal" href="#standard-initialization">Standard initialization</a></li>
+<li><a class="reference internal" href="#initialization-with-physical-scales">Initialization with physical scales</a></li>
+<li><a class="reference internal" href="#initialization-from-observed-coordinates">Initialization from observed coordinates</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#orbit-integration">Orbit integration</a></li>
 <li><a class="reference internal" href="#displaying-the-orbit">Displaying the orbit</a></li>
 <li><a class="reference internal" href="#orbit-characterization">Orbit characterization</a></li>
 <li><a class="reference internal" href="#accessing-the-raw-orbit">Accessing the raw orbit</a></li>
 <li><a class="reference internal" href="#fast-orbit-integration">Fast orbit integration</a></li>
+<li><a class="reference internal" href="#integration-of-the-phase-space-volume">Integration of the phase-space volume</a></li>
 <li><a class="reference internal" href="#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">Example: The eccentricity distribution of the Milky Way&#8217;s thick disk</a></li>
 </ul>
 </li>
@@ -75,7 +83,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -96,7 +104,9 @@
   <div class="section" id="a-closer-look-at-orbit-integration">
 <h1>A closer look at orbit integration<a class="headerlink" href="#a-closer-look-at-orbit-integration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="orbit-initialization">
-<h2>Orbit initialization<a class="headerlink" href="#orbit-initialization" title="Permalink to this headline">¶</a></h2>
+<span id="orbinit"></span><h2>Orbit initialization<a class="headerlink" href="#orbit-initialization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="standard-initialization">
+<h3>Standard initialization<a class="headerlink" href="#standard-initialization" title="Permalink to this headline">¶</a></h3>
 <p>Orbits can be initialized in various coordinate frames. The simplest
 initialization gives the initial conditions directly in the
 Galactocentric cylindrical coordinate frame (or in the rectangular
@@ -120,31 +130,93 @@ best expressed as fractions of this circular velocity. For example,</p>
 <p>initializes an orbit in which the azimuth is not tracked, as might be
 useful for axisymmetric potentials.</p>
 <p>In two dimensions, we can similarly specify fully two-dimensional
-orbits <tt class="docutils literal"><span class="pre">vxvv=[R,vR,vT,phi]</span></tt> or choose not to track the azimuth and
-initialize as <tt class="docutils literal"><span class="pre">vxvv=[R,vR,vT]</span></tt>.</p>
-<p>In one dimension we simply initialize as <tt class="docutils literal"><span class="pre">vxvv=[x,vx]</span></tt>.</p>
+orbits <tt class="docutils literal"><span class="pre">o=Orbit(vxvv=[R,vR,vT,phi])</span></tt> or choose not to track the
+azimuth and initialize with <tt class="docutils literal"><span class="pre">o=</span> <span class="pre">Orbit(vxvv=[R,vR,vT])</span></tt>.</p>
+<p>In one dimension we simply initialize with <tt class="docutils literal"><span class="pre">o=</span> <span class="pre">Orbit(vxvv=[x,vx])</span></tt>.</p>
+</div>
+<div class="section" id="initialization-with-physical-scales">
+<h3>Initialization with physical scales<a class="headerlink" href="#initialization-with-physical-scales" title="Permalink to this headline">¶</a></h3>
+<p>Orbits are normally used in galpy&#8217;s <em>natural coordinates</em>. When Orbits
+are initialized using a distance scale <tt class="docutils literal"><span class="pre">ro=</span></tt> and a velocity scale
+<tt class="docutils literal"><span class="pre">vo=</span></tt>, then many Orbit methods return quantities in physical
+coordinates. Specifically, physical distance and velocity scales are
+specified as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">vo</span><span class="o">=</span><span class="mf">220.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All output quantities will then be automatically be specified in
+physical units: kpc for positions, km/s for velocities, (km/s)^2 for
+energies and the Jacobi integral, km/s kpc for the angular momentum
+o.L() and actions, 1/Gyr for frequencies, and Gyr for times and
+periods. See below for examples of this.</p>
+<p>Physical units are only used for outputs: internally natural units are
+still used and inputs have to also be specified in natural units (for
+example, integration times or the time at which an output is requested
+must be specified in natural units). If for any output you do <em>not</em>
+want the output in physical units, you can specify this by supplying
+the keyword argument <tt class="docutils literal"><span class="pre">use_physical=False</span></tt>.</p>
+</div>
+<div class="section" id="initialization-from-observed-coordinates">
+<h3>Initialization from observed coordinates<a class="headerlink" href="#initialization-from-observed-coordinates" title="Permalink to this headline">¶</a></h3>
 <p>For orbit integration and characterization of observed stars or
 clusters, initial conditions can also be specified directly as
 observed quantities when <tt class="docutils literal"><span class="pre">radec=True</span></tt> is set. In this case a full
-three-dimensional orbit is initialized as
-<tt class="docutils literal"><span class="pre">vxvv=[RA,Dec,distance,pmRA,pmDec,Vlos]</span></tt> where RA and Dec are
-expressed in degrees, the distance is expressed in kpc, proper motions
-are expressed in mas/yr (pmra = pmra&#8217; * cos[Dec] ), and the
-line-of-sight velocity is given in km/s. These observed coordinates
-are translated to the Galactocentric cylindrical coordinate frame by
+three-dimensional orbit is initialized as <tt class="docutils literal"><span class="pre">o=</span>
+<span class="pre">Orbit(vxvv=[RA,Dec,distance,pmRA,pmDec,Vlos],radec=True)</span></tt> where RA
+and Dec are expressed in degrees, the distance is expressed in kpc,
+proper motions are expressed in mas/yr (pmra = pmra&#8217; * cos[Dec] ), and
+the line-of-sight velocity is given in km/s. The observed epoch is
+currently assumed to be J2000.00. These observed coordinates are
+translated to the Galactocentric cylindrical coordinate frame by
 assuming a Solar motion that can be specified as either
 <tt class="docutils literal"><span class="pre">solarmotion=hogg</span></tt> (default; <a class="reference external" href="http://adsabs.harvard.edu/abs/2005ApJ...629..268H">2005ApJ...629..268H</a>),
 <tt class="docutils literal"><span class="pre">solarmotion=dehnen</span></tt> (<a class="reference external" href="http://adsabs.harvard.edu/abs/1998MNRAS.298..387D">1998MNRAS.298..387D</a>) or
 <tt class="docutils literal"><span class="pre">solarmotion=shoenrich</span></tt> (<a class="reference external" href="http://adsabs.harvard.edu/abs/2010MNRAS.403.1829S">2010MNRAS.403.1829S</a>). A circular
-velocity can be specified as <tt class="docutils literal"><span class="pre">vo=235</span></tt> in km/s and a value for the
+velocity can be specified as <tt class="docutils literal"><span class="pre">vo=220</span></tt> in km/s and a value for the
 distance between the Galactic center and the Sun can be given as
-<tt class="docutils literal"><span class="pre">ro=8.5</span></tt> in kpc. While the inputs are given in physical units, the
-orbit is initialized assuming a circular velocity of one at the
-distance of the Sun.</p>
-<p>When <tt class="docutils literal"><span class="pre">radec=True</span></tt> is set, velocities can also be specified in
+<tt class="docutils literal"><span class="pre">ro=8.0</span></tt> in kpc (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...759..131B">2012ApJ...759..131B</a>). While the
+inputs are given in physical units, the orbit is initialized assuming
+a circular velocity of one at the distance of the Sun (that is, the
+orbit&#8217;s position and velocity is scaled to galpy&#8217;s <em>natural</em> units
+after converting to the Galactocentric coordinate frame, using the
+specified <tt class="docutils literal"><span class="pre">ro=</span></tt> and <tt class="docutils literal"><span class="pre">vo=</span></tt>). The parameters of the coordinate
+transformations are stored internally, such that they are
+automatically used for relevant outputs (for example, when the RA of
+an orbit is requested). An example of all of this is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">20.</span><span class="p">,</span><span class="mf">30.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span><span class="mf">20.</span><span class="p">,</span><span class="mf">50.</span><span class="p">],</span><span class="n">radec</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">vo</span><span class="o">=</span><span class="mf">220.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However, the internally stored position/velocity vector is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">o</span><span class="o">.</span><span class="n">vxvv</span>
+<span class="go">[1.1476649101960512, 0.20128601278731811, 1.8303776114906387, -0.13107066602923434, 0.58171049004255293, 0.14071341020496472]</span>
+</pre></div>
+</div>
+<p>and is therefore in <em>natural</em> units.</p>
+<p>Similarly, one can also initialize orbits from Galactic coordinates
+using <tt class="docutils literal"><span class="pre">o=</span> <span class="pre">Orbit(vxvv=[glon,glat,distance,pmll,pmbb,Vlos],lb=True)</span></tt>,
+where glon and glat are Galactic longitude and latitude expressed in
+degrees, and the proper motions are again given in mas/yr ((pmll =
+pmll&#8217; * cos[glat] ):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">20.</span><span class="p">,</span><span class="mf">30.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span><span class="mf">20.</span><span class="p">,</span><span class="mf">50.</span><span class="p">],</span><span class="n">lb</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">vo</span><span class="o">=</span><span class="mf">220.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">o</span><span class="o">.</span><span class="n">vxvv</span>
+<span class="go">[0.79998509943955398, 0.075939950035477488, 0.52838231795389867, 0.12812499999999999, 0.89052135379600328, 0.092696334097541536]</span>
+</pre></div>
+</div>
+<p>When <tt class="docutils literal"><span class="pre">radec=True</span></tt> or <tt class="docutils literal"><span class="pre">lb=True</span></tt> is set, velocities can also be specified in
 Galactic coordinates if <tt class="docutils literal"><span class="pre">UVW=True</span></tt> is set. The input is then
 <tt class="docutils literal"><span class="pre">vxvv=[RA,Dec,distance,U,V,W]</span></tt>, where the velocities are expressed
 in km/s. U is, as usual, defined as -vR (minus vR).</p>
+<p>When orbits are initialized using <tt class="docutils literal"><span class="pre">radec=True</span></tt> or <tt class="docutils literal"><span class="pre">lb=True</span></tt>,
+physical scales <tt class="docutils literal"><span class="pre">ro=</span></tt> and <tt class="docutils literal"><span class="pre">vo=</span></tt> are automatically specified
+(because they have defaults of <tt class="docutils literal"><span class="pre">ro=8</span></tt> and <tt class="docutils literal"><span class="pre">vo=220</span></tt>). Therefore,
+all output quantities will be specified in physical units (see
+above). If you do want to get outputs in galpy&#8217;s natural coordinates,
+you can turn this behavior off by doing</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">turn_physical_off</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>All outputs will then be specified in galpy&#8217;s natural coordinates.</p>
+</div>
 </div>
 <div class="section" id="orbit-integration">
 <h2>Orbit integration<a class="headerlink" href="#orbit-integration" title="Permalink to this headline">¶</a></h2>
@@ -161,6 +233,13 @@ potential we can do the following</p>
 </div>
 <p>to integrate the orbit from <tt class="docutils literal"><span class="pre">t=0</span></tt> to <tt class="docutils literal"><span class="pre">t=100</span></tt>, saving the orbit at
 10000 instances.</p>
+<p>If we initialize the Orbit using a distance scale <tt class="docutils literal"><span class="pre">ro=</span></tt> and a
+velocity scale <tt class="docutils literal"><span class="pre">vo=</span></tt>, then Orbit plots and outputs will use physical
+coordinates (currently, times, positions, and velocities)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">vo</span><span class="o">=</span><span class="mf">220.</span><span class="p">)</span> <span class="c">#Use Vc=220 km/s at R= 8 kpc as the normalization</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">lp</span><span class="p">)</span> <span class="c">#times are still specified in natural coordinates</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="displaying-the-orbit">
 <h2>Displaying the orbit<a class="headerlink" href="#displaying-the-orbit" title="Permalink to this headline">¶</a></h2>
@@ -175,6 +254,14 @@ shown. E.g., for the example given above,</p>
 </div>
 <p>gives</p>
 <img alt="_images/lp-orbit-integration.png" src="_images/lp-orbit-integration.png" />
+<p>If we do the same for the Orbit that has physical distance and
+velocity scales associated with it, we get the following</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/lp-orbit-integration-physical.png" src="_images/lp-orbit-integration-physical.png" />
+<p>If we call <tt class="docutils literal"><span class="pre">op.plot(use_physical=False)</span></tt>, the quantities will be
+displayed in natural galpy coordinates.</p>
 <p>Other projections of the orbit can be displayed by specifying the
 quantities to plot. E.g.,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
@@ -221,9 +308,18 @@ that the orbit was integrated in, or in another potential:</p>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">mp</span></tt> is the Miyamoto-Nagai potential of <a class="reference internal" href="getting_started.html#rotcurves"><em>Introduction:
 Rotation curves</em></a>.</p>
+<p>For the Orbit <tt class="docutils literal"><span class="pre">op</span></tt> that was initialized above with a distance scale
+<tt class="docutils literal"><span class="pre">ro=</span></tt> and a velocity scale <tt class="docutils literal"><span class="pre">vo=</span></tt>, these outputs are all in
+physical units</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">rap</span><span class="p">(),</span> <span class="n">op</span><span class="o">.</span><span class="n">rperi</span><span class="p">(),</span> <span class="n">op</span><span class="o">.</span><span class="n">e</span><span class="p">(),</span> <span class="n">op</span><span class="o">.</span><span class="n">zmax</span><span class="p">()</span>
+<span class="go">(10.065158988860341,7.8385312810643057,0.12436696983841462,0.91105035688072711) #kpc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">E</span><span class="p">(),</span> <span class="n">op</span><span class="o">.</span><span class="n">E</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">mp</span><span class="p">)</span>
+<span class="go">(29766.000000000004, -32617.062500000007) #(km/s)^2</span>
+</pre></div>
+</div>
 <p>We can also show the energy as a function of time (to check energy
 conservation)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>gives</p>
@@ -231,14 +327,14 @@ conservation)</p>
 <p>We can specify another quantity to plot the energy against by
 specifying <tt class="docutils literal"><span class="pre">d1=</span></tt>. We can also show the vertical energy, for example,
 as a function of R</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotEz</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotEz</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">,</span><span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/lp-orbit-integration-Ez.png" src="_images/lp-orbit-integration-Ez.png" />
 <p>Often, a better approximation to an integral of the motion is given by
 Ez/sqrt(density[R]). We refer to this quantity as <tt class="docutils literal"><span class="pre">EzJz</span></tt> and we can plot its
 behavior</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotEzJz</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotEzJz</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;R&#39;</span><span class="p">,</span><span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/lp-orbit-integration-EzJz.png" src="_images/lp-orbit-integration-EzJz.png" />
@@ -264,6 +360,23 @@ spline interpolation is used to return the value. Examples include</p>
 <span class="go">array([ 1.24888927])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">pmll</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="n">obs</span><span class="o">=</span><span class="p">[</span><span class="mf">8.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">245.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ro</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">vo</span><span class="o">=</span><span class="mf">230.</span><span class="p">)</span>
 <span class="go">array([-6.45263888])</span>
+</pre></div>
+</div>
+<p>For the Orbit <tt class="docutils literal"><span class="pre">op</span></tt> that was initialized above with a distance scale
+<tt class="docutils literal"><span class="pre">ro=</span></tt> and a velocity scale <tt class="docutils literal"><span class="pre">vo=</span></tt>, the first of these would be</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">9.2360614837829225 #kpc</span>
+</pre></div>
+</div>
+<p>which we can also access in natural coordinates as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">use_physical</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">1.1545076854728653</span>
+</pre></div>
+</div>
+<p>We can also specify a different distance or velocity scale on the fly,
+e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">ro</span><span class="o">=</span><span class="mf">4.</span><span class="p">)</span> <span class="c">#different velocity scale would be vo=</span>
+<span class="go">4.6180307418914612</span>
 </pre></div>
 </div>
 <p>We can also initialize an <tt class="docutils literal"><span class="pre">Orbit</span></tt> instance using the phase-space
@@ -320,6 +433,52 @@ number of symplectic integrators available</p>
 <p>As this example shows, galpy will issue a warning that C is being
 used. Speed-ups by a factor of 20 are typical.</p>
 </div>
+<div class="section" id="integration-of-the-phase-space-volume">
+<h2>Integration of the phase-space volume<a class="headerlink" href="#integration-of-the-phase-space-volume" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">galpy</span></tt> further supports the integration of the phase-space volume
+through the method <tt class="docutils literal"><span class="pre">integrate_dxdv</span></tt>, although this is currently only
+implemented for two-dimensional orbits (<tt class="docutils literal"><span class="pre">planarOrbit</span></tt>). As an
+example, we can check Liouville&#8217;s theorem explicitly. We initialize
+the orbit</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="n">vxvv</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>and then integrate small deviations in each of the four
+phase-space directions</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">28.</span><span class="p">,</span><span class="mi">1001</span><span class="p">)</span> <span class="c">#~1 Gyr at the Solar circle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate_dxdv</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;dopr54_c&#39;</span><span class="p">,</span><span class="n">rectIn</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">rectOut</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dx</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">getOrbit_dxdv</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span> <span class="c"># evolution of dxdv[0] along the orbit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate_dxdv</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;dopr54_c&#39;</span><span class="p">,</span><span class="n">rectIn</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">rectOut</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dy</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">getOrbit_dxdv</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate_dxdv</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;dopr54_c&#39;</span><span class="p">,</span><span class="n">rectIn</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">rectOut</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dvx</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">getOrbit_dxdv</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate_dxdv</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;dopr54_c&#39;</span><span class="p">,</span><span class="n">rectIn</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">rectOut</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dvy</span><span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">getOrbit_dxdv</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+</pre></div>
+</div>
+<p>We can then compute the determinant of the Jacobian of the mapping
+defined by the orbit integration from time zero to the final time</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tjac</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dvx</span><span class="p">,</span><span class="n">dvy</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>This determinant should be equal to one</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">tjac</span>
+<span class="go">0.999999991189</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">tjac</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">10.</span><span class="o">**-</span><span class="mf">8.</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The calls to <tt class="docutils literal"><span class="pre">integrate_dxdv</span></tt> above set the keywords <tt class="docutils literal"><span class="pre">rectIn=</span></tt> and
+<tt class="docutils literal"><span class="pre">rectOut=</span></tt> to True, as the default input and output uses phase-space
+volumes defined as (dR,dvR,dvT,dphi) in cylindrical coordinates. When
+<tt class="docutils literal"><span class="pre">rectIn</span></tt> or <tt class="docutils literal"><span class="pre">rectOut</span></tt> is set, the in- or output is in rectangular
+coordinates ([x,y,vx,vy] in two dimensions).</p>
+<p>Implementing the phase-space integration for three-dimensional
+<tt class="docutils literal"><span class="pre">FullOrbit</span></tt> instances is straightforward and is part of the longer
+term development plan for <tt class="docutils literal"><span class="pre">galpy</span></tt>. Let the main developer know if
+you would like this functionality, or better yet, implement it
+yourself in a fork of the code and send a pull request!</p>
+</div>
 <div class="section" id="example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk">
 <h2>Example: The eccentricity distribution of the Milky Way&#8217;s thick disk<a class="headerlink" href="#example-the-eccentricity-distribution-of-the-milky-way-s-thick-disk" title="Permalink to this headline">¶</a></h2>
 <p>A straightforward application of galpy&#8217;s orbit initialization and
@@ -370,13 +529,13 @@ calculated by Dierickx et al., except for a few objects</p>
         <li class="right" >
           <a href="basic_df.html" title="Two-dimensional disk distribution functions"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
