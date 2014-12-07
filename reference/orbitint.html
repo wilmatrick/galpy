@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.orbit.Orbit.integrate &mdash; galpy v0.1 documentation</title>
+    <title>galpy.orbit.Orbit.integrate &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,10 +23,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Orbit" href="orbit.html" />
-    <link rel="next" title="galpy.orbit.Orbit.getOrbit" href="orbitgetorbit.html" />
-    <link rel="prev" title="galpy.orbit.Orbit.Ez" href="orbitEz.html" /> 
+    <link rel="next" title="galpy.orbit.Orbit.integrate_dxdv" href="orbitintdxdv.html" />
+    <link rel="prev" title="galpy.orbit.Orbit.flip" href="orbitflip.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,12 +37,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="orbitgetorbit.html" title="galpy.orbit.Orbit.getOrbit"
+          <a href="orbitintdxdv.html" title="galpy.orbit.Orbit.integrate_dxdv"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="orbitEz.html" title="galpy.orbit.Orbit.Ez"
+          <a href="orbitflip.html" title="galpy.orbit.Orbit.flip"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="orbit.html" accesskey="U">Orbit</a> &raquo;</li> 
       </ul>
     </div>
@@ -50,11 +52,11 @@
               <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="orbitEz.html"
-                        title="previous chapter">galpy.orbit.Orbit.Ez</a></p>
+  <p class="topless"><a href="orbitflip.html"
+                        title="previous chapter">galpy.orbit.Orbit.flip</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="orbitgetorbit.html"
-                        title="next chapter">galpy.orbit.Orbit.getOrbit</a></p>
+  <p class="topless"><a href="orbitintdxdv.html"
+                        title="next chapter">galpy.orbit.Orbit.integrate_dxdv</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/reference/orbitint.txt"
@@ -63,7 +65,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -85,7 +87,7 @@
 <h1>galpy.orbit.Orbit.integrate<a class="headerlink" href="#galpy-orbit-orbit-integrate" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="galpy.orbit.Orbit.integrate">
-<tt class="descclassname">Orbit.</tt><tt class="descname">integrate</tt><big>(</big><em>t</em>, <em>pot</em>, <em>method='leapfrog_c'</em><big>)</big><a class="headerlink" href="#galpy.orbit.Orbit.integrate" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Orbit.</tt><tt class="descname">integrate</tt><big>(</big><em>t</em>, <em>pot</em>, <em>method='symplec4_c'</em><big>)</big><a class="headerlink" href="#galpy.orbit.Orbit.integrate" title="Permalink to this definition">¶</a></dt>
 <dd><p>NAME:</p>
 <blockquote>
 <div>integrate</div></blockquote>
@@ -96,7 +98,16 @@
 <blockquote>
 <div><p>t - list of times at which to output (0 has to be in this!)</p>
 <p>pot - potential instance or list of instances</p>
-<p>method= &#8216;odeint&#8217; for scipy&#8217;s odeint or &#8216;leapfrog&#8217; for a simple leapfrog implementation</p>
+<dl class="docutils">
+<dt>method= &#8216;odeint&#8217; for scipy&#8217;s odeint</dt>
+<dd>&#8216;leapfrog&#8217; for a simple leapfrog implementation
+&#8216;leapfrog_c&#8217; for a simple leapfrog implementation in C
+&#8216;symplec4_c&#8217; for a 4th order symplectic integrator in C
+&#8216;symplec6_c&#8217; for a 6th order symplectic integrator in C
+&#8216;rk4_c&#8217; for a 4th-order Runge-Kutta integrator in C
+&#8216;rk6_c&#8217; for a 6-th order Runge-Kutta integrator in C
+&#8216;dopr54_c&#8217; for a Dormand-Prince integrator in C (generally the fastest)</dd>
+</dl>
 </div></blockquote>
 <p>OUTPUT:</p>
 <blockquote>
@@ -121,19 +132,19 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="orbitgetorbit.html" title="galpy.orbit.Orbit.getOrbit"
+          <a href="orbitintdxdv.html" title="galpy.orbit.Orbit.integrate_dxdv"
              >next</a> |</li>
         <li class="right" >
-          <a href="orbitEz.html" title="galpy.orbit.Orbit.Ez"
+          <a href="orbitflip.html" title="galpy.orbit.Orbit.flip"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="orbit.html" >Orbit</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Two-dimensional disk distribution functions &mdash; galpy v0.1 documentation</title>
+    <title>Two-dimensional disk distribution functions &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
     <link rel="next" title="A closer look at orbit integration" href="orbit.html" />
     <link rel="prev" title="Potentials in galpy" href="potential.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="potential.html" title="Potentials in galpy"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -55,6 +57,7 @@
 <li><a class="reference internal" href="#using-corrected-disk-distribution-functions">Using corrected disk distribution functions</a></li>
 <li><a class="reference internal" href="#oort-constants-and-functions">Oort constants and functions</a></li>
 <li><a class="reference internal" href="#sampling-data-from-the-df">Sampling data from the DF</a></li>
+<li><a class="reference internal" href="#non-axisymmetric-time-dependent-disk-distribution-functions">Non-axisymmetric, time-dependent disk distribution functions</a></li>
 <li><a class="reference internal" href="#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar</a></li>
 </ul>
 </li>
@@ -74,7 +77,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -378,7 +381,7 @@ agreement is better (this takes a long time):</p>
 <p>We can also directly sample velocities at a given radius rather than
 in a range of radii. Doing this for a correct DF gives</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dfc</span><span class="o">=</span> <span class="n">dehnendf</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">correct</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vrvt</span><span class="o">=</span> <span class="n">dfc</span><span class="o">.</span><span class="n">sampleVRVT</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vrvt</span><span class="o">=</span> <span class="n">dfc</span><span class="o">.</span><span class="n">sampleVRVT</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hists</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span> <span class="n">hist</span><span class="p">(</span><span class="n">vrvt</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span><span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">bins</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">bins</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dfro</span><span class="o">=</span> <span class="p">[</span><span class="n">dfc</span><span class="p">(</span><span class="n">Orbit</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">x</span><span class="p">]))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
@@ -407,6 +410,135 @@ along a given line of sight</p>
 <img alt="_images/basic-df-sampled.png" src="_images/basic-df-sampled.png" />
 <p>galpy can further sample full 4D phase&#8211;space coordinates along a
 given line of sight through <tt class="docutils literal"><span class="pre">dfc.sampleLOS</span></tt>.</p>
+</div>
+<div class="section" id="non-axisymmetric-time-dependent-disk-distribution-functions">
+<h2>Non-axisymmetric, time-dependent disk distribution functions<a class="headerlink" href="#non-axisymmetric-time-dependent-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">galpy</span></tt> also supports the evaluation of non-axisymmetric,
+time-dependent two-dimensional DFs. These specific DFs are constructed
+by assuming an initial axisymmetric steady state, described by a DF of
+the family discussed above, that is then acted upon by a
+non-axisymmetric, time-dependent perturbation. The DF at a given time
+and phase-space position is evaluated by integrating the orbit
+backwards in time in the non-axisymmetric potential until the time of
+the initial DF is reached. From Liouville&#8217;s theorem, which states that
+phase-space volume is conserved along the orbit, we then know that we
+can evaluate the non-axisymmetric DF today as the initial DF at the
+initial point on the orbit. This procedure was first used by <a class="reference external" href="http://adsabs.harvard.edu/abs/2000AJ....119..800D">Dehnen
+(2000)</a>.</p>
+<p>This is implemented in <tt class="docutils literal"><span class="pre">galpy</span></tt> as <tt class="docutils literal"><span class="pre">galpy.df.evolveddiskdf</span></tt>. Such a
+DF is setup by specifying the initial DF, the non-axisymmetric
+potential, and the time of the initial state. For example, we can look
+at the effect of an elliptical perturbation to the potential like that
+described by <a class="reference external" href="http://adsabs.harvard.edu/abs/1994ApJ...421..178K">Kuijken &amp; Tremaine</a>. To do this, we
+set up an elliptical perturbation to a logarithmic potential that is
+grown slowly to minimize non-adiabatic effects</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">LogarithmicHaloPotential</span><span class="p">,</span> <span class="n">EllipticalDiskPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lp</span><span class="o">=</span> <span class="n">LogarithmicHaloPotential</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ep</span><span class="o">=</span> <span class="n">EllipticalDiskPotential</span><span class="p">(</span><span class="n">twophio</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">phib</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">tform</span><span class="o">=-</span><span class="mf">150.</span><span class="p">,</span><span class="n">tsteady</span><span class="o">=</span><span class="mf">125.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This perturbation starts to be grown at <tt class="docutils literal"><span class="pre">tform=-150</span></tt> over a time
+period of <tt class="docutils literal"><span class="pre">tsteady=125</span></tt> time units. We will consider the effect of
+this perturbation on a very cold disk (velocity dispersion
+<span class="math">\(\sigma_R = 0.0125\,v_c\)</span>) and a warm disk (<span class="math">\(\sigma_R =
+0.15\,v_c\)</span>). We set up these two initial DFs</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">idfcold</span><span class="o">=</span> <span class="n">dehnendf</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">profileParams</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.0125</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idfwarm</span><span class="o">=</span> <span class="n">dehnendf</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">profileParams</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.15</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and then set up the <tt class="docutils literal"><span class="pre">evolveddiskdf</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.df</span> <span class="kn">import</span> <span class="n">evolveddiskdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edfcold</span><span class="o">=</span> <span class="n">evolveddiskdf</span><span class="p">(</span><span class="n">idfcold</span><span class="p">,[</span><span class="n">lp</span><span class="p">,</span><span class="n">ep</span><span class="p">],</span><span class="n">to</span><span class="o">=-</span><span class="mf">150.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edfwarm</span><span class="o">=</span> <span class="n">evolveddiskdf</span><span class="p">(</span><span class="n">idfwarm</span><span class="p">,[</span><span class="n">lp</span><span class="p">,</span><span class="n">ep</span><span class="p">],</span><span class="n">to</span><span class="o">=-</span><span class="mf">150.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where we specify that the initial state is at <tt class="docutils literal"><span class="pre">to=-150</span></tt>.</p>
+<p>We can now use these <tt class="docutils literal"><span class="pre">evolveddiskdf</span></tt> instances in much the same way
+as <tt class="docutils literal"><span class="pre">diskdf</span></tt> instances. One difference is that there is much more
+support for evaluating the DF on a grid (to help speed up the rather
+slow computations involved). Thus, we can evaluate the mean radial
+velocity at <tt class="docutils literal"><span class="pre">R=0.9</span></tt>, <tt class="docutils literal"><span class="pre">phi=22.5</span></tt> degree, and <tt class="docutils literal"><span class="pre">t=0</span></tt> by using a grid</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mvrcold</span><span class="p">,</span> <span class="n">gridcold</span><span class="o">=</span> <span class="n">edfcold</span><span class="o">.</span><span class="n">meanvR</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">returnGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">gridpoints</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">nsigma</span><span class="o">=</span><span class="mf">6.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mvrwarm</span><span class="p">,</span> <span class="n">gridwarm</span><span class="o">=</span> <span class="n">edfcold</span><span class="o">.</span><span class="n">meanvR</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">returnGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">gridpoints</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mvrcold</span><span class="p">,</span> <span class="n">mvrwarm</span>
+<span class="go">-0.0358753028951 -0.0294763627935</span>
+</pre></div>
+</div>
+<p>The cold response agrees well with the analytical calculation, which
+predicts that this is <span class="math">\(-0.05/\sqrt{2}\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mvrcold</span><span class="o">+</span><span class="mf">0.05</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+<span class="go">-0.000519963835811</span>
+</pre></div>
+</div>
+<p>The warm response is slightly smaller in amplitude</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mvrwarm</span><span class="o">/</span><span class="n">mvrcold</span>
+<span class="go">0.821633837619</span>
+</pre></div>
+</div>
+<p>although the numerical uncertainty in <tt class="docutils literal"><span class="pre">mvrwarm</span></tt> is large, because
+the grid is not sufficiently fine.</p>
+<p>We can then re-use this grid in calculations of other moments of
+the DF, e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">edfcold</span><span class="o">.</span><span class="n">meanvT</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="n">gridcold</span><span class="p">)</span>
+<span class="go">0.965058551359</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">edfwarm</span><span class="o">.</span><span class="n">meanvT</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="n">gridwarm</span><span class="p">)</span>
+<span class="go">0.915397094614</span>
+</pre></div>
+</div>
+<p>which returns the mean rotational velocity, and</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">edfcold</span><span class="o">.</span><span class="n">vertexdev</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="n">gridcold</span><span class="p">)</span>
+<span class="go">3.21160878582</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">edfwarm</span><span class="o">.</span><span class="n">vertexdev</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="n">gridwarm</span><span class="p">)</span>
+<span class="go">4.23510254333</span>
+</pre></div>
+</div>
+<p>which gives the vertex deviation. The reason we have to calculate the
+grid out to <tt class="docutils literal"><span class="pre">6nsigma</span></tt> for the cold response is that the response is
+much bigger than the velocity dispersion of the population. This
+velocity dispersion is used to automatically to set the grid edges,
+but sometimes has to be adjusted to contain the full DF.</p>
+<p><tt class="docutils literal"><span class="pre">evolveddiskdf</span></tt> can also calculate the Oort functions, by directly
+calculating the spatial derivatives of the DF. These can also be calculated on a grid, such that we can do</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">oortacold</span><span class="p">,</span> <span class="n">gridcold</span><span class="p">,</span> <span class="n">gridrcold</span><span class="p">,</span> <span class="n">gridphicold</span><span class="o">=</span> <span class="n">edfcold</span><span class="o">.</span><span class="n">oortA</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">returnGrids</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">gridpoints</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">derivGridpoints</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">derivphiGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">derivRGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">nsigma</span><span class="o">=</span><span class="mf">6.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oortawarm</span><span class="p">,</span> <span class="n">gridwarm</span><span class="p">,</span> <span class="n">gridrwarm</span><span class="p">,</span> <span class="n">gridphiwarm</span><span class="o">=</span> <span class="n">edfwarm</span><span class="o">.</span><span class="n">oortA</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">returnGrids</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">gridpoints</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">derivGridpoints</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">derivphiGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">derivRGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">oortacold</span><span class="p">,</span> <span class="n">oortawarm</span>
+<span class="go">0.575494559999 0.526389833249</span>
+</pre></div>
+</div>
+<p>It is clear that these are quite different. The cold calculation is
+again close to the analytical prediction, which says that <span class="math">\(A =
+A_{\mathrm{axi}}+0.05/(2\sqrt{2})\)</span> where <span class="math">\(A_{\mathrm{axi}} =
+1/(2\times0.9)\)</span> in this case:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">oortacold</span><span class="o">-</span><span class="p">(</span><span class="mf">0.5</span><span class="o">/</span><span class="mf">0.9</span><span class="o">+</span><span class="mf">0.05</span><span class="o">/</span><span class="mf">2.</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+<span class="go">0.0022613349141670236</span>
+</pre></div>
+</div>
+<p>These grids can then be re-used for the other Oort functions, for
+example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">edfcold</span><span class="o">.</span><span class="n">oortB</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="n">gridcold</span><span class="p">,</span><span class="n">derivphiGrid</span><span class="o">=</span><span class="n">gridphicold</span><span class="p">,</span><span class="n">derivRGrid</span><span class="o">=</span><span class="n">gridrcold</span><span class="p">)</span>
+<span class="go">-0.574674310521</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">edfwarm</span><span class="o">.</span><span class="n">oortB</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">phi</span><span class="o">=</span><span class="mf">22.5</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="n">gridwarm</span><span class="p">,</span><span class="n">derivphiGrid</span><span class="o">=</span><span class="n">gridphiwarm</span><span class="p">,</span><span class="n">derivRGrid</span><span class="o">=</span><span class="n">gridrwarm</span><span class="p">)</span>
+<span class="go">-0.555546911144</span>
+</pre></div>
+</div>
+<p>and similar for <tt class="docutils literal"><span class="pre">oortC</span></tt> and <tt class="docutils literal"><span class="pre">oortK</span></tt>. These warm results should
+again be considered for illustration only, as the grid is not
+sufficiently fine to have a small numerical error.</p>
+<p>The grids that have been calculated can also be plotted to show the
+full velocity DF. For example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gridcold</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>gives</p>
+<img alt="_images/basic-df-nonaxi-cold.png" src="_images/basic-df-nonaxi-cold.png" />
+<p>which demonstrates that the DF is basically the initial DF that has been displaced (by a significant amount compared to the velocity dispersion). The warm velocityd distribution is given by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gridwarm</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns</p>
+<img alt="_images/basic-df-nonaxi-warm.png" src="_images/basic-df-nonaxi-warm.png" />
+<p>The shift of the smooth DF here is much smaller than the velocity
+dispersion.</p>
 </div>
 <div class="section" id="example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar">
 <h2>Example: The Hercules stream in the Solar neighborhood as a result of the Galactic bar<a class="headerlink" href="#example-the-hercules-stream-in-the-solar-neighborhood-as-a-result-of-the-galactic-bar" title="Permalink to this headline">¶</a></h2>
@@ -451,6 +583,18 @@ distribution function. We evaluate the Dehnen distribution function at
 </pre></div>
 </div>
 <img alt="_images/diskdf-dehnenhercules.png" src="_images/diskdf-dehnenhercules.png" />
+<p>Now that <tt class="docutils literal"><span class="pre">galpy</span></tt> contains the <tt class="docutils literal"><span class="pre">evolveddiskdf</span></tt> described above,
+this whole calculation is encapsulated in this module and can be done
+much more easily as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">edf</span><span class="o">=</span> <span class="n">evolveddiskdf</span><span class="p">(</span><span class="n">dfc</span><span class="p">,[</span><span class="n">lp</span><span class="p">,</span><span class="n">dp</span><span class="p">],</span><span class="n">to</span><span class="o">=</span><span class="n">dp</span><span class="o">.</span><span class="n">tform</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mvr</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span> <span class="n">edf</span><span class="o">.</span><span class="n">meanvR</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">gridpoints</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span><span class="n">returnGrid</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The gridded DF can be accessed as <tt class="docutils literal"><span class="pre">grid.df</span></tt>, which we can plot as before</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bovy_dens2d</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s">&#39;gist_yarg&#39;</span><span class="p">,</span><span class="n">contours</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="nb">xrange</span><span class="o">=</span><span class="p">[</span><span class="n">grid</span><span class="o">.</span><span class="n">vRgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">grid</span><span class="o">.</span><span class="n">vRgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span><span class="n">yrange</span><span class="o">=</span><span class="p">[</span><span class="n">grid</span><span class="o">.</span><span class="n">vTgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">grid</span><span class="o">.</span><span class="n">vTgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$v_R$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$v_T$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/diskdf-dehnenhercules-edf.png" src="_images/diskdf-dehnenhercules-edf.png" />
 <p>For more information see <a class="reference external" href="http://adsabs.harvard.edu/abs/2000AJ....119..800D">2000AJ....119..800D</a> and
 <a class="reference external" href="http://adsabs.harvard.edu/abs/2010ApJ...725.1676B">2010ApJ...725.1676B</a>. Note that the
 x-axis in the Figure above is defined as minus the x-axis in these
@@ -476,13 +620,13 @@ papers.</p>
         <li class="right" >
           <a href="potential.html" title="Potentials in galpy"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

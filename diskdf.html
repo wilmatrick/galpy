@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Three-dimensional disk distribution functions &mdash; galpy v0.1 documentation</title>
+    <title>Three-dimensional disk distribution functions &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,8 +23,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
-    <link rel="next" title="Orbit" href="reference/orbit.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
+    <link rel="next" title="Dynamical modeling of tidal streams" href="streamdf.html" />
     <link rel="prev" title="Action-angle coordinates" href="actionAngle.html" /> 
   </head>
   <body>
@@ -34,12 +36,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="reference/orbit.html" title="Orbit"
+          <a href="streamdf.html" title="Dynamical modeling of tidal streams"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="actionAngle.html" title="Action-angle coordinates"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -61,8 +63,8 @@
   <p class="topless"><a href="actionAngle.html"
                         title="previous chapter">Action-angle coordinates</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="reference/orbit.html"
-                        title="next chapter">Orbit</a></p>
+  <p class="topless"><a href="streamdf.html"
+                        title="next chapter">Dynamical modeling of tidal streams</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/diskdf.txt"
@@ -71,7 +73,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -113,23 +115,23 @@ the radial and vertical velocity dispersion as a function of
 radius. In addition, we have to provide an instance of a
 <tt class="docutils literal"><span class="pre">galpy.actionAngle</span></tt> class to calculate the actions for a given
 position and velocity. For example, for a
-<tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> potential using the adiabatic
+<tt class="docutils literal"><span class="pre">galpy.potential.MWPotential2014</span></tt> potential using the adiabatic
 approximation for the actions, we import and define the following</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential2014</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleAdiabatic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.df</span> <span class="kn">import</span> <span class="n">quasiisothermaldf</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and then setup the <tt class="docutils literal"><span class="pre">quasiisothermaldf</span></tt> instance</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">=</span> <span class="n">quasiisothermaldf</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aA</span><span class="p">,</span><span class="n">cutcounter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">=</span> <span class="n">quasiisothermaldf</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aA</span><span class="p">,</span><span class="n">cutcounter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>which sets up a DF instance with a radial scale length of
-<img class="math" src="_images/math/da601f3d98db9036fd5940bb59c11502d420153e.png" alt="R_0/3"/>, a local radial and vertical velocity dispersion of
-<img class="math" src="_images/math/99165218e44946408be755a0a69fa796f50beb45.png" alt="0.2\,V_c(R_0)"/> and <img class="math" src="_images/math/e0e64d54aeecb1601027154ca55f8e3f42304216.png" alt="0.1\,V_c(R_0)"/>, respectively, and a
-radial scale lengths of the velocity dispersions squared of
-<img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/>. <tt class="docutils literal"><span class="pre">cutcounter=True</span></tt> specifies that counter-rotating stars
+<span class="math">\(R_0/3\)</span>, a local radial and vertical velocity dispersion of
+<span class="math">\(0.2\,V_c(R_0)\)</span> and <span class="math">\(0.1\,V_c(R_0)\)</span>, respectively, and a
+radial scale lengths of the velocity dispersions of
+<span class="math">\(R_0\)</span>. <tt class="docutils literal"><span class="pre">cutcounter=True</span></tt> specifies that counter-rotating stars
 are explicitly excluded (normally these are just exponentially
 suppressed). As for the two-dimensional disk DFs, these parameters are
 merely input (or target) parameters; the true density and velocity
@@ -137,17 +139,17 @@ dispersion profiles calculated by evaluating the relevant moments of
 the DF (see below) are not exactly exponential and have scale lengths
 and local normalizations that deviate slightly from these input
 parameters. We can estimate the DF&#8217;s actual radial scale length near
-<img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/> as</p>
+<span class="math">\(R_0\)</span> as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
-<span class="go">0.33843243662586048</span>
+<span class="go">0.32908034635647182</span>
 </pre></div>
 </div>
 <p>which is quite close to the input value of 1/3. Similarly, we can
-estimate the scale lengths of the dispersions squared</p>
+estimate the scale lengths of the dispersions</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hsr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
-<span class="go">1.1527209864858059</span>
+<span class="go">1.1913935820372923</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hsz</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
-<span class="go">1.0441867587783933</span>
+<span class="go">1.0506918075359255</span>
 </pre></div>
 </div>
 <p>The vertical profile is fully specified by the velocity dispersions
@@ -155,18 +157,18 @@ and radial density / dispersion profiles under the assumption of
 dynamical equilibrium. We can estimate the scale height of this DF at
 a given radius and height as follows</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
-<span class="go">0.018715154050080292</span>
+<span class="go">0.021389597757156088</span>
 </pre></div>
 </div>
 <p>Near the mid-plane this vertical scale height becomes very large
 because the vertical profile flattens, e.g.,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="o">/</span><span class="mf">100.</span><span class="p">)</span>
-<span class="go">0.85435378664432149</span>
+<span class="go">1.006386030587223</span>
 </pre></div>
 </div>
 <p>or even</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">estimate_hz</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
-<span class="go">128674.27506772846</span>
+<span class="go">187649.98447377066</span>
 </pre></div>
 </div>
 <p>which is basically infinity.</p>
@@ -189,7 +191,7 @@ axisymmetric</p>
 <p>The mean rotational velocity has a more interesting dependence on
 position. Near the plane, this is the same as that calculated for a similar two-dimensional disk DF (see <a class="reference internal" href="basic_df.html#dftwod-moments"><em>Evaluating moments of the DF</em></a>)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="o">.</span><span class="n">meanvT</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
-<span class="go">0.9150884078276913</span>
+<span class="go">0.91988346380781227</span>
 </pre></div>
 </div>
 <p>However, this value decreases as one moves further from the plane. The
@@ -205,12 +207,12 @@ velocity as a function of height above the plane. For example,</p>
 </div>
 <img alt="_images/qdf-meanvtz.png" src="_images/qdf-meanvtz.png" />
 <p>We can also calculate the second moments of the DF. We can check
-whether the radial and velocity dispersions at <img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/> are close
+whether the radial and velocity dispersions at <span class="math">\(R_0\)</span> are close
 to their input values</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qdf</span><span class="o">.</span><span class="n">sigmaR2</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
-<span class="go">0.20918647082092351</span>
+<span class="go">0.20807112565801389</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qdf</span><span class="o">.</span><span class="n">sigmaz2</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
-<span class="go">0.092564222527283468</span>
+<span class="go">0.090453510526130904</span>
 </pre></div>
 </div>
 <p>and they are pretty close. We can also calculate the mixed <em>R</em> and <em>z</em>
@@ -232,13 +234,13 @@ plane. By using the Staeckel approximation to calculate the actions,
 we can model this coupling better. Setting up a <tt class="docutils literal"><span class="pre">quasiisothermaldf</span></tt>
 instance with the Staeckel approximation</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleStaeckel</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">=</span> <span class="n">quasiisothermaldf</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aAS</span><span class="p">,</span><span class="n">cutcounter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">=</span> <span class="n">quasiisothermaldf</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">aA</span><span class="o">=</span><span class="n">aAS</span><span class="p">,</span><span class="n">cutcounter</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>we can similarly calculate the tilt</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">.</span><span class="n">tilt</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.125</span><span class="p">)</span>
-<span class="go">5.4669442080366721</span>
+<span class="go">5.9096430410862419</span>
 </pre></div>
 </div>
 <p>or about 5 degrees. As a function of height, we find</p>
@@ -289,7 +291,7 @@ implemented in <tt class="docutils literal"><span class="pre">quasiisothermaldf.
 <h2>Evaluating and sampling the full probability distribution function<a class="headerlink" href="#evaluating-and-sampling-the-full-probability-distribution-function" title="Permalink to this headline">¶</a></h2>
 <p>We can evaluate the distribution itself by calling the object, e.g.,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdf</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="c">#input: R,vR,vT,z,vz</span>
-<span class="go">array([ 10.16445158])</span>
+<span class="go">array([ 16.86790643])</span>
 </pre></div>
 </div>
 <p>or as a function of rotational velocity, for example in the mid-plane</p>
@@ -305,7 +307,7 @@ at <em>R</em> =0 and <em>z</em> =0, because it is conditioned on zero radial and
 vertical velocities. We can calculate the distribution of rotational
 velocities marginalized over the radial and vertical velocities as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">qdfS</span><span class="o">.</span><span class="n">pvT</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="c">#input vT,R,z</span>
-<span class="go">15.464330302557528</span>
+<span class="go">14.677231196899195</span>
 </pre></div>
 </div>
 <p>or as a function of rotational velocity</p>
@@ -313,6 +315,9 @@ velocities marginalized over the radial and vertical velocities as</p>
 </pre></div>
 </div>
 <p>overplotting this over the previous distribution gives</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">vts</span><span class="p">,</span><span class="n">pvt</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pvt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">vts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">vts</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
 <img alt="_images/qdf-pvt.png" src="_images/qdf-pvt.png" />
 <p>which is slightly different from the conditioned
 distribution. Similarly, we can calculate marginalized velocity
@@ -348,18 +353,18 @@ and <em>vz</em>) curve (as it should).</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="reference/orbit.html" title="Orbit"
+          <a href="streamdf.html" title="Dynamical modeling of tidal streams"
              >next</a> |</li>
         <li class="right" >
           <a href="actionAngle.html" title="Action-angle coordinates"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

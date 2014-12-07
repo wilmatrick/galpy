@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DF &mdash; galpy v0.1 documentation</title>
+    <title>DF &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="next" title="galpy.df.diskdf.__call__" href="diskdfcall.html" />
     <link rel="prev" title="galpy.potential.RZToverticalPotential" href="potential1dRZtolinear.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="potential1dRZtolinear.html" title="galpy.potential.RZToverticalPotential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -50,25 +52,25 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DF</a><ul>
-<li><a class="reference internal" href="#two-dimensional-disk-distribution-functions">Two-dimensional Disk distribution functions</a><ul>
+<li><a class="reference internal" href="#two-dimensional-axisymmetric-disk-distribution-functions">Two-dimensional, axisymmetric disk distribution functions</a><ul>
 <li><a class="reference internal" href="#general-instance-routines">General instance routines</a><ul>
-<li><a class="reference internal" href="#sampling-routines">Sampling routines</a><ul>
+<li><a class="reference internal" href="#sampling-routines">Sampling routines</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#specific-distribution-functions">Specific distribution functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#specific-distribution-functions">Specific distribution functions</a><ul>
+<li><a class="reference internal" href="#two-dimensional-non-axisymmetric-disk-distribution-functions">Two-dimensional, non-axisymmetric disk distribution functions</a><ul>
+<li><a class="reference internal" href="#id1">General instance routines</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#three-dimensional-disk-distribution-functions">Three-dimensional disk distribution functions</a><ul>
+<li><a class="reference internal" href="#id2">General instance routines</a></li>
+<li><a class="reference internal" href="#id3">Specific distribution functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#three-dimensional-disk-distribution-functions">Three-dimensional Disk distribution functions</a><ul>
-<li><a class="reference internal" href="#id1">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#id2">Specific distribution functions</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#the-distribution-function-of-a-tidal-stream">The distribution function of a tidal stream</a><ul>
+<li><a class="reference internal" href="#id4">General instance routines</a></li>
 </ul>
 </li>
 </ul>
@@ -89,7 +91,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -109,8 +111,8 @@
             
   <div class="section" id="df">
 <h1>DF<a class="headerlink" href="#df" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="two-dimensional-disk-distribution-functions">
-<h2>Two-dimensional Disk distribution functions<a class="headerlink" href="#two-dimensional-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="two-dimensional-axisymmetric-disk-distribution-functions">
+<h2>Two-dimensional, axisymmetric disk distribution functions<a class="headerlink" href="#two-dimensional-axisymmetric-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
 <p>Distribution function for orbits in the plane of a galactic
 disk.</p>
 <div class="section" id="general-instance-routines">
@@ -163,13 +165,42 @@ disk.</p>
 </div>
 </div>
 </div>
+<div class="section" id="two-dimensional-non-axisymmetric-disk-distribution-functions">
+<h2>Two-dimensional, non-axisymmetric disk distribution functions<a class="headerlink" href="#two-dimensional-non-axisymmetric-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
+<p>Distribution function for orbits in the plane of a galactic disk in
+non-axisymmetric potentials. These are calculated using the technique
+of <a class="reference external" href="http://adsabs.harvard.edu/abs/2000AJ....119..800D">Dehnen 2000</a>,
+where the DF at the current time is obtained as the evolution of an
+initially-axisymmetric DF at time <tt class="docutils literal"><span class="pre">to</span></tt> in the non-axisymmetric
+potential until the current time.</p>
+<div class="section" id="id1">
+<h3>General instance routines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="edfcall.html">__call__</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edf.html">__init__</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfmeanvr.html">meanvR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfmeanvt.html">meanvT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfoorta.html">oortA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfoortb.html">oortB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfoortc.html">oortC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfoortk.html">oortK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfsigmar2.html">sigmaR2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfsigmart.html">sigmaRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfsigmat2.html">sigmaT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfvertexdev.html">vertexdev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edfvmomentsurfacemass.html">vmomentsurfacemass</a></li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="three-dimensional-disk-distribution-functions">
-<h2>Three-dimensional Disk distribution functions<a class="headerlink" href="#three-dimensional-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
+<h2>Three-dimensional disk distribution functions<a class="headerlink" href="#three-dimensional-disk-distribution-functions" title="Permalink to this headline">¶</a></h2>
 <p>Distribution functions for orbits in galactic disks, including the
 vertical motion for stars reaching large heights above the
 plane. Currently only the <em>quasi-isothermal DF</em>.</p>
-<div class="section" id="id1">
-<h3>General instance routines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>General instance routines<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="quasidfcall.html">__call__</a></li>
@@ -202,11 +233,45 @@ plane. Currently only the <em>quasi-isothermal DF</em>.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>Specific distribution functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Specific distribution functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dfquasiisothermal.html">quasiisothermal DF</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="the-distribution-function-of-a-tidal-stream">
+<h2>The distribution function of a tidal stream<a class="headerlink" href="#the-distribution-function-of-a-tidal-stream" title="Permalink to this headline">¶</a></h2>
+<p>From <a class="reference external" href="http://arxiv.org/abs/1401.2985">Bovy 2014</a>;
+see <a class="reference internal" href="../streamdf.html#stream-tutorial"><em>Dynamical modeling of tidal streams</em></a>.</p>
+<div class="section" id="id4">
+<h3>General instance routines<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="streamdfcall.html">__call__</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdf.html">__init__</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfcalcstreamlb.html">calc_stream_lb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfcallmarg.html">callMarg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfestimatetdisrupt.html">estimateTdisrupt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdffindclosesttrackpoint.html">find_closest_trackpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdffindclosesttrackpointlb.html">find_closest_trackpointLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdffreqeigvalratio.html">freqEigvalRatio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfgaussapprox.html">gaussApprox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfmeanangledangle.html">meanangledAngle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfmeanomega.html">meanOmega</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfmeantdangle.html">meantdAngle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfmisalignment.html">misalignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfpangledangle.html">pangledAngle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfplotcomparetrackaamodel.html">plotCompareTrackAAModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfplotprogenitor.html">plotProgenitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfplottrack.html">plotTrack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfptdangle.html">ptdAngle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfsample.html">sample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfsigangledangle.html">sigangledAngle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfsigomega.html">sigOmega</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streamdfsigtdangle.html">sigtdAngle</a></li>
 </ul>
 </div>
 </div>
@@ -231,13 +296,13 @@ plane. Currently only the <em>quasi-isothermal DF</em>.</p>
         <li class="right" >
           <a href="potential1dRZtolinear.html" title="galpy.potential.RZToverticalPotential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

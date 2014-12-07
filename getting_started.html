@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; galpy v0.1 documentation</title>
+    <title>Introduction &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
     <link rel="next" title="Potentials in galpy" href="potential.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -72,7 +74,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -132,6 +134,15 @@ components do</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
 </pre></div>
 </div>
+<p>This is <em>not</em> the recommended Milky-Way-like potential in
+<tt class="docutils literal"><span class="pre">galpy</span></tt>. The (currently) recommended Milky-Way-like potential is
+<tt class="docutils literal"><span class="pre">MWPotential2014</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential2014</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">MWPotential2014</span></tt> has a more realistic bulge model and is actually
+fit to various dynamical constraints on the Milky Way (see
+<a class="reference internal" href="reference/potential.html#potential-mw"><em>here</em></a> and the <tt class="docutils literal"><span class="pre">galpy</span></tt> paper).</p>
 </div>
 <div class="section" id="units-in-galpy">
 <h2>Units in galpy<a class="headerlink" href="#units-in-galpy" title="Permalink to this headline">¶</a></h2>
@@ -146,7 +157,7 @@ natural units.</p>
 <p>For convenience, a utility module <tt class="docutils literal"><span class="pre">bovy_conversion</span></tt> is included in
 galpy that helps in converting between physical units and natural
 units for various quantities. For example, in natural units the
-orbital time of a circular orbit at R=1 is <img class="math" src="_images/math/709acef3551b886e6754de72d59a88f00660f0d3.png" alt="2\pi"/>; in
+orbital time of a circular orbit at R=1 is <span class="math">\(2\pi\)</span>; in
 physical units this corresponds to</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util</span> <span class="kn">import</span> <span class="n">bovy_conversion</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="mf">2.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">time_in_Gyr</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
@@ -156,35 +167,48 @@ physical units this corresponds to</p>
 <p>or about 223 Myr. We can also express forces in various physical
 units. For example, for the Milky-Way-like potential defined in galpy,
 we have that the vertical force at 1.1 kpc is</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span><span class="p">,</span> <span class="n">evaluatezforces</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.1</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_pcMyr2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
-<span class="go">2.3941221528330314</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential2014</span><span class="p">,</span> <span class="n">evaluatezforces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.1</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">MWPotential2014</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_pcMyr2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">2.0259181908629933</span>
 </pre></div>
 </div>
 <p>which we can also express as an equivalent surface-density by dividing
-by <img class="math" src="_images/math/2b8b6ae74244ee0693c57f039e8b6858779b7dc0.png" alt="2\pi G"/></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.1</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_2piGmsolpc2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
-<span class="go">84.681625645335686</span>
+by <span class="math">\(2\pi G\)</span></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="n">evaluatezforces</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.1</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">MWPotential2014</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">force_in_2piGmsolpc2</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">71.658016957792356</span>
 </pre></div>
 </div>
 <p>Because the vertical force at the solar circle in the Milky Way at 1.1
-kpc above the plane is approximately <img class="math" src="_images/math/464139e505e744185b8b10d3a0c9fc4a6f78eca7.png" alt="70\,(2\pi G\,
-M_\odot\,\mathrm{pc}^{-2})"/> (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2013arXiv1309.0809B">2013arXiv1309.0809B</a>), this shows
-that our Milky-Way-like potential has a bit too heavy of a disk.</p>
+kpc above the plane is approximately <span class="math">\(70\,(2\pi G\,
+M_\odot\,\mathrm{pc}^{-2})\)</span> (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2013arXiv1309.0809B">2013arXiv1309.0809B</a>), this shows
+that our Milky-Way-like potential has a realistic disk (at least in
+this respect).</p>
 <p><tt class="docutils literal"><span class="pre">bovy_conversion</span></tt> further has functions to convert densities,
 masses, surface densities, and frequencies to physical units (actions
 are considered to be too obvious to be included); see <a class="reference internal" href="reference/bovyconversion.html#bovyconversion"><em>here</em></a> for a full list. As a final example, the local dark
 matter density in the Milky-Way-like potential is given by</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_msolpc3</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
-<span class="go">0.0085853601686596628</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential2014</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_msolpc3</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">0.0075419566970079373</span>
 </pre></div>
 </div>
-<p>or about <img class="math" src="_images/math/4f51d62655c454c781b1906d3a2d0a209d6399d2.png" alt="0.0085\,M_\odot\,\mathrm{pc}^{-3}"/>, in line with
-current measurements (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...756...89B">2012ApJ...756...89B</a>).</p>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential2014</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">dens</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span><span class="o">*</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_gevcc</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)</span>
+<span class="go">0.28643101789044584</span>
+</pre></div>
+</div>
+<p>or about <span class="math">\(0.0075\,M_\odot\,\mathrm{pc}^{-3} \approx
+0.3\,\mathrm{GeV\,cm}^{-3}\)</span>, in line with current measurements (e.g.,
+<a class="reference external" href="http://adsabs.harvard.edu/abs/2012ApJ...756...89B">2012ApJ...756...89B</a>).</p>
+<p>When <tt class="docutils literal"><span class="pre">galpy</span></tt> Orbits are initialized using a distance scale <tt class="docutils literal"><span class="pre">ro=</span></tt>
+and a velocity scale <tt class="docutils literal"><span class="pre">vo=</span></tt> output quantities returned and plotted in
+physical coordinates. Specifically, positions are are returned in
+units of kpc, velocities in km/s, energies and the Jacobi integral in
+(km/s)^2, the angular momentum o.L() and actions in km/s kpc,
+frequencies in 1/Gyr, and times and periods in Gyr.</p>
 </div>
 <div class="section" id="orbit-integration">
 <h2>Orbit integration<a class="headerlink" href="#orbit-integration" title="Permalink to this headline">¶</a></h2>
-<p>We can also integrate orbits in all gaplpy potentials. Going back to a
+<p>We can also integrate orbits in all galpy potentials. Going back to a
 simple Miyamoto-Nagai potential, we initialize an orbit as follows</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">=</span> <span class="n">MiyamotoNagaiPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.0375</span><span class="p">,</span><span class="n">amp</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
@@ -197,7 +221,7 @@ axisymmetric potential in which we do not wish to track the
 azimuth. We then integrate the orbit for a set of times <tt class="docutils literal"><span class="pre">ts</span></tt></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">nethod</span><span class="o">=</span><span class="s">&#39;odeint&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we plot the resulting orbit as</p>
@@ -207,7 +231,7 @@ azimuth. We then integrate the orbit for a set of times <tt class="docutils lite
 <p>Which gives</p>
 <img alt="_images/mp-orbit-integration.png" src="_images/mp-orbit-integration.png" />
 <p>The integrator used is not symplectic, so the energy error grows with time, but is small nonetheless</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">r&#39;$t$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s">r&#39;$E(t)/E(0)$&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plotE</span><span class="p">(</span><span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/mp-orbit-E.png" src="_images/mp-orbit-E.png" />
@@ -228,7 +252,7 @@ Dormand-Prince method).</p>
 <p>When we integrate for much longer we see how the orbit fills up a
 torus (this could take a minute)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;odeint&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -262,6 +286,25 @@ above</p>
 </pre></div>
 </div>
 <img alt="_images/esc-comb.png" src="_images/esc-comb.png" />
+<p>For the Milky-Way-like potential <tt class="docutils literal"><span class="pre">MWPotential2014</span></tt>, the
+escape-velocity curve is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plotEscapecurve</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">Rrange</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="mi">1001</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/esc-mw14.png" src="_images/esc-mw14.png" />
+<p>At the solar radius, the escape velocity is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">vesc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vesc</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">2.3316389848832784</span>
+</pre></div>
+</div>
+<p>Or, for a local circular velocity of 220 km/s</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vesc</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="mf">220.</span>
+<span class="go">512.96057667432126</span>
+</pre></div>
+</div>
+<p>similar to direct measurements of this (e.g., <a class="reference external" href="http://adsabs.harvard.edu/abs/2007MNRAS.379..755S">2007MNRAS.379..755S</a> and
+<a class="reference external" href="http://adsabs.harvard.edu/abs/2014A%26A...562A..91P">2014A%26A...562A..91P</a>).</p>
 </div>
 </div>
 
@@ -283,13 +326,13 @@ above</p>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

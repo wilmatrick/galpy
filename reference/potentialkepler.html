@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Kepler potential &mdash; galpy v0.1 documentation</title>
+    <title>Kepler potential &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,10 +23,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Logarithmic halo potential" href="potentialloghalo.html" />
-    <link rel="prev" title="Hernquist potential" href="potentialhernquist.html" /> 
+    <link rel="prev" title="Isochrone potential" href="potentialisochrone.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,9 +40,9 @@
           <a href="potentialloghalo.html" title="Logarithmic halo potential"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="potentialhernquist.html" title="Hernquist potential"
+          <a href="potentialisochrone.html" title="Isochrone potential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
     </div>
@@ -50,8 +52,8 @@
               <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="potentialhernquist.html"
-                        title="previous chapter">Hernquist potential</a></p>
+  <p class="topless"><a href="potentialisochrone.html"
+                        title="previous chapter">Isochrone potential</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="potentialloghalo.html"
                         title="next chapter">Logarithmic halo potential</a></p>
@@ -63,7 +65,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -87,12 +89,8 @@
 <dt id="galpy.potential.KeplerPotential">
 <em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">KeplerPotential</tt><big>(</big><em>amp=1.0</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.KeplerPotential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that implements the Kepler potential</p>
-<blockquote>
-<div>amp</div></blockquote>
-<dl class="docutils">
-<dt>Phi(r)= &#8212;&#8212;&#8212;</dt>
-<dd>r</dd>
-</dl>
+<div class="math">
+\[\Phi(r) = -\frac{\mathrm{amp}}{r}\]</div>
 <dl class="method">
 <dt id="galpy.potential.KeplerPotential.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.KeplerPotential.__init__" title="Permalink to this definition">¶</a></dt>
@@ -136,16 +134,16 @@
           <a href="potentialloghalo.html" title="Logarithmic halo potential"
              >next</a> |</li>
         <li class="right" >
-          <a href="potentialhernquist.html" title="Hernquist potential"
+          <a href="potentialisochrone.html" title="Isochrone potential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

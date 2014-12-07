@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>NFW potential &mdash; galpy v0.1 documentation</title>
+    <title>NFW potential &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,10 +23,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Power-law density spherical potential" href="potentialpowerspher.html" />
-    <link rel="prev" title="Miyamoto-Nagai potential" href="potentialmiyamoto.html" /> 
+    <link rel="prev" title="Moving object potential" href="potentialmovingobj.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,9 +40,9 @@
           <a href="potentialpowerspher.html" title="Power-law density spherical potential"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="potentialmiyamoto.html" title="Miyamoto-Nagai potential"
+          <a href="potentialmovingobj.html" title="Moving object potential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
     </div>
@@ -50,8 +52,8 @@
               <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="potentialmiyamoto.html"
-                        title="previous chapter">Miyamoto-Nagai potential</a></p>
+  <p class="topless"><a href="potentialmovingobj.html"
+                        title="previous chapter">Moving object potential</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="potentialpowerspher.html"
                         title="next chapter">Power-law density spherical potential</a></p>
@@ -63,7 +65,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -85,11 +87,13 @@
 <h1>NFW potential<a class="headerlink" href="#nfw-potential" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="galpy.potential.NFWPotential">
-<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">NFWPotential</tt><big>(</big><em>amp=1.0</em>, <em>a=1.0</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.NFWPotential" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">NFWPotential</tt><big>(</big><em>amp=1.0</em>, <em>a=1.0</em>, <em>normalize=False</em>, <em>conc=None</em>, <em>mvir=None</em>, <em>vo=220.0</em>, <em>ro=8.0</em>, <em>H=70.0</em>, <em>Om=0.3</em>, <em>overdens=200.0</em>, <em>wrtcrit=False</em><big>)</big><a class="headerlink" href="#galpy.potential.NFWPotential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that implements the NFW potential</p>
+<div class="math">
+\[\rho(r) = \frac{\mathrm{amp}}{4\,\pi\,a^3}\,\frac{1}{(r/a)\,(1+r/a)^{2}}\]</div>
 <dl class="method">
 <dt id="galpy.potential.NFWPotential.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>a=1.0</em>, <em>normalize=False</em><big>)</big><a class="headerlink" href="#galpy.potential.NFWPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>a=1.0</em>, <em>normalize=False</em>, <em>conc=None</em>, <em>mvir=None</em>, <em>vo=220.0</em>, <em>ro=8.0</em>, <em>H=70.0</em>, <em>Om=0.3</em>, <em>overdens=200.0</em>, <em>wrtcrit=False</em><big>)</big><a class="headerlink" href="#galpy.potential.NFWPotential.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>NAME:</p>
 <blockquote>
 <div>__init__</div></blockquote>
@@ -101,13 +105,29 @@
 <div><p>amp - amplitude to be applied to the potential</p>
 <p>a - &#8220;scale&#8221; (in terms of Ro)</p>
 <p>normalize - if True, normalize such that vc(1.,0.)=1., or, if given as a number, such that the force is this fraction of the force necessary to make vc(1.,0.)=1.</p>
+<p>Alternatively, NFW potentials can be initialized using</p>
+<blockquote>
+<div><p>conc= concentration</p>
+<p>mvir= virial mass in 10^12 Msolar</p>
+</div></blockquote>
+<p>in which case you also need to supply the following keywords</p>
+<blockquote>
+<div><p>vo= (220.) velocity unit in km/s</p>
+<p>ro= (8.) length unit in kpc</p>
+<p>H= (default: 70) Hubble constant in km/s/Mpc</p>
+<p>Om= (default: 0.3) Omega matter</p>
+<p>overdens= (200) overdensity which defines the virial radius</p>
+<p>wrtcrit= (False) if True, the overdensity is wrt the critical density rather than the mean matter density</p>
+</div></blockquote>
 </div></blockquote>
 <p>OUTPUT:</p>
 <blockquote>
 <div>(none)</div></blockquote>
 <p>HISTORY:</p>
 <blockquote>
-<div>2010-07-09 - Written - Bovy (NYU)</div></blockquote>
+<div><p>2010-07-09 - Written - Bovy (NYU)</p>
+<p>2014-04-03 - Initialization w/ concentration and mass - Bovy (IAS)</p>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -130,16 +150,16 @@
           <a href="potentialpowerspher.html" title="Power-law density spherical potential"
              >next</a> |</li>
         <li class="right" >
-          <a href="potentialmiyamoto.html" title="Miyamoto-Nagai potential"
+          <a href="potentialmovingobj.html" title="Moving object potential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

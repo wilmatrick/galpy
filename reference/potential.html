@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Potential &mdash; galpy v0.1 documentation</title>
+    <title>Potential &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="next" title="galpy.potential.Potential.__call__" href="potentialcall.html" />
     <link rel="prev" title="galpy.orbit.Orbit.zmax" href="orbitzmax.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="orbitzmax.html" title="galpy.orbit.Orbit.zmax"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -54,36 +56,22 @@
 <li><a class="reference internal" href="#general-instance-routines">General instance routines</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#general-3d-potential-routines">General 3D potential routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#specific-potentials">Specific potentials</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#general-3d-potential-routines">General 3D potential routines</a></li>
+<li><a class="reference internal" href="#specific-potentials">Specific potentials</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">2D potentials</a><ul>
-<li><a class="reference internal" href="#id2">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-axisymmetric-potential-instance-routines">General axisymmetric potential instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-2d-potential-routines">General 2D potential routines</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#id2">General instance routines</a></li>
+<li><a class="reference internal" href="#general-axisymmetric-potential-instance-routines">General axisymmetric potential instance routines</a></li>
+<li><a class="reference internal" href="#general-2d-potential-routines">General 2D potential routines</a></li>
 <li><a class="reference internal" href="#id3">Specific potentials</a><ul>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id4">1D potentials</a><ul>
-<li><a class="reference internal" href="#id5">General instance routines</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#general-1d-potential-routines">General 1D potential routines</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#id5">General instance routines</a></li>
+<li><a class="reference internal" href="#general-1d-potential-routines">General 1D potential routines</a></li>
 <li><a class="reference internal" href="#id6">Specific potentials</a><ul>
 </ul>
 </li>
@@ -107,7 +95,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -140,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialepifreq.html">epifreq</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialflattening.html">flattening</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentiallindbladR.html">lindbladR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialmass.html">mass</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialomegac.html">omegac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialphiforce.html">phiforce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialphi2deriv.html">phi2deriv</a></li>
@@ -148,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialplotescapecurve.html">plotEscapecurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotrotcurve.html">plotRotcurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialr2deriv.html">R2deriv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="potentialr2deriv.html">Rzderiv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialrzderiv.html">Rzderiv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrforce.html">Rforce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrl.html">rl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialtoplanar.html">toPlanar</a></li>
@@ -159,6 +148,14 @@
 <li class="toctree-l1"><a class="reference internal" href="potentialvterm.html">vterm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialz2deriv.html">z2deriv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialzforce.html">zforce</a></li>
+</ul>
+</div>
+<p>In addition to these, the <tt class="docutils literal"><span class="pre">NFWPotential</span></tt> also has methods to calculate virial quantities</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="potentialconc.html">conc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialmvir.html">mvir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialrvir.html">rvir</a></li>
 </ul>
 </div>
 </div>
@@ -196,27 +193,53 @@
 <h3>Specific potentials<a class="headerlink" href="#specific-potentials" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="potentialburkert.html">Burkert potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialdoubleexp.html">Double exponential disk potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialdoublepowerspher.html">Double power-law density spherical potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialjaffe.html">Jaffe potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialflattenedpower.html">Flattened Power-law potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialhernquist.html">Hernquist potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialinterprz.html">Interpolated axisymmetric potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialisochrone.html">Isochrone potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialkepler.html">Kepler potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialloghalo.html">Logarithmic halo potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialmiyamoto.html">Miyamoto-Nagai potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialmovingobj.html">Moving object potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialnfw.html">NFW potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialpowerspher.html">Power-law density spherical potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potentialpowerspherwcut.html">Power-law density spherical potential with an exponential cut-off</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialrazorexp.html">Razor-thin exponential disk potential</a></li>
 </ul>
 </div>
-<p>In addition to these classes, a Milky-Way-like potential is defined as <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt>. This potential is defined as</p>
+<p id="potential-mw">In addition to these classes, a simple Milky-Way-like potential fit to
+data on the Milky Way is included as
+<tt class="docutils literal"><span class="pre">galpy.potential.MWPotential2014</span></tt> (see the <tt class="docutils literal"><span class="pre">galpy</span></tt> paper for
+details). This potential is defined as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bp</span><span class="o">=</span> <span class="n">PowerSphericalPotentialwCutoff</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span><span class="n">rc</span><span class="o">=</span><span class="mf">1.9</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">=</span> <span class="n">MiyamotoNagaiPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">3.</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.28</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">=</span> <span class="n">NFWPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">16</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="n">normalize</span><span class="o">=.</span><span class="mi">35</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential2014</span><span class="o">=</span> <span class="p">[</span><span class="n">bp</span><span class="p">,</span><span class="n">mp</span><span class="p">,</span><span class="n">np</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>and can thus be used like any list of <tt class="docutils literal"><span class="pre">Potentials</span></tt>. If one wants to
+add the supermassive black hole at the Galactic center, this can be
+done by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">KeplerPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util</span> <span class="kn">import</span> <span class="n">bovy_conversion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential2014</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">KeplerPotential</span><span class="p">(</span><span class="n">amp</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mf">6.</span><span class="o">/</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">mass_in_msol</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span><span class="mf">8.</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>for a black hole with a mass of <span class="math">\(4\times10^6\,M_{\odot}\)</span>.</p>
+<p>An older version <tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt> of a similar
+potential that was <em>not</em> fit to data on the Milky Way is defined as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span><span class="o">=</span> <span class="n">MiyamotoNagaiPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.0375</span><span class="p">,</span><span class="n">normalize</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">=</span> <span class="n">NFWPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span><span class="n">normalize</span><span class="o">=.</span><span class="mi">35</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hp</span><span class="o">=</span> <span class="n">HernquistPotential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">0.6</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">MWPotential</span><span class="o">=</span> <span class="p">[</span><span class="n">mp</span><span class="p">,</span><span class="n">np</span><span class="p">,</span><span class="n">hp</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>and can thus be used like any list of <tt class="docutils literal"><span class="pre">Potentials</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">galpy.potential.MWPotential2014</span></tt> supersedes
+<tt class="docutils literal"><span class="pre">galpy.potential.MWPotential</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="id1">
@@ -256,6 +279,8 @@
 <li class="toctree-l1"><a class="reference internal" href="potential2dphiforces.html">evaluateplanarphiforces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potential2devaluate.html">evaluateplanarPotentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potential2drforces.html">evaluateplanarRforces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potential2dr2derivs.html">evaluateplanarR2derivs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potential2dlinshureductionfactor.html">LinShuReductionFactor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotescapecurves.html">plotEscapecurve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potential2dplots.html">plotplanarPotentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="potentialplotrotcurves.html">plotRotcurve</a></li>
@@ -343,13 +368,13 @@ potentials in the mid-plane.</p>
         <li class="right" >
           <a href="orbitzmax.html" title="galpy.orbit.Orbit.zmax"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

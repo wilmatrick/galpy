@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Steady-state logarithmic spiral potential &mdash; galpy v0.1 documentation</title>
+    <title>Steady-state logarithmic spiral potential &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Transient logarithmic spiral potential" href="potentialtransientlogspiral.html" />
     <link rel="prev" title="Lopsided disk potential" href="potentiallopsideddisk.html" /> 
@@ -40,7 +42,7 @@
         <li class="right" >
           <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
     </div>
@@ -63,7 +65,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -87,7 +89,9 @@
 <dt id="galpy.potential.SteadyLogSpiralPotential">
 <em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">SteadyLogSpiralPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that implements a steady-state spiral potential</p>
-<p>V(r,phi,t) = A/alpha cos(alpha ln(r) - m(phi - Omegas*t-gamma))</p>
+<div class="math">
+\[\Phi(R,\phi) = \frac{\mathrm{amp}\times A}{\alpha}\,\cos\left(\alpha\,\ln R - m\,(\phi-\Omega_s\,t-\gamma)\right)\]</div>
+<p>Can be grown in a similar way as the DehnenBarPotential, but using <span class="math">\(T_s = 2\pi/\Omega_s\)</span> to normalize <span class="math">\(t_{\mathrm{form}}\)</span> and <span class="math">\(T_{\mathrm{steady}}\)</span>.</p>
 <dl class="method">
 <dt id="galpy.potential.SteadyLogSpiralPotential.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>omegas=0.65</em>, <em>A=-0.035</em>, <em>alpha=-7.0</em>, <em>m=2</em>, <em>gamma=0.7853981633974483</em>, <em>p=None</em>, <em>tform=None</em>, <em>tsteady=None</em><big>)</big><a class="headerlink" href="#galpy.potential.SteadyLogSpiralPotential.__init__" title="Permalink to this definition">¶</a></dt>
@@ -113,7 +117,7 @@
 </ol>
 </div></blockquote>
 <p>tform - start of spiral growth / spiral period (default: -Infinity)</p>
-<p>tsteady - time from tform at which the spiral is fully grown / spiral period (default: tform+2 periods)</p>
+<p>tsteady - time from tform at which the spiral is fully grown / spiral period (default: 2 periods)</p>
 </div></blockquote>
 <p>OUTPUT:</p>
 <blockquote>
@@ -145,14 +149,14 @@
         <li class="right" >
           <a href="potentiallopsideddisk.html" title="Lopsided disk potential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

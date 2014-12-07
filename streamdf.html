@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dynamical modeling of tidal streams &mdash; galpy v0.1 documentation</title>
+    <title>Dynamical modeling of tidal streams &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,8 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
-    <link rel="prev" title="galpy.util.bovy_ars.bovy_ars" href="reference/bovyars.html" /> 
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
+    <link rel="next" title="Orbit" href="reference/orbit.html" />
+    <link rel="prev" title="Three-dimensional disk distribution functions" href="diskdf.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,9 +36,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="reference/bovyars.html" title="galpy.util.bovy_ars.bovy_ars"
+          <a href="reference/orbit.html" title="Orbit"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="diskdf.html" title="Three-dimensional disk distribution functions"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -55,8 +61,11 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="reference/bovyars.html"
-                        title="previous chapter">galpy.util.bovy_ars.bovy_ars</a></p>
+  <p class="topless"><a href="diskdf.html"
+                        title="previous chapter">Three-dimensional disk distribution functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference/orbit.html"
+                        title="next chapter">Orbit</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/streamdf.txt"
@@ -65,7 +74,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -84,22 +93,23 @@
           <div class="body">
             
   <div class="section" id="dynamical-modeling-of-tidal-streams">
-<h1>Dynamical modeling of tidal streams<a class="headerlink" href="#dynamical-modeling-of-tidal-streams" title="Permalink to this headline">¶</a></h1>
+<span id="stream-tutorial"></span><h1>Dynamical modeling of tidal streams<a class="headerlink" href="#dynamical-modeling-of-tidal-streams" title="Permalink to this headline">¶</a></h1>
 <p>galpy contains tools to model the dynamics of tidal streams, making
 extensive use of action-angle variables. As an example, we can model
-the dynamics of the following tidal stream (that of Bovy 2014; ). This
-movie shows the disruption of a cluster on a GD-1-like orbit around
-the Milky Way:</p>
+the dynamics of the following tidal stream (that of Bovy 2014;
+<a class="reference external" href="http://adsabs.harvard.edu/abs/2014ApJ...795...95B">2014ApJ...795...95B</a>). This movie
+shows the disruption of a cluster on a GD-1-like orbit around the
+Milky Way:</p>
 <embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_orbplane_comov.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>The blue line is the orbit of the progenitor cluster and the black
 points are cluster members. The disruption is shown in an approximate
 orbital plane and the movie is comoving with the progenitor cluster.</p>
 <p>Streams can be represented by simple dynamical models in action-angle
 coordinates. In action-angle coordinates, stream members are stripped
 from the progenitor cluster onto orbits specified by a set of actions
-<img class="math" src="_images/math/c901526645b0c88607e099694451c37eb82c9d21.png" alt="(J_R,J_\phi,J_Z)"/>, which remain constant after the stars have
+<span class="math">\((J_R,J_\phi,J_Z)\)</span>, which remain constant after the stars have
 been stripped. This is shown in the following movie, which shows the
 generation of the stream in action space</p>
-<embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_jrjzlz_debris.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>The color-coding gives the angular momentum <img class="math" src="_images/math/1f46726e8068693262c34035325a282e0e31030e.png" alt="J_\phi"/> and the
+<embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_jrjzlz_debris.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>The color-coding gives the angular momentum <span class="math">\(J_\phi\)</span> and the
 black dot shows the progenitor orbit. These actions were calculated
 using <tt class="docutils literal"><span class="pre">galpy.actionAngle.actionAngleIsochroneApprox</span></tt>. The points
 move slightly because of small errors in the action calculation (these
@@ -112,9 +122,9 @@ actions of stream members freeze once they are stripped. The angle
 difference between stars in a stream and the progenitor increases
 linearly with time, which is shown in the following movie:</p>
 <embed src="http://sns.ias.edu/~bovy/streams/gd1-sim/gd1_evol_aai_arazap.mpg" AUTOPLAY="false" LOOP="false" width="600" height="515" Pluginspage="http://www.apple.com/quicktime/" CONTROLLER=True></embed><p>where the radial and vertical angle difference with respect to the
-progenitor (co-moving at <img class="math" src="_images/math/ae5e3f79dca756f4b67aa96f147c799271797ea3.png" alt="(\theta_R,\theta_\phi,\theta_Z) =
-(\pi,\pi,\pi)"/>) is shown for each snapshot (the color-coding gives
-<img class="math" src="_images/math/5d873e5ed4680baf96a3bdcab69191a9c8b25db6.png" alt="\theta_\phi"/>).</p>
+progenitor (co-moving at <span class="math">\((\theta_R,\theta_\phi,\theta_Z) =
+(\pi,\pi,\pi)\)</span>) is shown for each snapshot (the color-coding gives
+<span class="math">\(\theta_\phi\)</span>).</p>
 <p>One last movie provides further insight in how a stream evolves over
 time. The following movie shows the evolution of the stream in the two
 dimensional plane of frequency and angle along the stream (that is,
@@ -162,9 +172,30 @@ modules</p>
 </div>
 <p>for a leading stream. This runs in about half a minute on a 2011
 Macbook Air.</p>
+<p>Bovy (2014) discusses how the calculation of the track needs to be
+iterated for potentials where there is a large offset between the
+track and a single orbit. One can increase the default number of
+iterations by specifying <tt class="docutils literal"><span class="pre">nTrackIterations=</span></tt> in the streamdf
+initialization (the default is set based on the angle between the
+track&#8217;s frequency vector and the progenitor orbit&#8217;s frequency vector;
+you can access the number of iterations used as
+<tt class="docutils literal"><span class="pre">sdf.nTrackIterations</span></tt>). To check whether the track is calculated
+accurately, one can use the following</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotCompareTrackAAModel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which in this case gives</p>
+<img alt="_images/sdf_plotcomparetrackaamodel.png" src="_images/sdf_plotcomparetrackaamodel.png" />
+<p>This displays the stream model&#8217;s track in frequency offset (y axis)
+versus angle offset (x axis) as the solid line; this is the track that
+the model should have if it is calculated correctly. The points are
+the frequency and angle offset calculated from the calculated track&#8217;s
+<span class="math">\((\mathbf{x},\mathbf{v})\)</span>. For a properly computed track these
+should line up, as they do in this figure. If they do not line up,
+increasing <tt class="docutils literal"><span class="pre">nTrackIterations</span></tt> is necessary.</p>
 <p>We can calculate some simple properties of the stream, such as the
 ratio of the largest and second-to-largest eigenvalue of the Hessian
-<img class="math" src="_images/math/cc270331c32b1dbd0254f6740c84fe220f4e0ed8.png" alt="\partial \mathbf{\Omega} / \partial \mathbf{J}"/></p>
+<span class="math">\(\partial \mathbf{\Omega} / \partial \mathbf{J}\)</span></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">freqEigvalRatio</span><span class="p">(</span><span class="n">isotropic</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="go">34.450028399901434</span>
 </pre></div>
@@ -185,7 +216,7 @@ the progenitor and of the model mean frequency vector</p>
 </div>
 <p>which returns this angle in degrees. We can also calculate the angle
 between the frequency vector of the progenitor and the principal
-eigenvector of <img class="math" src="_images/math/cc270331c32b1dbd0254f6740c84fe220f4e0ed8.png" alt="\partial \mathbf{\Omega} / \partial \mathbf{J}"/></p>
+eigenvector of <span class="math">\(\partial \mathbf{\Omega} / \partial \mathbf{J}\)</span></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">misalignment</span><span class="p">(</span><span class="n">isotropic</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="go"> 1.2825116841963993</span>
 </pre></div>
@@ -207,8 +238,8 @@ follows</p>
 <p>which shows the track in Galactocentric <em>R</em> and <em>Z</em> coordinates as
 well as an estimate of the spread around the track as the dash-dotted
 line. We can overplot the points along the track along which the
-<img class="math" src="_images/math/c5fbb4abbcbc54325da39868b3af380471aaaecd.png" alt="(\mathbf{x},\mathbf{v}) \rightarrow
-(\mathbf{\Omega},\boldsymbol{\theta})"/> transformation and the track
+<span class="math">\((\mathbf{x},\mathbf{v}) \rightarrow
+(\mathbf{\Omega},\boldsymbol{\theta})\)</span> transformation and the track
 position is explicitly calculated, by turning off the interpolation</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
@@ -252,7 +283,7 @@ for <tt class="docutils literal"><span class="pre">?streamdf</span></tt> for a c
 </pre></div>
 </div>
 <p>which returns the sampled points as a set
-<img class="math" src="_images/math/3507c1c06d163e89c8e50c56c4dd1fd06378eb25.png" alt="(R,v_R,v_T,Z,v_Z,\phi)"/> in natural galpy coordinates. We can
+<span class="math">\((R,v_R,v_T,Z,v_Z,\phi)\)</span> in natural galpy coordinates. We can
 plot these and compare them to the track location</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="o">.</span><span class="n">plotTrack</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">d2</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span><span class="n">interp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">spread</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">overplot</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span><span class="n">scaleToPhysical</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">RvR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="n">RvR</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span><span class="p">,</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span> <span class="c">#multiply by the physical distance scale</span>
@@ -278,10 +309,10 @@ plot these and compare them to the track location</p>
 </pre></div>
 </div>
 <p>which returns a tuple with three components: an array with shape [3,N]
-of frequency vectors <img class="math" src="_images/math/30918553a8abffe426c57cef427d199c6054ba77.png" alt="(\Omega_R,\Omega_\phi,\Omega_Z)"/>, an array
+of frequency vectors <span class="math">\((\Omega_R,\Omega_\phi,\Omega_Z)\)</span>, an array
 with shape [3,N] of angle vectors
-<img class="math" src="_images/math/b1280dc6dc25e5d2a34e9809f15693007e35ecb0.png" alt="(\theta_R,\theta_\phi,\theta_Z)"/> and <img class="math" src="_images/math/0ffb94c0fa16a9d1a2a3b0e47ed218d773425512.png" alt="t_s"/>, the stripping
-time. We can plot the vertical versus the radial angle</p>
+<span class="math">\((\theta_R,\theta_\phi,\theta_Z)\)</span> and <span class="math">\(t_s\)</span>, the stripping
+time. We can plot the vertical versus the radial frequency</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">mockaA</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">mockaA</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="s">&#39;k.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -296,7 +327,7 @@ stripping time</p>
 <div class="section" id="evaluating-and-marginalizing-the-full-pdf">
 <h2>Evaluating and marginalizing the full PDF<a class="headerlink" href="#evaluating-and-marginalizing-the-full-pdf" title="Permalink to this headline">¶</a></h2>
 <p>We can also evaluate the stream PDF, the probability of a
-<img class="math" src="_images/math/773cebb960b3f7bbdfdb0f5bbd3c4c5fbe38a065.png" alt="(\mathbf{x},\mathbf{v})"/> phase-space position in the stream. We
+<span class="math">\((\mathbf{x},\mathbf{v})\)</span> phase-space position in the stream. We
 can evaluate the PDF, for example, at the location of the progenitor</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span><span class="p">(</span><span class="n">obs</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">obs</span><span class="o">.</span><span class="n">phi</span><span class="p">())</span>
 <span class="go">array([-33.16985861])</span>
@@ -311,17 +342,17 @@ can evaluate the PDF, for example, at the location of the progenitor</p>
 <p>because this phase-space position cannot be reached by a leading
 stream star. We can also marginalize the PDF over unobserved
 directions. For example, similar to Figure 10 in Bovy (2014), we can
-evaluate the PDF <img class="math" src="_images/math/8d06813e2c385c7de43fd4760ddc2ba0911c45ea.png" alt="p(X|Z)"/> near a point on the track, say near
+evaluate the PDF <span class="math">\(p(X|Z)\)</span> near a point on the track, say near
 <em>Z</em> =2 kpc (=0.25 in natural units. We first find the approximate
 Gaussian PDF near this point, calculated from the stream track and
 dispersion (see above)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">gaussApprox</span><span class="p">([</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mf">2.</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">gaussApprox</span><span class="p">([</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mf">2.</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>where the input is a array with entries [X,Y,Z,vX,vY,vZ] and we
 substitute None for directions that we want to establish the
 approximate PDF for. So the above expression returns an approximation
-to <img class="math" src="_images/math/7e9403d976444830797b9277ce39489731bf1212.png" alt="p(X,Y,v_X,v_Y,v_Z|Z)"/>. This approximation allows us to get a
+to <span class="math">\(p(X,Y,v_X,v_Y,v_Z|Z)\)</span>. This approximation allows us to get a
 sense of where the PDF peaks and what its width is</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span>
 <span class="go">14.267559400127833</span>
@@ -329,7 +360,7 @@ sense of where the PDF peaks and what its width is</p>
 <span class="go">0.04152968631186698</span>
 </pre></div>
 </div>
-<p>We can now evaluate the PDF <img class="math" src="_images/math/8d06813e2c385c7de43fd4760ddc2ba0911c45ea.png" alt="p(X|Z)"/> as a function of <em>X</em> near
+<p>We can now evaluate the PDF <span class="math">\(p(X|Z)\)</span> as a function of <em>X</em> near
 the peak</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="mi">21</span><span class="p">)</span><span class="o">+</span><span class="n">meanp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sdf</span><span class="o">.</span><span class="n">callMarg</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mf">2.</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
@@ -349,7 +380,7 @@ the peak</p>
 <img alt="_images/sdf_pxz.png" src="_images/sdf_pxz.png" />
 <p>Sometimes it is hard to automatically determine the closest point on
 the calculated track if only one phase-space coordinate is given. For
-example, this happens when evaluating <img class="math" src="_images/math/2f329e26b5af5069f03308c0bebf751bca88105b.png" alt="p(Z|X)"/> for <em>X</em> &gt; 13 kpc
+example, this happens when evaluating <span class="math">\(p(Z|X)\)</span> for <em>X</em> &gt; 13 kpc
 here, where there are two branches of the track in <em>Z</em> (see the figure
 of the track above). In that case, we can determine the closest track
 point on one of the branches by hand and then provide this closest
@@ -363,7 +394,7 @@ near <em>Z</em> =5 kpc (Figure 10 in Bovy 2014).</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">meanp</span><span class="p">,</span> <span class="n">varp</span><span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">gaussApprox</span><span class="p">([</span><span class="mf">13.5</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="n">cindx</span><span class="o">=</span><span class="n">cindx</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>computes the approximate <img class="math" src="_images/math/3e79c31f98655b3f2aae2d83b519494844a0f549.png" alt="p(Y,Z,v_X,v_Y,v_Z|X)"/> near the upper
+<p>computes the approximate <span class="math">\(p(Y,Z,v_X,v_Y,v_Z|X)\)</span> near the upper
 <em>Z</em> branch. In <em>Z</em>, this PDF has mean and dispersion</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">meanp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">8.</span>
 <span class="go">5.4005530328542077</span>
@@ -371,7 +402,7 @@ near <em>Z</em> =5 kpc (Figure 10 in Bovy 2014).</p>
 <span class="go">0.05796023309510244</span>
 </pre></div>
 </div>
-<p>We can then evaluate <img class="math" src="_images/math/2f329e26b5af5069f03308c0bebf751bca88105b.png" alt="p(Z|X)"/> for the upper branch as</p>
+<p>We can then evaluate <span class="math">\(p(Z|X)\)</span> for the upper branch as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zs</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="mf">3.</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="mi">21</span><span class="p">)</span><span class="o">+</span><span class="n">meanp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sdf</span><span class="o">.</span><span class="n">callMarg</span><span class="p">([</span><span class="mf">13.5</span><span class="o">/</span><span class="mf">8.</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="n">cindx</span><span class="o">=</span><span class="n">cindx</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logps</span><span class="p">)</span>
@@ -405,15 +436,18 @@ PDF will not be quite correct.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="reference/bovyars.html" title="galpy.util.bovy_ars.bovy_ars"
+          <a href="reference/orbit.html" title="Orbit"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="diskdf.html" title="Three-dimensional disk distribution functions"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

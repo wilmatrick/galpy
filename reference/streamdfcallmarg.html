@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>galpy.df.streamdf.callMarg &mdash; galpy 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
+    <link rel="up" title="DF" href="df.html" />
+    <link rel="next" title="galpy.df.streamdf.estimateTdisrupt" href="streamdfestimatetdisrupt.html" />
+    <link rel="prev" title="galpy.df.streamdf.calc_stream_lb" href="streamdfcalcstreamlb.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="streamdfestimatetdisrupt.html" title="galpy.df.streamdf.estimateTdisrupt"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="streamdfcalcstreamlb.html" title="galpy.df.streamdf.calc_stream_lb"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="streamdfcalcstreamlb.html"
+                        title="previous chapter">galpy.df.streamdf.calc_stream_lb</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="streamdfestimatetdisrupt.html"
+                        title="next chapter">galpy.df.streamdf.estimateTdisrupt</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/streamdfcallmarg.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-streamdf-callmarg">
+<h1>galpy.df.streamdf.callMarg<a class="headerlink" href="#galpy-df-streamdf-callmarg" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.streamdf.callMarg">
+<tt class="descclassname">streamdf.</tt><tt class="descname">callMarg</tt><big>(</big><em>xy</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.streamdf.callMarg" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>callMarg</div></blockquote>
+<dl class="docutils">
+<dt>PURPOSE:</dt>
+<dd>evaluate the DF, marginalizing over some directions, in Galactocentric rectangular coordinates (or in observed l,b,D,vlos,pmll,pmbb) coordinates)</dd>
+</dl>
+<p>INPUT:</p>
+<blockquote>
+<div><p>xy - phase-space point [X,Y,Z,vX,vY,vZ]; the distribution of the dimensions set to None is returned</p>
+<p>interp= (object-wide interp default) if True, use the interpolated stream track</p>
+<p>cindx= index of the closest point on the (interpolated) stream track if not given, determined from the dimensions given</p>
+<p>nsigma= (3) number of sigma to marginalize the DF over (approximate sigma)</p>
+<p>ngl= (5) order of Gauss-Legendre integration</p>
+<p>lb= (False) if True, xy contains [l,b,D,vlos,pmll,pmbb] in [deg,deg,kpc,km/s,mas/yr,mas/yr] and the marginalized PDF in these coordinates is returned</p>
+<p>Vnorm= (220) circular velocity to normalize with when lb=True</p>
+<p>Rnorm= (8) Galactocentric radius to normalize with when lb=True</p>
+<p>R0= (8) Galactocentric radius of the Sun (kpc)</p>
+<p>Zsun= (0.025) Sun&#8217;s height above the plane (kpc)</p>
+<p>vsun= ([-11.1,241.92,7.25]) Sun&#8217;s motion in cylindrical coordinates (vR positive away from center)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>p(xy) marginalized over missing directions in xy</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2013-12-16 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="streamdfestimatetdisrupt.html" title="galpy.df.streamdf.estimateTdisrupt"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="streamdfcalcstreamlb.html" title="galpy.df.streamdf.calc_stream_lb"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" >DF</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

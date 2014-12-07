@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dehnen bar potential &mdash; galpy v0.1 documentation</title>
+    <title>Dehnen bar potential &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Potential" href="potential.html" />
     <link rel="next" title="Cos(m phi) disk potential" href="potentialcosmphidisk.html" />
     <link rel="prev" title="galpy.potential.RZToplanarPotential" href="potential2dRZtoplanar.html" /> 
@@ -40,7 +42,7 @@
         <li class="right" >
           <a href="potential2dRZtoplanar.html" title="galpy.potential.RZToplanarPotential"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
       </ul>
     </div>
@@ -63,7 +65,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -87,6 +89,24 @@
 <dt id="galpy.potential.DehnenBarPotential">
 <em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">DehnenBarPotential</tt><big>(</big><em>amp=1.0</em>, <em>omegab=None</em>, <em>rb=None</em>, <em>chi=0.8</em>, <em>rolr=0.9</em>, <em>barphi=0.4363323129985824</em>, <em>tform=-4.0</em>, <em>tsteady=None</em>, <em>beta=0.0</em>, <em>alpha=0.01</em>, <em>Af=None</em><big>)</big><a class="headerlink" href="#galpy.potential.DehnenBarPotential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that implements the Dehnen bar potential (Dehnen 2000)</p>
+<div class="math">
+\[\begin{split}\Phi(R,\phi) = A_b(t)\,\cos\left(2\,(\phi-\Omega_b\,t)\right))\times \begin{cases}
+-(R_b/R)^3\,, &amp; \text{for}\ R \geq R_b\\
+(R/R_b)^3-2\,, &amp; \text{for}\ R\leq R_b.
+\end{cases}\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[A_b(t) = \frac{\alpha}{3\,R_b^3}\,\left(\frac{3}{16}\xi^5-\frac{5}{8}\xi^3+\frac{15}{16}\xi+\frac{1}{2}\right)\,, \xi = 2\frac{t/T_b-t_\mathrm{form}}{T_\mathrm{steady}}-1\,,\ \mathrm{if}\ t_\mathrm{form} \leq \frac{t}{T_b} \leq t_\mathrm{form}+T_\mathrm{steady}\]</div>
+<p>and</p>
+<div class="math">
+\[\begin{split}A_b(t) = \begin{cases}
+0\,, &amp; \frac{t}{T_b} &lt; t_\mathrm{form}\\
+\frac{\alpha}{3\,R_b^3}\,, &amp; \frac{t}{T_b} &gt; t_\mathrm{form}+T_\mathrm{steady}
+\end{cases}\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[T_b = \frac{2\pi}{\Omega_b}\]</div>
+<p>is the bar period.</p>
 <dl class="method">
 <dt id="galpy.potential.DehnenBarPotential.__init__">
 <tt class="descname">__init__</tt><big>(</big><em>amp=1.0</em>, <em>omegab=None</em>, <em>rb=None</em>, <em>chi=0.8</em>, <em>rolr=0.9</em>, <em>barphi=0.4363323129985824</em>, <em>tform=-4.0</em>, <em>tsteady=None</em>, <em>beta=0.0</em>, <em>alpha=0.01</em>, <em>Af=None</em><big>)</big><a class="headerlink" href="#galpy.potential.DehnenBarPotential.__init__" title="Permalink to this definition">¶</a></dt>
@@ -103,6 +123,7 @@
 <p>barphi - angle between sun-GC line and the bar&#8217;s major axis
 (in rad; default=25 degree)</p>
 <p>tform - start of bar growth / bar period (default: -4)</p>
+<p>tsteady - time from tform at which the bar is fully grown / bar period (default: -tform/2, st the perturbation is fully grown at tform/2)</p>
 <p>tsteady - time at which the bar is fully grown / bar period
 (default: tform/2)</p>
 <p>Either provide:</p>
@@ -152,14 +173,14 @@ calculate OLR, etc.)</p>
         <li class="right" >
           <a href="potential2dRZtoplanar.html" title="galpy.potential.RZToplanarPotential"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="potential.html" >Potential</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>galpy.df.streamdf.gaussApprox &mdash; galpy 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
+    <link rel="up" title="DF" href="df.html" />
+    <link rel="next" title="galpy.df.streamdf.meanangledAngle" href="streamdfmeanangledangle.html" />
+    <link rel="prev" title="galpy.df.streamdf.freqEigvalRatio" href="streamdffreqeigvalratio.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="streamdfmeanangledangle.html" title="galpy.df.streamdf.meanangledAngle"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="streamdffreqeigvalratio.html" title="galpy.df.streamdf.freqEigvalRatio"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="streamdffreqeigvalratio.html"
+                        title="previous chapter">galpy.df.streamdf.freqEigvalRatio</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="streamdfmeanangledangle.html"
+                        title="next chapter">galpy.df.streamdf.meanangledAngle</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/streamdfgaussapprox.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-streamdf-gaussapprox">
+<h1>galpy.df.streamdf.gaussApprox<a class="headerlink" href="#galpy-df-streamdf-gaussapprox" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.streamdf.gaussApprox">
+<tt class="descclassname">streamdf.</tt><tt class="descname">gaussApprox</tt><big>(</big><em>xy</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#galpy.df.streamdf.gaussApprox" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>gaussApprox</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>return the mean and variance of a Gaussian approximation to the stream DF at a given phase-space point in Galactocentric rectangular coordinates (distribution is over missing directions)</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>xy - phase-space point [X,Y,Z,vX,vY,vZ]; the distribution of the dimensions set to None is returned</p>
+<p>interp= (object-wide interp default) if True, use the interpolated stream track</p>
+<p>cindx= index of the closest point on the (interpolated) stream track if not given, determined from the dimensions given</p>
+<p>lb= (False) if True, xy contains [l,b,D,vlos,pmll,pmbb] in [deg,deg,kpc,km/s,mas/yr,mas/yr] and the Gaussian approximation in these coordinates is returned</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(mean,variance) of the approximate Gaussian DF for the missing directions in xy</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2013-12-12 - Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="streamdfmeanangledangle.html" title="galpy.df.streamdf.meanangledAngle"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="streamdffreqeigvalratio.html" title="galpy.df.streamdf.freqEigvalRatio"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" >DF</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Utilities &mdash; galpy v0.1 documentation</title>
+    <title>Utilities &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="next" title="galpy.util.bovy_plot" href="bovyplot.html" />
     <link rel="prev" title="actionAngleIsochroneApprox" href="aaisochroneapprox.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="aaisochroneapprox.html" title="actionAngleIsochroneApprox"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -61,7 +63,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -94,16 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bovyconversion.html">bovy_conversion: transformation between *natural* units and *physical* units</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conversiondens_in_msolpc3.html">dens_in_msolpc3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionforce_in_2piGmsolpc2.html">force_in_2piGmsolpc2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionforce_in_pcMyr2.html">force_in_pcMyr2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionforce_in_kmsMyr.html">force_in_kmsMyr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionfreq_in_Gyr.html">freq_in_Gyr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionfreq_in_kmskpc.html">freq_in_kmskpc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionsurfdens_in_msolpc2.html">surfdens_in_msolpc2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionmass_in_msol.html">mass_in_msol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversionmass_in_1010msol.html">mass_in_1010msol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversiontime_in_Gyr.html">time_in_Gyr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bovyconversion.html#functions">Functions:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bovycoords.html">bovy_coords: coordinate transformation functions</a><ul>
@@ -114,6 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="coordsdltorphi2d.html">dl_to_rphi_2d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsgalcencyltoxyz.html">galcencyl_to_XYZ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsgalcencyltovxvyvz.html">galcencyl_to_vxvyvz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordsgalcenrecttoxyz.html">galcenrect_to_XYZ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordsgalcenrecttovxvyvz.html">galcenrect_to_vxvyvz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordslbtoradec.html">lb_to_radec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordslbdtoxyz.html">lbd_to_XYZ</a></li>
@@ -160,13 +154,13 @@
         <li class="right" >
           <a href="aaisochroneapprox.html" title="actionAngleIsochroneApprox"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

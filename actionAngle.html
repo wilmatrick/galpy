@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Action-angle coordinates &mdash; galpy v0.1 documentation</title>
+    <title>Action-angle coordinates &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
     <link rel="next" title="Three-dimensional disk distribution functions" href="diskdf.html" />
     <link rel="prev" title="A closer look at orbit integration" href="orbit.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="orbit.html" title="A closer look at orbit integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -75,7 +77,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -120,7 +122,8 @@ typically be calculated using these three methods:</p>
 </ul>
 <p>These are not all implemented for each of the cases above yet.</p>
 <p>The adiabatic and Staeckel approximation have also been implemented in
-C, for extremely fast action-angle calculations (see below).</p>
+C and using grid-based interpolation, for extremely fast action-angle
+calculations (see below).</p>
 <div class="section" id="action-angle-coordinates-for-the-isochrone-potential">
 <h2>Action-angle coordinates for the isochrone potential<a class="headerlink" href="#action-angle-coordinates-for-the-isochrone-potential" title="Permalink to this headline">¶</a></h2>
 <p>The isochrone potential is the only potential for which all of the
@@ -134,7 +137,7 @@ can do this in galpy by doing</p>
 </div>
 <p><tt class="docutils literal"><span class="pre">aAI</span></tt> is now an instance that can be used to calculate action-angle
 variables for the specific isochrone potential <tt class="docutils literal"><span class="pre">ip</span></tt>. Calling this
-instance returns <img class="math" src="_images/math/e2383279e01955feee7cb8e9800cacf510ed802d.png" alt="(J_R,L_Z,J_Z)"/></p>
+instance returns <span class="math">\((J_R,L_Z,J_Z)\)</span></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAI</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span> <span class="c">#inputs R,vR,vT,z,vz</span>
 <span class="go">(array([ 0.00713759]), array([ 1.1]), array([ 0.00553155]))</span>
 </pre></div>
@@ -159,9 +162,9 @@ instance returns <img class="math" src="_images/math/e2383279e01955feee7cb8e9800
 <span class="go"> array([ 0.79093738]))</span>
 </pre></div>
 </div>
-<p>The output is <img class="math" src="_images/math/45b1680be64e4bdfd009fe14b5fdbdd581664b12.png" alt="(J_R,L_Z,J_Z,\Omega_R,\Omega_\phi,\Omega_Z)"/>. For
-any spherical potential, <img class="math" src="_images/math/e608d7f289bfbb8fe0a90fbf47143e7bd92446fe.png" alt="\Omega_\phi =
-\mathrm{sgn}(L_Z)\Omega_Z"/>, such that the last two frequencies are the
+<p>The output is <span class="math">\((J_R,L_Z,J_Z,\Omega_R,\Omega_\phi,\Omega_Z)\)</span>. For
+any spherical potential, <span class="math">\(\Omega_\phi =
+\mathrm{sgn}(L_Z)\Omega_Z\)</span>, such that the last two frequencies are the
 same.</p>
 <p>We obtain the angles as well by calling</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAI</span><span class="o">.</span><span class="n">actionsFreqsAngles</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">)</span>
@@ -177,7 +180,7 @@ same.</p>
 </pre></div>
 </div>
 <p>The output here is
-<img class="math" src="_images/math/6bb3bd30744462485ad798630459494757f4e448.png" alt="(J_R,L_Z,J_Z,\Omega_R,\Omega_\phi,\Omega_Z,\theta_R,\theta_\phi,\theta_Z)"/>.</p>
+<span class="math">\((J_R,L_Z,J_Z,\Omega_R,\Omega_\phi,\Omega_Z,\theta_R,\theta_\phi,\theta_Z)\)</span>.</p>
 <p>To check that these are good action-angle variables, we can calculate
 them along an orbit</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span>
@@ -316,46 +319,46 @@ disk orbits that do not go too far from the plane, as it assumes that
 the vertical motion is decoupled from that in the plane (e.g.,
 <a class="reference external" href="http://adsabs.harvard.edu/abs/2010MNRAS.401.2318B">2010MNRAS.401.2318B</a>).</p>
 <p>Setup is similar as for other actionAngle objects</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential2014</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleAdiabatic</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and evaluation then proceeds similarly as before</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="go">(0.011551694768963469, 1.1, 0.00042376727426256727)</span>
+<span class="go">(0.01351896260559274, 1.1, 0.0004690133479435352)</span>
 </pre></div>
 </div>
 <p>We can again check that the actions are conserved along the orbit</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">100.</span><span class="p">,</span><span class="mi">1001</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">MWPotential2014</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">js</span><span class="o">=</span> <span class="n">aAA</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>This takes a while. The adiabatic approximation is also implemented in
 C, which leads to great speed-ups. Here is how to use it</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.05</span><span class="p">))</span>
-<span class="go">10 loops, best of 3: 48.7 ms per loop</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">10 loops, best of 3: 73.7 ms per loop</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.05</span><span class="p">))</span>
-<span class="go">1000 loops, best of 3: 1.2 ms per loop</span>
+<span class="go">1000 loops, best of 3: 1.3 ms per loop</span>
 </pre></div>
 </div>
-<p>or about a <em>40 times</em> speed-up. For arrays the speed-up is even more
+<p>or about a <em>50 times</em> speed-up. For arrays the speed-up is even more
 impressive</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
-<span class="go">1000 loops, best of 3: 1.8 ms per loop</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">)</span> <span class="c">#back to no C</span>
+<span class="go">10 loops, best of 3: 37.8 ms per loop</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">)</span> <span class="c">#back to no C</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
-<span class="go">1 loops, best of 3: 4.94 s per loop</span>
+<span class="go">1 loops, best of 3: 7.71 s per loop</span>
 </pre></div>
 </div>
-<p>or a speed-up of 2700! Back to the previous example, you can run it
+<p>or a speed-up of 200! Back to the previous example, you can run it
 with <tt class="docutils literal"><span class="pre">c=True</span></tt> to speed up the computation</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">js</span><span class="o">=</span> <span class="n">aAA</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -369,20 +372,64 @@ of time</p>
 <img alt="_images/MWPotential-adactions.png" src="_images/MWPotential-adactions.png" />
 <p>The radial action is conserved to about half a percent, the vertical
 action to two percent.</p>
+<p>Another way to speed up the calculation of actions using the adiabatic
+approximation is to tabulate the actions on a grid in (approximate)
+integrals of the motion and evaluating new actions by interpolating on
+this grid. How this is done in practice is described in detail in the
+galpy paper. To setup this grid-based interpolation method, which is
+contained in <tt class="docutils literal"><span class="pre">actionAngleAdiabaticGrid</span></tt>, do</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleAdiabaticGrid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAG</span><span class="o">=</span> <span class="n">actionAngleAdiabaticGrid</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">nR</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span><span class="n">nEz</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span><span class="n">nEr</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">nLz</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <tt class="docutils literal"><span class="pre">c=True</span></tt> specifies that we use the C implementation of
+<tt class="docutils literal"><span class="pre">actionAngleAdiabatic</span></tt> for speed. We can now evaluate in the same
+was as before, for example</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.05</span><span class="p">),</span> <span class="n">aAG</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="go">((array([ 0.01352523]), array([ 1.1]), array([ 0.00046909])),</span>
+<span class="go"> (0.013527010324238781, 1.1, 0.00047747359874375148))</span>
+</pre></div>
+</div>
+<p>which agree very well. To look at the timings, we first switch back to
+not using C and then list all of the relevant timings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go"># Not using C, direct calculation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
+<span class="go">1 loops, best of 3: 9.05 s per loop</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="o">=</span> <span class="n">actionAngleAdiabatic</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go"># Using C, direct calculation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAA</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
+<span class="go">10 loops, best of 3: 39.7 ms per loop</span>
+<span class="go"># Grid-based calculation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAG</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
+<span class="go">1000 loops, best of 3: 1.09 ms per loop</span>
+</pre></div>
+</div>
+<p>Thus, in this example (and more generally) the grid-based calculation
+is significantly faster than even the direct implementation in C. The
+overall speed up between the direct Python version and the grid-based
+version is larger than 8,000; the speed up between the direct C
+version and the grid-based version is 36. For larger arrays of input
+phase-space positions, the latter speed up can increase to 150.  For
+simpler, fully analytical potentials the speed up will be slightly
+less, but for <tt class="docutils literal"><span class="pre">MWPotential2014</span></tt> and other more complicated
+potentials (such as those involving a double-exponential disk), the
+overhead of setting up the grid is worth it when evaluating more than
+a few thousand actions.</p>
 <p>The adiabatic approximation works well for orbits that stay close to
 the plane. The orbit we have been considering so far only reaches a
-height two percent of <img class="math" src="_images/math/667fe5b05068a332ae71e7583f323566bd30d188.png" alt="R_0"/>, or about 150 pc for <img class="math" src="_images/math/6657253ed876d9ef70cf16372fa6594b50e96ec9.png" alt="R_0 = 8"/>
+height two percent of <span class="math">\(R_0\)</span>, or about 150 pc for <span class="math">\(R_0 = 8\)</span>
 kpc.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">zmax</span><span class="p">()</span><span class="o">*</span><span class="mf">8.</span>
-<span class="go">0.1561562486879895</span>
+<span class="go">0.17903686455491979</span>
 </pre></div>
 </div>
 <p>For orbits that reach distances of a kpc and more from the plane, the
 adiabatic approximation does not work as well. For example,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.25</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">MWPotential2014</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">zmax</span><span class="p">()</span><span class="o">*</span><span class="mf">8.</span>
-<span class="go">1.1288142099238863</span>
+<span class="go">1.3506059038621048</span>
 </pre></div>
 </div>
 <p>and we can again calculate the actions along the orbit</p>
@@ -413,65 +460,107 @@ intents and purposes the adiabatic approximation is made obsolete by
 this new method, which is as fast and more precise. The only advantage
 of the adiabatic approximation over the Staeckel approximation is that
 the Staeckel approximation requires the user to specify a <em>focal
-length</em> <img class="math" src="_images/math/0a737670d481129e2ead6d7223437f3cf70ea53f.png" alt="\Delta"/> to be used in the Staeckel
+length</em> <span class="math">\(\Delta\)</span> to be used in the Staeckel
 approximation. However, this focal length can be easily estimated from
 the second derivatives of the potential (see Sanders 2012;
 <a class="reference external" href="http://adsabs.harvard.edu/abs/2012MNRAS.426..128S">2012MNRAS.426..128S</a>).</p>
 <p>Starting from the second orbit example in the adiabatic section above,
-we first estimate a good focal length of the <tt class="docutils literal"><span class="pre">MWPotential</span></tt> to use in
-the Staeckel approximation. We do this by averaging (through the
-median) estimates at positions around the orbit (which we integrated
-in the example above)</p>
+we first estimate a good focal length of the <tt class="docutils literal"><span class="pre">MWPotential2014</span></tt> to
+use in the Staeckel approximation. We do this by averaging (through
+the median) estimates at positions around the orbit (which we
+integrated in the example above)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">estimateDeltaStaeckel</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">estimateDeltaStaeckel</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">)</span>
-<span class="go">0.54421090762027347</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimateDeltaStaeckel</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">)</span>
+<span class="go">0.40272708556203662</span>
 </pre></div>
 </div>
-<p>We will use <img class="math" src="_images/math/136c77e6becf044de2c2ec416808ae283b0c4b69.png" alt="\Delta = 0.55"/> in what follows. We set up the
+<p>We will use <span class="math">\(\Delta = 0.4\)</span> in what follows. We set up the
 <tt class="docutils literal"><span class="pre">actionAngleStaeckel</span></tt> object</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#c=True is the default</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleStaeckel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#c=True is the default</span>
 </pre></div>
 </div>
 <p>and calculate the actions</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">())</span>
-<span class="go">(0.015760720988339319, 1.1000000000000001, 0.013466290557851267)</span>
+<span class="go">(0.019212848866725911, 1.1000000000000001, 0.015274597971510892)</span>
 </pre></div>
 </div>
 <p>The adiabatic approximation from above gives</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAA</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">())</span>
-<span class="go">(0.0138915441284973, 1.1000000000000001, 0.01383357354294852)</span>
+<span class="go">(array([ 0.01686478]), array([ 1.1]), array([ 0.01590001]))</span>
 </pre></div>
 </div>
 <p>The actionAngleStaeckel calculations are sped up in two ways. First,
 the action integrals can be calculated using Gaussian quadrature by
 specifying <tt class="docutils literal"><span class="pre">fixed_quad=True</span></tt></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="go">(0.015767954890517084, 1.1000000000000001, 0.013468235165983522)</span>
+<span class="go">(0.01922167296633687, 1.1000000000000001, 0.015276825017286706)</span>
 </pre></div>
 </div>
 <p>which in itself leads to a ten times speed up</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
-<span class="go">10 loops, best of 3: 43.9 ms per loop</span>
+<span class="go">10 loops, best of 3: 129 ms per loop</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-<span class="go">100 loops, best of 3: 3.87 ms per loop</span>
+<span class="go">100 loops, best of 3: 10.3 ms per loop</span>
 </pre></div>
 </div>
 <p>Second, the actionAngleStaeckel calculations have also been
 implemented in C, which leads to even greater speed-ups, especially
 for arrays</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAS</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
-<span class="go">100 loops, best of 3: 2.37 ms per loop</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#back to no C</span>
+<span class="go">10 loops, best of 3: 35.1 ms per loop</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#back to no C</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAS</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-<span class="go">1 loops, best of 3: 410 ms per loop</span>
+<span class="go">1 loops, best of 3: 496 ms per loop</span>
 </pre></div>
 </div>
-<p>or a <em>two hundred times</em> speed up.</p>
+<p>or a fifteen times speed up. The speed up is not that large because
+the bulge model in <tt class="docutils literal"><span class="pre">MWPotential2014</span></tt> requires expensive special
+functions to be evaluated. Computations could be sped up ten times
+more when using a simpler bulge model.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">actionAngleAdiabaticGrid</span></tt>, we can also tabulate the
+actions on a grid of (approximate) integrals of the motion and
+interpolate over this look-up table when evaluating new actions. The
+details of how this look-up table is setup and used are again fully
+explained in the galpy paper. To use this grid-based Staeckel
+approximation, contained in <tt class="docutils literal"><span class="pre">actionAngleStaeckelGrid</span></tt>, do</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.actionAngle</span> <span class="kn">import</span> <span class="n">actionAngleStaeckelGrid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aASG</span><span class="o">=</span> <span class="n">actionAngleStaeckelGrid</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">nE</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">npsi</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span><span class="n">nLz</span><span class="o">=</span><span class="mi">61</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <tt class="docutils literal"><span class="pre">c=True</span></tt> makes sure that we use the C implementation of the
+Staeckel method to calculate the grid. Because this is a fully
+three-dimensional grid, setting up the grid takes longer than it does
+for the adiabatic method (which only uses two two-dimensional
+grids). We can then evaluate actions as before</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">()),</span> <span class="n">aASG</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">())</span>
+<span class="go">((0.019212848866725911, 1.1000000000000001, 0.015274597971510892),</span>
+<span class="go"> (0.019221119033345408, 1.1000000000000001, 0.015022528662310393))</span>
+</pre></div>
+</div>
+<p>These actions agree very well. We can compare the timings of these
+methods as above</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAS</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="go">1 loops, best of 3: 576 ms per loop # Not using C, direct calculation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aAS</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
+<span class="go">100 loops, best of 3: 17.8 ms per loop # Using C, direct calculation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">aASG</span><span class="p">(</span><span class="mf">1.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="mf">0.05</span><span class="o">*</span><span class="n">s</span><span class="p">))</span>
+<span class="go">100 loops, best of 3: 3.45 ms per loop # Grid-based calculation</span>
+</pre></div>
+</div>
+<p>This demonstrates that the grid-based interpolation again leeds to a
+significant speed up, even over the C implementation of the direct
+calculation. This speed up becomes more significant for larger array
+input, although it saturates at about 25 times (at least for
+<tt class="docutils literal"><span class="pre">MWPotential2014</span></tt>).</p>
 <p>We can now go back to checking that the actions are conserved along
-the orbit</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">js</span><span class="o">=</span> <span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+the orbit (going back to the <tt class="docutils literal"><span class="pre">c=False</span></tt> version of
+<tt class="docutils literal"><span class="pre">actionAngleStaeckel</span></tt>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">js</span><span class="o">=</span> <span class="n">aAS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">fixed_quad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">fabs</span><span class="p">((</span><span class="n">js</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">js</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">js</span><span class="p">[</span><span class="mi">0</span><span class="p">]))))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">fabs</span><span class="p">((</span><span class="n">js</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">js</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">js</span><span class="p">[</span><span class="mi">2</span><span class="p">]))))</span>
 </pre></div>
@@ -491,22 +580,32 @@ methods.</p>
 are <em>only</em> implemented in C. So use <tt class="docutils literal"><span class="pre">c=True</span></tt> in the setup of the
 actionAngleStaeckel object.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Angles using the Staeckel approximation in galpy are such
+that (a) the radial angle starts at zero at pericenter and
+increases then going toward apocenter; (b) the vertical angle
+starts at zero at <em>z=0</em> and increases toward positive zmax. The
+latter is a different convention from that in Binney (2012), but is
+consistent with that in actionAngleIsochrone and
+actionAngleSpherical.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">=</span> <span class="n">actionAngleStaeckel</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span> <span class="c">#need to specify phi for angles</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aAS</span><span class="o">.</span><span class="n">actionsFreqsAngles</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(),</span><span class="n">o</span><span class="o">.</span><span class="n">phi</span><span class="p">())</span>
-<span class="go">(array([ 0.01576795]),</span>
+<span class="go">(array([ 0.01922167]),</span>
 <span class="go"> array([ 1.1]),</span>
-<span class="go"> array([ 0.01346824]),</span>
-<span class="go"> array([ 1.22171491]),</span>
-<span class="go"> array([ 0.85773142]),</span>
-<span class="go"> array([ 1.60476805]),</span>
-<span class="go"> array([ 0.41881231]),</span>
-<span class="go"> array([ 6.18908605]),</span>
-<span class="go"> array([ 4.57359281]))</span>
+<span class="go"> array([ 0.01527683]),</span>
+<span class="go"> array([ 1.11317796]),</span>
+<span class="go"> array([ 0.82538032]),</span>
+<span class="go"> array([ 1.34126138]),</span>
+<span class="go"> array([ 0.37758087]),</span>
+<span class="go"> array([ 6.17833493]),</span>
+<span class="go"> array([ 6.13368239]))</span>
 </pre></div>
 </div>
 <p>and we can check that the angles increase linearly along the orbit</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">MWPotential</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">MWPotential2014</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">jfa</span><span class="o">=</span> <span class="n">aAS</span><span class="o">.</span><span class="n">actionsFreqsAngles</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vR</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vT</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">vz</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">phi</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">jfa</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="s">&#39;b.&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">jfa</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span><span class="s">&#39;g.&#39;</span><span class="p">)</span>
@@ -558,7 +657,7 @@ actions for an orbit similar to that of the GD-1 stream</p>
 </div>
 <p>An essential requirement of this method is that the angles calculated
 in the auxiliary potential go through the full range
-<img class="math" src="_images/math/166f2f81461a7a6ce563dbb02f64f78f6bd08acc.png" alt="[0,2\pi]"/>. If this is not the case, galpy will raise a warning</p>
+<span class="math">\([0,2\pi]\)</span>. If this is not the case, galpy will raise a warning</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">aAIA</span><span class="o">=</span> <span class="n">actionAngleIsochroneApprox</span><span class="p">(</span><span class="n">pot</span><span class="o">=</span><span class="n">lp</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">10.8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aAIA</span><span class="p">(</span><span class="o">*</span><span class="n">obs</span><span class="p">)</span>
 <span class="go">galpyWarning: Full radial angle range not covered for at least one object; actions are likely not reliable</span>
@@ -581,7 +680,7 @@ and maximum b if multiple <em>R</em> and <em>z</em> are given</p>
 </div>
 <p>Experience shows that a scale parameter somewhere in the range
 returned by this function makes sure that the angles go through the
-full <img class="math" src="_images/math/166f2f81461a7a6ce563dbb02f64f78f6bd08acc.png" alt="[0,2\pi]"/> range. However, even if the angles go through
+full <span class="math">\([0,2\pi]\)</span> range. However, even if the angles go through
 the full range, the closer the angles increase to linear, the better
 the converenge of the algorithm is (and especially, the more accurate
 the calculation of the frequencies and angles is, see below). For
@@ -699,32 +798,32 @@ coordinates can also be cacluated for <tt class="docutils literal"><span class="
 instances. This is illustrated here briefly. We initialize an Orbit
 instance</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.potential</span> <span class="kn">import</span> <span class="n">MWPotential2014</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">=</span> <span class="n">Orbit</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>and we can then calculate the actions (default is to use the adiabatic
 approximation)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jp</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">)</span>
-<span class="go">(0.0138915441284973, 1.1, 0.01383357354294852)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jp</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">)</span>
+<span class="go">(0.01685643005901713, 1.1, 0.015897730620467752)</span>
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">o.jp</span></tt> here gives the azimuthal action (which is the <em>z</em> component
 of the angular momentum for axisymmetric potentials). We can also use
 the other methods described above, but note that these require extra
 parameters related to the approximation to be specified (see above):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jp</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">)</span>
-<span class="go">(array([ 0.01576795]), array([ 1.1]), array([ 0.01346824]))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jp</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="go">(array([ 0.0155484]), array([ 1.1]), array([ 0.01350128]))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jp</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="go">(array([ 0.01922167]), array([ 1.1]), array([ 0.01527683]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jp</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">(array([ 0.01906609]), array([ 1.1]), array([ 0.01528049]))</span>
 </pre></div>
 </div>
 <p>These two methods give very precise actions for this orbit (both are
 converged to about 1%) and they agree very well</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">)</span><span class="o">-</span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span><span class="o">/</span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="go">array([ 0.01412076])</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">)</span><span class="o">-</span><span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span><span class="o">/</span><span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="go">array([-0.00244754])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span><span class="o">-</span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span><span class="o">/</span><span class="n">o</span><span class="o">.</span><span class="n">jr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">array([ 0.00816012])</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span><span class="o">-</span><span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span><span class="o">/</span><span class="n">o</span><span class="o">.</span><span class="n">jz</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">array([-0.00024])</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -735,17 +834,17 @@ converged to about 1%) and they agree very well</p>
 using the Staeckel or Isochrone approximations, because frequencies
 and angles are currently not supported for the adiabatic
 approximation. For example, the radial frequency</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">Or</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">)</span>
-<span class="go">1.2217149111363643</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">Or</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="go">1.222457055706389</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">Or</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="go">1.1131779637307115</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">Or</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">1.1134635974560649</span>
 </pre></div>
 </div>
 <p>and the radial angle</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.55</span><span class="p">)</span>
-<span class="go">0.4188123062144965</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">MWPotential</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="go">0.42281897179881867</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;staeckel&#39;</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="go">0.37758086786371969</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">MWPotential2014</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;isochroneApprox&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">0.38159809018175395</span>
 </pre></div>
 </div>
 <p>which again agree to 1%. We can also calculate the other frequencies,
@@ -810,13 +909,13 @@ information see <a class="reference external" href="http://adsabs.harvard.edu/ab
         <li class="right" >
           <a href="orbit.html" title="A closer look at orbit integration"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

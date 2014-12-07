@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; galpy v0.1 documentation</title>
+    <title>Installation &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="index.html" />
     <link rel="next" title="Introduction" href="getting_started.html" />
     <link rel="prev" title="Welcome to galpy’s documentation" href="index.html" /> 
   </head>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to galpy’s documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -69,7 +71,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -90,35 +92,73 @@
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>galpy can be installed using pip as:</p>
-<div class="highlight-python"><pre>&gt; pip install galpy</pre>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install galpy
+</pre></div>
 </div>
 <p>or to upgrade without upgrading the dependencies:</p>
-<div class="highlight-python"><pre>&gt; pip install -U --no-deps galpy</pre>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install -U --no-deps galpy
+</pre></div>
 </div>
 <p>Some advanced features require the GNU Scientific Library (GSL; see below). If you want to use these, install the GSL first (or install it later and re-install using the upgrade command above).</p>
-<p>galpy can also be installed from the source code downloaded from github using the standard python <tt class="docutils literal"><span class="pre">setup.py</span></tt> installation:</p>
-<div class="highlight-python"><pre>&gt; python setup.py install</pre>
+<p>The latest updates in galpy can be installed using:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install -U --no-deps git+git://github.com/jobovy/galpy.git#egg=galpy
+</pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-python"><pre>&gt; python setup.py install --prefix=~/local</pre>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install -U --no-deps --install-option=&quot;--prefix=~/local&quot; git+git://github.com/jobovy/galpy.git#egg=galpy
+</pre></div>
+</div>
+<p>for a local installation. The latest updates can also be installed from the source code downloaded from github using the standard python <tt class="docutils literal"><span class="pre">setup.py</span></tt> installation:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; python setup.py install
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; python setup.py install --prefix=~/local
+</pre></div>
 </div>
 <p>for a local installation. A basic installation works with just the
 numpy/scipy/matplotlib stack. Some basic tests can be performed by executing:</p>
-<div class="highlight-python"><pre>&gt; nosetests -v -w nose/</pre>
+<div class="highlight-python"><div class="highlight"><pre>&gt; nosetests -v -w nose/
+</pre></div>
 </div>
 <div class="section" id="advanced-installation">
 <h2>Advanced installation<a class="headerlink" href="#advanced-installation" title="Permalink to this headline">¶</a></h2>
 <p>Certain advanced features require the GNU Scientific Library (<a class="reference external" href="http://www.gnu.org/software/gsl/">GSL</a>), with action calculations
 requiring version 1.14 or higher. On a Mac you can make sure that the
-correct architecture is installed using <a class="reference external" href="http://mxcl.github.com/homebrew/">Homebrew</a> as:</p>
-<div class="highlight-python"><pre>&gt; brew install gsl --universal</pre>
+correct architecture is installed using <a class="reference external" href="http://brew.sh/">Homebrew</a> as:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; brew install gsl --universal
+</pre></div>
 </div>
 <p>You should be able to check your version  using:</p>
-<div class="highlight-python"><pre>&gt; gsl-config --version</pre>
+<div class="highlight-python"><div class="highlight"><pre>&gt; gsl-config --version
+</pre></div>
 </div>
 <p>Other advanced features, including calculating the normalization of
 certain distribution functions using Gauss-Legendre integration
 require numpy version 1.7.0 or higher.</p>
+<p>galpy uses <a class="reference external" href="http://www.openmp.org/">OpenMP</a> to parallelize various
+of the computations done in C. galpy can be installed without OpenMP
+by specifying the option <tt class="docutils literal"><span class="pre">--no-openmp</span></tt> when running the <tt class="docutils literal"><span class="pre">python</span>
+<span class="pre">setup.py</span></tt> commands above or when using pip as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install -U --no-deps --install-option=&quot;--no-openmp&quot; git+git://github.com/jobovy/galpy.git#egg=galpy
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install -U --no-deps --install-option=&quot;--prefix=~/local&quot; --install-option=&quot;--no-openmp&quot; git+git://github.com/jobovy/galpy.git#egg=galpy
+</pre></div>
+</div>
+<p>for a local installation. This can be especially useful if one is
+using the <tt class="docutils literal"><span class="pre">clang</span></tt> compiler, which is the new default on macs with OS
+X (&gt;= 10.8), but does not support OpenMP. This leads to errors in the
+installation of galpy such as:</p>
+<div class="highlight-python"><div class="highlight"><pre>ld: library not found for -lgomp
+
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</pre></div>
+</div>
+<p>If you get these errors, you can use the commands given above to
+install without OpenMP, or specify to use <tt class="docutils literal"><span class="pre">gcc</span></tt> by specifying the
+<tt class="docutils literal"><span class="pre">CC</span></tt> and <tt class="docutils literal"><span class="pre">LDSHARED</span></tt> environment variables to use <tt class="docutils literal"><span class="pre">gcc</span></tt>.</p>
 </div>
 </div>
 
@@ -140,13 +180,13 @@ require numpy version 1.7.0 or higher.</p>
         <li class="right" >
           <a href="index.html" title="Welcome to galpy’s documentation"
              >previous</a> |</li>
-        <li><a href="index.html">galpy v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">galpy 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

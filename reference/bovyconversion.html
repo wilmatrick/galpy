@@ -1,19 +1,20 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>galpy.util.bovy_conversion &mdash; galpy v0.1 documentation</title>
+    <title>galpy.util.bovy_conversion &mdash; galpy 1.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +23,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="galpy v0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Utilities" href="util.html" />
-    <link rel="next" title="galpy.util.bovy_conversion.dens_in_msolpc3" href="conversiondens_in_msolpc3.html" />
+    <link rel="next" title="galpy.util.bovy_conversion.dens_in_criticaldens" href="conversiondens_in_criticaldens.html" />
     <link rel="prev" title="galpy.util.bovy_plot.scatterplot" href="scatterplot.html" /> 
   </head>
   <body>
@@ -35,12 +37,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="conversiondens_in_msolpc3.html" title="galpy.util.bovy_conversion.dens_in_msolpc3"
+          <a href="conversiondens_in_criticaldens.html" title="galpy.util.bovy_conversion.dens_in_criticaldens"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="scatterplot.html" title="galpy.util.bovy_plot.scatterplot"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="util.html" accesskey="U">Utilities</a> &raquo;</li> 
       </ul>
     </div>
@@ -49,12 +51,20 @@
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
             </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">galpy.util.bovy_conversion</a><ul>
+<li><a class="reference internal" href="#functions">Functions:</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="scatterplot.html"
                         title="previous chapter">galpy.util.bovy_plot.scatterplot</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="conversiondens_in_msolpc3.html"
-                        title="next chapter">galpy.util.bovy_conversion.dens_in_msolpc3</a></p>
+  <p class="topless"><a href="conversiondens_in_criticaldens.html"
+                        title="next chapter">galpy.util.bovy_conversion.dens_in_criticaldens</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/reference/bovyconversion.txt"
@@ -63,7 +73,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -83,12 +93,31 @@
             
   <div class="section" id="galpy-util-bovy-conversion">
 <span id="bovyconversion"></span><h1>galpy.util.bovy_conversion<a class="headerlink" href="#galpy-util-bovy-conversion" title="Permalink to this headline">¶</a></h1>
-<p>Conversion between galpy&#8217;s <em>natural</em> units and <em>physical</em> units</p>
+<p>Utility functions that provide conversions between galpy&#8217;s <em>natural</em>
+units and <em>physical</em> units. These can be used to translate galpy
+outputs in natural coordinates to physical units by multiplying with
+the appropriate function.</p>
+<p>These could also be used to figure out the conversion between
+different units. For example, if you want to know how many
+<span class="math">\(\mathrm{GeV\,cm}^{-3}\)</span> correspond to
+<span class="math">\(1\,M_\odot\,\mathrm{pc}^{-3}\)</span>, you can calculate</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">galpy.util</span> <span class="kn">import</span> <span class="n">bovy_conversion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_gevcc</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">bovy_conversion</span><span class="o">.</span><span class="n">dens_in_msolpc3</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="go">37.978342941703616</span>
+</pre></div>
+</div>
+<p>or <span class="math">\(1\,M_\odot\,\mathrm{pc}^{-3} \approx 40\,\mathrm{GeV\,cm}^{-3}\)</span>.</p>
+<div class="section" id="functions">
+<h2>Functions:<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="conversiondens_in_criticaldens.html">dens_in_criticaldens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversiondens_in_gevcc.html">dens_in_gevcc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversiondens_in_meanmatterdens.html">dens_in_meanmatterdens</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversiondens_in_msolpc3.html">dens_in_msolpc3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversionforce_in_2piGmsolpc2.html">force_in_2piGmsolpc2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversionforce_in_pcMyr2.html">force_in_pcMyr2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversionforce_in_10m13kms2.html">force_in_10m13kms2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversionforce_in_kmsMyr.html">force_in_kmsMyr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversionfreq_in_Gyr.html">freq_in_Gyr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversionfreq_in_kmskpc.html">freq_in_kmskpc</a></li>
@@ -97,6 +126,7 @@
 <li class="toctree-l1"><a class="reference internal" href="conversionmass_in_1010msol.html">mass_in_1010msol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversiontime_in_Gyr.html">time_in_Gyr</a></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -113,19 +143,19 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="conversiondens_in_msolpc3.html" title="galpy.util.bovy_conversion.dens_in_msolpc3"
+          <a href="conversiondens_in_criticaldens.html" title="galpy.util.bovy_conversion.dens_in_criticaldens"
              >next</a> |</li>
         <li class="right" >
           <a href="scatterplot.html" title="galpy.util.bovy_plot.scatterplot"
              >previous</a> |</li>
-        <li><a href="../index.html">galpy v0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
           <li><a href="util.html" >Utilities</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 - 2013, Jo Bovy.
-      Last updated on Jan 09, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

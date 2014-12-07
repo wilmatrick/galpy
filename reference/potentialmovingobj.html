@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Moving object potential &mdash; galpy 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Potential" href="potential.html" />
+    <link rel="next" title="NFW potential" href="potentialnfw.html" />
+    <link rel="prev" title="Miyamoto-Nagai potential" href="potentialmiyamoto.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="potentialnfw.html" title="NFW potential"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="potentialmiyamoto.html" title="Miyamoto-Nagai potential"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="potential.html" accesskey="U">Potential</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="potentialmiyamoto.html"
+                        title="previous chapter">Miyamoto-Nagai potential</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="potentialnfw.html"
+                        title="next chapter">NFW potential</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/potentialmovingobj.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="moving-object-potential">
+<h1>Moving object potential<a class="headerlink" href="#moving-object-potential" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="galpy.potential.MovingObjectPotential">
+<em class="property">class </em><tt class="descclassname">galpy.potential.</tt><tt class="descname">MovingObjectPotential</tt><big>(</big><em>orbit</em>, <em>amp=1.0</em>, <em>GM=0.06</em>, <em>softening=None</em>, <em>softening_model='plummer'</em>, <em>softening_length=0.01</em><big>)</big><a class="headerlink" href="#galpy.potential.MovingObjectPotential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements the potential coming from a moving object</p>
+<div class="math">
+\[\Phi(R,z,\phi,t) = -\mathrm{amp}\,GM\,S(d)\]</div>
+<p>where <span class="math">\(d\)</span> is the distance between <span class="math">\((R,z,\phi)\)</span> and the moving object at time <span class="math">\(t\)</span> and <span class="math">\(S(\cdot)\)</span> is a softening kernel. In the case of Plummer softening, this kernel is</p>
+<div class="math">
+\[S(d) = \frac{1}{\sqrt{d^2+\mathrm{softening\_length}^2}}\]</div>
+<p>Plummer is currently the only implemented softening.</p>
+<dl class="method">
+<dt id="galpy.potential.MovingObjectPotential.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>orbit</em>, <em>amp=1.0</em>, <em>GM=0.06</em>, <em>softening=None</em>, <em>softening_model='plummer'</em>, <em>softening_length=0.01</em><big>)</big><a class="headerlink" href="#galpy.potential.MovingObjectPotential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>__init__</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>initialize a MovingObjectPotential</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>orbit - the Orbit of the object (Orbit object)</p>
+<p>amp= - amplitude to be applied to the potential (default: 1)</p>
+<p>GM - &#8216;mass&#8217; of the object (degenerate with amp)</p>
+<p>Softening: either provide</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p class="first">softening= with a ForceSoftening-type object</p>
+</li>
+<li><p class="first">softening_model=  type of softening to use (&#8216;plummer&#8217;)</p>
+<p>softening_length= (optional)</p>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>(none)</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-04-10 - Started - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="potentialnfw.html" title="NFW potential"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="potentialmiyamoto.html" title="Miyamoto-Nagai potential"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="potential.html" >Potential</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

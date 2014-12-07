@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>galpy.df.evolveddiskdf.oortA &mdash; galpy 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
+    <link rel="up" title="DF" href="df.html" />
+    <link rel="next" title="galpy.df.evolveddiskdf.oortB" href="edfoortb.html" />
+    <link rel="prev" title="galpy.df.evolveddiskdf.meanvT" href="edfmeanvt.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="edfoortb.html" title="galpy.df.evolveddiskdf.oortB"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="edfmeanvt.html" title="galpy.df.evolveddiskdf.meanvT"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="edfmeanvt.html"
+                        title="previous chapter">galpy.df.evolveddiskdf.meanvT</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="edfoortb.html"
+                        title="next chapter">galpy.df.evolveddiskdf.oortB</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/edfoorta.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-evolveddiskdf-oorta">
+<h1>galpy.df.evolveddiskdf.oortA<a class="headerlink" href="#galpy-df-evolveddiskdf-oorta" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.evolveddiskdf.oortA">
+<tt class="descclassname">evolveddiskdf.</tt><tt class="descname">oortA</tt><big>(</big><em>R</em>, <em>t=0.0</em>, <em>nsigma=None</em>, <em>deg=False</em>, <em>phi=0.0</em>, <em>epsrel=0.01</em>, <em>epsabs=1e-05</em>, <em>grid=None</em>, <em>gridpoints=101</em>, <em>returnGrids=False</em>, <em>derivRGrid=None</em>, <em>derivphiGrid=None</em>, <em>derivGridpoints=101</em>, <em>derivHierarchgrid=False</em>, <em>hierarchgrid=False</em>, <em>nlevels=2</em>, <em>integrate_method='dopr54_c'</em><big>)</big><a class="headerlink" href="#galpy.df.evolveddiskdf.oortA" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>oortA</div></blockquote>
+<p>PURPOSE:</p>
+<blockquote>
+<div>calculate the Oort function A at (R,phi,t)</div></blockquote>
+<p>INPUT:</p>
+<blockquote>
+<div><p>R - radius at which to calculate A (/ro)</p>
+<p>phi= azimuth (rad unless deg=True)</p>
+<p>t= time at which to evaluate the DF (can be a list or ndarray; if this is the case, list needs to be in descending order and equally spaced)</p>
+<p>nsigma - number of sigma to integrate the velocities over (based on an estimate, so be generous)</p>
+<p>deg= azimuth is in degree (default=False)</p>
+<p>epsrel, epsabs - scipy.integrate keywords</p>
+<p>grid= if set to True, build a grid and use that to evaluate integrals; if set to a grid-objects (such as returned by this procedure), use this grid</p>
+<p>derivRGrid, derivphiGrid= if set to True, build a grid and use that to evaluate integrals of the derivatives of the DF;if set to a grid-objects (such as returned by this procedure), use this grid</p>
+<p>gridpoints= number of points to use for the grid in 1D (default=101)</p>
+<p>derivGridpoints= number of points to use for the grid in 1D (default=101)</p>
+<p>returnGrid= if True, return the grid objects (default=False)</p>
+<p>hierarchgrid= if True, use a hierarchical grid (default=False)</p>
+<p>derivHierarchgrid= if True, use a hierarchical grid (default=False)</p>
+<p>nlevels= number of hierarchical levels for the hierarchical grid</p>
+<p>integrate_method= orbit.integrate method argument</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>Oort A at R,phi,t</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2011-10-16 - Written - Bovy (NYU)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="edfoortb.html" title="galpy.df.evolveddiskdf.oortB"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="edfmeanvt.html" title="galpy.df.evolveddiskdf.meanvT"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" >DF</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

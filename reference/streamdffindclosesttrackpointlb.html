@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>galpy.df.streamdf.find_closest_trackpointLB &mdash; galpy 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="galpy 1.0 documentation" href="../index.html" />
+    <link rel="up" title="DF" href="df.html" />
+    <link rel="next" title="galpy.df.streamdf.freqEigvalRatio" href="streamdffreqeigvalratio.html" />
+    <link rel="prev" title="galpy.df.streamdf.find_closest_trackpoint" href="streamdffindclosesttrackpoint.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="streamdffreqeigvalratio.html" title="galpy.df.streamdf.freqEigvalRatio"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="streamdffindclosesttrackpoint.html" title="galpy.df.streamdf.find_closest_trackpoint"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" accesskey="U">DF</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo-small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="streamdffindclosesttrackpoint.html"
+                        title="previous chapter">galpy.df.streamdf.find_closest_trackpoint</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="streamdffreqeigvalratio.html"
+                        title="next chapter">galpy.df.streamdf.freqEigvalRatio</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/reference/streamdffindclosesttrackpointlb.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="galpy-df-streamdf-find-closest-trackpointlb">
+<h1>galpy.df.streamdf.find_closest_trackpointLB<a class="headerlink" href="#galpy-df-streamdf-find-closest-trackpointlb" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="galpy.df.streamdf.find_closest_trackpointLB">
+<tt class="descclassname">streamdf.</tt><tt class="descname">find_closest_trackpointLB</tt><big>(</big><em>l</em>, <em>b</em>, <em>D</em>, <em>vlos</em>, <em>pmll</em>, <em>pmbb</em>, <em>interp=True</em>, <em>usev=False</em><big>)</big><a class="headerlink" href="#galpy.df.streamdf.find_closest_trackpointLB" title="Permalink to this definition">¶</a></dt>
+<dd><p>NAME:</p>
+<blockquote>
+<div>find_closest_trackpointLB</div></blockquote>
+<dl class="docutils">
+<dt>PURPOSE:</dt>
+<dd>find the closest point on the stream track to a given point in (l,b,...) coordinates</dd>
+</dl>
+<p>INPUT:</p>
+<blockquote>
+<div><p>l,b,D,vlos,pmll,pmbb- coordinates in (deg,deg,kpc,km/s,mas/yr,mas/yr)</p>
+<p>interp= (True) if True, return the closest index on the interpolated track</p>
+<p>usev= (False) if True, also use the velocity components (default is to only use the positions)</p>
+</div></blockquote>
+<p>OUTPUT:</p>
+<blockquote>
+<div>index of closest track point on the interpolated or not-interpolated track</div></blockquote>
+<p>HISTORY:</p>
+<blockquote>
+<div>2013-12-17- Written - Bovy (IAS)</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="streamdffreqeigvalratio.html" title="galpy.df.streamdf.freqEigvalRatio"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="streamdffindclosesttrackpoint.html" title="galpy.df.streamdf.find_closest_trackpoint"
+             >previous</a> |</li>
+        <li><a href="../index.html">galpy 1.0 documentation</a> &raquo;</li>
+          <li><a href="df.html" >DF</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010 - 2014, Jo Bovy.
+      Last updated on Dec 07, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
