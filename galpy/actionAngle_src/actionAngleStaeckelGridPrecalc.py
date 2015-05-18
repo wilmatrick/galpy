@@ -1,5 +1,7 @@
 #_____import packages_____
 import time
+import numpy
+from scipy import interpolate, optimize, ndimage
 from galpy.actionAngle import actionAngleStaeckel,actionAngleStaeckelGrid
 from galpy.actionAngle_src.actionAngleStaeckel_c import _ext_loaded as ext_loaded
 
@@ -10,7 +12,7 @@ class actionAngleStaeckelGridPrecalc(actionAngleStaeckelGrid):
        a actionAngleStaeckelGrid Object using pre-calculated grids."""
     def __init__(self,pot=None,delta=None,
                       Lzs=None,ERL=None,ERa=None,
-                      mu0=None,mjr=None,mjz=None,
+                      u0_temp=None,jr_temp=None,jz_temp=None,
                       numcores=1,**kwargs):
 
         #____keywords needed for super class_____
@@ -21,23 +23,14 @@ class actionAngleStaeckelGridPrecalc(actionAngleStaeckelGrid):
             raise IOError("Must specify delta= for actionAngleStaeckelGridPrecalc")
         self._delta = delta
         self._nLz   = len(Lzs)                     #precalculated!!!
-        self._nE    = len(mu0)/self._nLz           #precalculated!!!
-        self._npsi  = len(mjr)/self._nLz/self._nE  #precalculated!!!
+        self._nE    = len(u0_temp)/self._nLz           #precalculated!!!
+        self._npsi  = len(jr_temp)/self._nLz/self._nE  #precalculated!!!
 
         #____c???_____
         if ext_loaded and 'c' in kwargs and kwargs['c']:
             self._c= True
         else:
             self._c= False
-        
-
-        #____initialize super-class_____
-        start = time.time()
-        actionAngleStaeckelGrid.__init__(self,
-                    pot=pot,delta=self._delta,
-                    Rmax=None,  #not needed
-                    nE=self._nE,npsi=self._npsi,nLz=self._nLz,numcores=numcores,**kwargs)
-        print time.time()-start
 
         #_____Grid____
         self._Lzmin= 0.01
@@ -58,11 +51,11 @@ class actionAngleStaeckelGridPrecalc(actionAngleStaeckelGrid):
 
 
         #_____setup u0_____
-        u0 = numpy.reshape(mu0,(self._nLz,self._nE)) #mu0 precalcualted!!!
+        u0 = numpy.reshape(u0_temp,(self._nLz,self._nE)) #u0_temp=mu0 precalcualted!!!
 
         #_____Setup and interpolate actions_____
-        jr= numpy.reshape(mjr,(self._nLz,self._nE,self._npsi))  #mjr precalcualted!!!
-        jz= numpy.reshape(mjz,(self._nLz,self._nE,self._npsi))  #mjz precalcualted!!!
+        jr= numpy.reshape(jr_temp,(self._nLz,self._nE,self._npsi))  #jr_temp=mjr precalcualted!!!
+        jz= numpy.reshape(jz_temp,(self._nLz,self._nE,self._npsi))  #jz_temp=mjz precalcualted!!!
         jrLzE= numpy.zeros((self._nLz))
         jzLzE= numpy.zeros((self._nLz))
         for ii in range(self._nLz):
@@ -99,6 +92,6 @@ class actionAngleStaeckelGridPrecalc(actionAngleStaeckelGrid):
         self._jzFiltered= ndimage.spline_filter(numpy.log(self._jz+10.**-10.),order=3)
 
         #_____Set up the actionAngleStaeckel object for special cases______
-        self._aA= actionAngleStaeckel.actionAngleStaeckel(pot=self._pot,delta=self._delta,c=self._c)
-
+        self._aA= actionAngleStaeckel(pot=self._pot,delta=self._delta,c=self._c)
+        return None
 

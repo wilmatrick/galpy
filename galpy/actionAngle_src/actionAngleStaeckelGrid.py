@@ -12,14 +12,14 @@
 ###############################################################################
 import numpy
 from scipy import interpolate, optimize, ndimage
-import galpy.actionAngle_src.actionAngleStaeckel as actionAngleStaeckel
+import actionAngleStaeckel
 from galpy.actionAngle_src.actionAngle import actionAngle
-import galpy.actionAngle_src.actionAngleStaeckel_c as actionAngleStaeckel_c
-from galpy.actionAngle_src.actionAngleStaeckel_c import _ext_loaded as ext_loaded
+import actionAngleStaeckel_c
+from actionAngleStaeckel_c import _ext_loaded as ext_loaded
 import galpy.potential
 from galpy.util import multi, bovy_coords
 _PRINTOUTSIDEGRID= False
-class actionAngleStaeckelGrid(object):
+class actionAngleStaeckelGrid():
     """Action-angle formalism for axisymmetric potentials using Binney (2012)'s Staeckel approximation, grid-based interpolation"""
     def __init__(self,pot=None,delta=None,Rmax=5.,
                  nE=25,npsi=25,nLz=30,numcores=1,
@@ -50,7 +50,7 @@ class actionAngleStaeckelGrid(object):
         self._pot= pot
         if delta is None:
             raise IOError("Must specify delta= for actionAngleStaeckelGrid")
-        if ext_loaded and 'c' in kwargs and kwargs['c']:
+        if ext_loaded and kwargs.has_key('c') and kwargs['c']:
             self._c= True
         else:
             self._c= False
@@ -112,9 +112,9 @@ class actionAngleStaeckelGrid(object):
                                         range(nE*nLz),
                                         numcores=numcores)
             else:
-                mu0= list(map((lambda x: self.calcu0(thisE[x],
-                                                     thisLzs[x])),
-                              range(nE*nLz)))
+                mu0= map((lambda x: self.calcu0(thisE[x],
+                                                thisLzs[x])),
+                         range(nE*nLz))
         u0= numpy.reshape(mu0,(nLz,nE))
         thisR= self._delta*numpy.sinh(u0)
         thisv= numpy.reshape(self.vatu0(thisE.flatten(),thisLzs.flatten(),
@@ -179,10 +179,6 @@ class actionAngleStaeckelGrid(object):
         #spline filter jr and jz, such that they can be used with ndimage.map_coordinates
         self._jrFiltered= ndimage.spline_filter(numpy.log(self._jr+10.**-10.),order=3)
         self._jzFiltered= ndimage.spline_filter(numpy.log(self._jz+10.**-10.),order=3)
-        #temporary arrays needed for pre-calculating grids:
-        self._mu0 = mu0
-        self._mjr = mjr
-        self._mjz = mjz
         return None
 
     def __call__(self,*args,**kwargs):
@@ -462,3 +458,4 @@ def _invEfunc(Ef,*args):
     """Inverse of Efunc"""
 #    return Ef**2.+args[0]
     return numpy.exp(Ef)+args[0]-10.**-10.
+

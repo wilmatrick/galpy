@@ -12,7 +12,7 @@ from galpy.util import galpyWarning
 _NSIGMA=4
 _DEFAULTNGL=10
 _DEFAULTNGL2=20
-class quasiisothermaldf(object):
+class quasiisothermaldf:
     """Class that represents a 'Binney' quasi-isothermal DF"""
     def __init__(self,hr,sr,sz,hsr,hsz,pot=None,aA=None,
                  cutcounter=False,
@@ -118,7 +118,7 @@ class quasiisothermaldf(object):
         self._glxdef2, self._glwdef2= \
             numpy.polynomial.legendre.leggauss(_DEFAULTNGL2)
         self._glxdef12, self._glwdef12= \
-            numpy.polynomial.legendre.leggauss(_DEFAULTNGL//2)
+            numpy.polynomial.legendre.leggauss(_DEFAULTNGL/2)
         return None
 
     def __call__(self,*args,**kwargs):
@@ -161,14 +161,30 @@ class quasiisothermaldf(object):
            up to 200x faster when called with vector R,vR,vT,z,vz
         """
         #First parse log
-        log= kwargs.pop('log',False)
-        _return_actions= kwargs.pop('_return_actions',False)
-        _return_freqs= kwargs.pop('_return_freqs',False)
-        if 'rg' in kwargs:
-            thisrg= kwargs.pop('rg')
-            kappa= kwargs.pop('kappa')
-            nu= kwargs.pop('nu')
-            Omega= kwargs.pop('Omega')
+        if kwargs.has_key('log'):
+            log= kwargs['log']
+            kwargs.pop('log')
+        else:
+            log= False
+        if kwargs.has_key('_return_actions'):
+            _return_actions= kwargs['_return_actions']
+            kwargs.pop('_return_actions')
+        else:
+            _return_actions= False
+        if kwargs.has_key('_return_freqs'):
+            _return_freqs= kwargs['_return_freqs']
+            kwargs.pop('_return_freqs')
+        else:
+            _return_freqs= False
+        if kwargs.has_key('rg'):
+            thisrg= kwargs['rg']
+            kwargs.pop('rg')
+            kappa= kwargs['kappa']
+            kwargs.pop('kappa')
+            nu= kwargs['nu']
+            kwargs.pop('nu')
+            Omega= kwargs['Omega']
+            kwargs.pop('Omega')
         else:
             thisrg= None
             kappa= None
@@ -200,7 +216,7 @@ class quasiisothermaldf(object):
         lnsr= self._lnsr+(self._ro-thisrg)/self._hsr
         lnsz= self._lnsz+(self._ro-thisrg)/self._hsz
         #Calculate func
-        if 'func' in kwargs:
+        if kwargs.has_key('func'):
             if log:
                 funcTerm= numpy.log(kwargs['func'](jr,lz,jz))
             else:
@@ -468,25 +484,25 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             if isinstance(self._aA,(actionAngle.actionAngleAdiabatic,
                                     actionAngle.actionAngleAdiabaticGrid)):
-                vRgl= nsigma*sigmaR1/2.*(glx+1.)
-                vzgl= nsigma*sigmaz1/2.*(glx+1.)
+                vRgl= 4.*sigmaR1/2.*(glx+1.)
+                vzgl= 4.*sigmaz1/2.*(glx+1.)
                 vRglw= glw
                 vzglw= glw
             else:
-                vRgl= nsigma*sigmaR1/2.*(glx12+1.)
+                vRgl= 4.*sigmaR1/2.*(glx12+1.)
                 #vRgl= 1.5/2.*(glx12+1.)
                 vRgl= list(vRgl)
-                vRgl.extend(-nsigma*sigmaR1/2.*(glx12+1.))
+                vRgl.extend(-4.*sigmaR1/2.*(glx12+1.))
                 #vRgl.extend(-1.5/2.*(glx12+1.))
                 vRgl= numpy.array(vRgl)
-                vzgl= nsigma*sigmaz1/2.*(glx12+1.)
+                vzgl= 4.*sigmaz1/2.*(glx12+1.)
                 #vzgl= 1.5/2.*(glx12+1.)
                 vzgl= list(vzgl)
-                vzgl.extend(-nsigma*sigmaz1/2.*(glx12+1.))
+                vzgl.extend(-4.*sigmaz1/2.*(glx12+1.))
                 #vzgl.extend(-1.5/2.*(glx12+1.))
                 vzgl= numpy.array(vzgl)
                 vRglw= glw12
@@ -534,20 +550,20 @@ class quasiisothermaldf(object):
                 logqeval= _glqeval
             if _returngl:
                 return (numpy.sum(numpy.exp(logqeval)*vRgl**n*vTgl**m*vzgl**o
-                                  *vTglw*vRglw*vzglw)*sigmaR1*sigmaz1*0.1875*nsigma**2,
+                                  *vTglw*vRglw*vzglw)*sigmaR1*sigmaz1*3.,
                         logqeval)
             elif _return_actions and _return_freqs:
                 return (numpy.sum(numpy.exp(logqeval)*vRgl**n*vTgl**m*vzgl**o
-                                  *vTglw*vRglw*vzglw)*sigmaR1*sigmaz1*0.1875*nsigma**2,
+                                  *vTglw*vRglw*vzglw)*sigmaR1*sigmaz1*3.,
                         jr,lz,jz,
                         rg,kappa,nu,Omega)
             elif _return_actions:
                 return (numpy.sum(numpy.exp(logqeval)*vRgl**n*vTgl**m*vzgl**o
-                                  *vTglw*vRglw*vzglw)*sigmaR1*sigmaz1*0.1875*nsigma**2,
+                                  *vTglw*vRglw*vzglw)*sigmaR1*sigmaz1*3.,
                         jr,lz,jz)
             else:
                 return numpy.sum(numpy.exp(logqeval)*vRgl**n*vTgl**m*vzgl**o
-                                 *vTglw*vRglw*vzglw*sigmaR1*sigmaz1*0.1875*nsigma**2)
+                                 *vTglw*vRglw*vzglw*sigmaR1*sigmaz1*3.)
         elif mc:
             mvT= (thisvc-va)/gamma/sigmaR1
             if _vrs is None:
@@ -1395,7 +1411,7 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             if isinstance(self._aA,(actionAngle.actionAngleAdiabatic,
                                     actionAngle.actionAngleAdiabaticGrid)):
@@ -1463,7 +1479,7 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             if isinstance(self._aA,(actionAngle.actionAngleAdiabatic,
                                     actionAngle.actionAngleAdiabaticGrid)):
@@ -1545,7 +1561,7 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             if isinstance(self._aA,(actionAngle.actionAngleAdiabatic,
                                     actionAngle.actionAngleAdiabaticGrid)):
@@ -1679,7 +1695,7 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             if isinstance(self._aA,(actionAngle.actionAngleAdiabatic,
                                     actionAngle.actionAngleAdiabaticGrid)):
@@ -1741,7 +1757,7 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             if isinstance(self._aA,(actionAngle.actionAngleAdiabatic,
                                     actionAngle.actionAngleAdiabaticGrid)):
@@ -1802,7 +1818,7 @@ class quasiisothermaldf(object):
                 glx12, glw12= self._glxdef, self._glwdef
             else:
                 glx, glw= numpy.polynomial.legendre.leggauss(ngl)
-                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl//2)
+                glx12, glw12= numpy.polynomial.legendre.leggauss(ngl/2)
             #Evaluate everywhere
             vTgl= 1.5/2.*(glx+1.)
             vTglw= glw
@@ -1918,3 +1934,4 @@ def _jmomentsurfaceMCIntegrand(vz,vR,vT,R,z,df,sigmaR1,gamma,sigmaz1,mvT,n,m,o):
     return df(R,vR*sigmaR1,vT*sigmaR1*gamma,z,vz*sigmaz1,
               func=(lambda x,y,z: x**n*y**m*z**o))\
               *numpy.exp(vR**2./2.+(vT-mvT)**2./2.+vz**2./2.)
+
